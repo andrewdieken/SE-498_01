@@ -17,6 +17,11 @@ jobs:
       # Creates a remote Docker environment configured to execute Docker commands
       - setup_remote_docker
 
+      - run:
+          name: Update Bundler Version
+          command: |
+            gem install bundler -v 2.0.1
+
       # Download and cache dependencies. Reduce run time.
       - restore_cache:
           keys:
