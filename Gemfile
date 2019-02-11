@@ -21,6 +21,7 @@ gem "title"
 gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "uglifier"
 gem "bootsnap", require: false
+gem "devise"
 
 
 group :development do
@@ -47,3 +48,18 @@ group :test do
 end
 
 gem "suspenders", group: [:development, :test]
+
+gem 'oj'
+gem 'high_voltage'
+gem 'bourbon', '~> 5.0'
+gem 'neat', '~> 2.1'
+gem 'spring-commands-rspec', group: :development
+gem 'rspec-rails', '~> 3.6', group: [:development, :test]
+gem 'shoulda-matchers', group: :test
+gem 'capybara-selenium', group: :test
+gem 'chromedriver-helper', group: :test
+gem 'simple_form'
+gem 'bullet', group: [:development, :test]
+gem 'factory_bot_rails', group: [:development, :test]
+gem 'delayed_job_active_record'
+gem 'rack-timeout', group: :production
