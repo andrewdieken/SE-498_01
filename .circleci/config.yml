@@ -75,6 +75,11 @@ jobs:
       - checkout
       - setup_remote_docker
 
+      - run:
+          name: Update Bundler Version
+          command: |
+            gem install bundler -v 2.0.1
+
       # Download and cache dependencies
       - restore_cache:
           keys:
