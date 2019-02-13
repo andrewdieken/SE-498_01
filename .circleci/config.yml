@@ -152,5 +152,3 @@ workflows:
             branches:
               only:
                 - master
-                # Don't think I need this
-                - /staging-.*/
