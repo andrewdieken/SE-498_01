@@ -1,0 +1,151 @@
+version: 2
+jobs:
+  # build is for testing
+  build:
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+      # need db to run tests
+      - image: circleci/postgres:9.6
+        environment:
+          POSTGRES_USER: postgres
+
+    working_directory: ~/repo
+
+    steps:
+      # checks out code from git repo
+      - checkout
+      # Creates a remote Docker environment configured to execute Docker commands
+      - setup_remote_docker
+
+      - run:
+          name: Update Bundler Version
+          command: |
+            gem install bundler -v 2.0.1
+
+      # Download and cache dependencies. Reduce run time.
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
+      # install all dependencies for the project
+      - run:
+          name: make sure yarn is up to date
+          command: |
+            yarn install
+
+      # jobs: Install gems using parallel workers.
+      # retry: Retry network and git requests that have failed
+      # path: path for installations
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # - run:
+      #   name: copy sample database
+      #   command: |
+      #     cp config/database.yml.sample config/database.yml
+      - run: bundle exec rake db:create
+      # db:schema:load Loads the schema into the current environment’s database.
+      - run: bundle exec rake db:schema:load
+
+      - run:
+          name: run tests
+          command: |
+            bundle exec rspec spec
+
+      # Collect and Save Reports
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+
+  push_to_docker_hub:
+    docker:
+      - image: circleci/ruby:2.5.3-node-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
+      - run:
+          name: make sure yarn is up to date
+          command: |
+            yarn install
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          paths:
+            - /tmp/caches/app.tar
+
+      # Run Docker Commands
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /tmp/caches/app.tar | true
+
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build --cache-from=app -t app .
+
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /tmp/caches
+            docker save -o /tmp/caches/app.tar app
+
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /tmp/caches/app.tar
+
+      # Environment variables found in circleci
+      - deploy:
+          name: Push application Docker image to Dockerhub
+          command: |
+            docker login -u $DOCKER_HUB_USERID -p $DOCKER_HUB_PWD
+            docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1
+            docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest
+            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1
+            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest
+
+workflows:
+  version: 2
+  build-push:
+    jobs:
+      - build
+      - push_to_docker_hub:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master
+                # Don't think I need this
+                - /staging-.*/
