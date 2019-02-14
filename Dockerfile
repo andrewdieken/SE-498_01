@@ -34,5 +34,6 @@ RUN gem install bundler --no-document && \
   bundle install --jobs 20 --retry 5 --without development test
 
 ADD . $APP
+RUN rm -rf $APP/docs
 
 RUN bundle exec rails assets:precompile
