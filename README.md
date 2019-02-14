@@ -18,3 +18,7 @@ $ docker-compose up
 ```
 
 Make sure to change `host: db` in `database.yml`
+
+## Developer Notes
+
+Use `docs` folder to include any developer notes or include them in the wiki
