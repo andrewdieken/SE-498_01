@@ -8,11 +8,11 @@ assignees: ''
 ---
 
 ## Description
-Change all items in bold below:
-
-As a **user**,
-I can **do something**,
-so that **I can achieve something else**.
+```
+As a ,
+I can ,
+so that .
+```
 
 ## Acceptance Criteria
 List down acceptance criteria that the product owner would have to check.
