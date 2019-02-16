@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Voterid:</strong>
+  <%= @voter.voterID %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @voter.last_name %>
+</p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @voter.first_name %>
+</p>
+
+<p>
+  <strong>Middle name:</strong>
+  <%= @voter.middle_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @voter.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @voter.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @voter.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @voter.zip %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @voter.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @voter.phone %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= @voter.date_of_birth %>
+</p>
+
+<p>
+  <strong>Party affiliation:</strong>
+  <%= @voter.party_affiliation %>
+</p>
+
+<%= link_to 'Edit', edit_voter_path(@voter) %> |
+<%= link_to 'Back', voters_path %>
