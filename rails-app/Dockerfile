@@ -7,9 +7,10 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 
 RUN apt-get update -qq && \
   apt-get upgrade -y && \
-  apt-get install -y build-essential libpq-dev nodejs postgresql-client nodejs yarn && \
-  # Keep image size small:
-  apt-get clean && \
+  apt-get install -y build-essential libpq-dev nodejs postgresql-client nodejs yarn
+
+# Keep image size small:
+RUN apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   ln -nfs /usr/lib/x86_64-linux-gnu/libssl.so.1.0.2 /usr/lib/x86_64-linux-gnu/libssl.so
 
