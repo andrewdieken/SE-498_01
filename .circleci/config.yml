@@ -25,8 +25,8 @@ jobs:
       # Download and cache dependencies. Reduce run time.
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          - v1-dependencies-
+          - v4-dependencies-{{ checksum "rails-app/Gemfile.lock" }}
+          - v4-dependencies-
 
       # install all dependencies for the project
       - run:
@@ -41,30 +41,35 @@ jobs:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
+          working_directory: rails-app
 
       - save_cache:
           paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - rails-app/vendor/bundle
+          key: v4-dependencies-{{ checksum "rails-app/Gemfile.lock" }}
 
-      # - run:
-      #   name: copy sample database
-      #   command: |
-      #     cp config/database.yml.sample config/database.yml
-      - run: bundle exec rake db:create
+      - run:
+          name: create database
+          command: bundle exec rake db:create
+          working_directory: rails-app
+
       # db:schema:load Loads the schema into the current environment’s database.
-      - run: bundle exec rake db:schema:load
+      - run:
+          name: load schema
+          command: bundle exec rake db:schema:load
+          working_directory: rails-app
 
       - run:
           name: run tests
           command: |
             bundle exec rspec spec
+          working_directory: rails-app
 
       # Collect and Save Reports
       - store_test_results:
-          path: /tmp/test-results
+          path: rails-app/tmp/test-results
       - store_artifacts:
-          path: /tmp/test-results
+          path: rails-app/tmp/test-results
           destination: test-results
 
   push_to_docker_hub:
@@ -83,8 +88,8 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          - v1-dependencies-
+          - v4-dependencies-{{ checksum "rails-app/Gemfile.lock" }}
+          - v4-dependencies-
 
       - run:
           name: make sure yarn is up to date
@@ -95,19 +100,21 @@ jobs:
           name: install dependencies
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle
+          working_directory: rails-app
 
       - save_cache:
           paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - rails-app/vendor/bundle
+          key: v4-dependencies-{{ checksum "rails-app/Gemfile.lock" }}
 
       - restore_cache:
           keys:
-            - v1-{{ .Branch }}
+            - v4-{{ .Branch }}
           paths:
             - /tmp/caches/app.tar
 
       # Run Docker Commands
+      # Use the root working_directory => ~/repo
       - run:
           name: Load Docker image layer cache
           command: |
@@ -118,6 +125,7 @@ jobs:
           name: Build application Docker image
           command: |
             docker build --cache-from=app -t app .
+          working_directory: rails-app
 
       - run:
           name: Save Docker image layer cache
@@ -126,9 +134,10 @@ jobs:
             docker save -o /tmp/caches/app.tar app
 
       - save_cache:
-          key: v1-{{ .Branch }}-{{ epoch }}
+          key: v4-{{ .Branch }}-{{ epoch }}
           paths:
             - /tmp/caches/app.tar
+
 
       # Environment variables found in circleci
       - deploy:
