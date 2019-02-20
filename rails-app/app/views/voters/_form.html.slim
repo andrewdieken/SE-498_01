@@ -1,0 +1,47 @@
+= form_with(model: voter, local: true) do |form|
+  - if voter.errors.any?
+    #error_explanation
+      h2
+        = pluralize(voter.errors.count, "error")
+        | prohibited this voter from being saved:
+      ul
+        - voter.errors.full_messages.each do |message|
+          li= message
+  .field
+    = form.label :voterID
+    = form.text_field :voterID
+  .field
+    = form.label :last_name
+    = form.text_field :last_name
+  .field
+    = form.label :first_name
+    = form.text_field :first_name
+  .field
+    = form.label :middle_name
+    = form.text_field :middle_name
+  .field
+    = form.label :address
+    = form.text_field :address
+  .field
+    = form.label :city
+    = form.text_field :city
+  .field
+    = form.label :state
+    = form.text_field :state
+  .field
+    = form.label :zip
+    = form.text_field :zip
+  .field
+    = form.label :email
+    = form.text_field :email
+  .field
+    = form.label :phone
+    = form.text_field :phone
+  .field
+    = form.label :date_of_birth
+    = form.text_field :date_of_birth
+  .field
+    = form.label :party_affiliation
+    = form.text_field :party_affiliation
+  .actions
+    = form.submit
