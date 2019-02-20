@@ -24,6 +24,9 @@ gem "bootsnap", require: false
 gem "devise"
 gem "grape", ">= 0.10.0"
 gem "kaminari"
+gem 'trailblazer'
+gem 'trailblazer-cells'
+gem 'trailblazer-rails'
 
 
 group :development do

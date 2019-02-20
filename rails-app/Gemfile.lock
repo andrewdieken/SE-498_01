@@ -85,6 +85,11 @@ GEM
     capybara-selenium (0.0.6)
       capybara
       selenium-webdriver
+    cells (4.1.7)
+      declarative-builder (< 0.2.0)
+      declarative-option (< 0.2.0)
+      tilt (>= 1.4, < 3)
+      uber (< 0.2.0)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (2.1.0)
@@ -97,6 +102,10 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.4)
+    declarative (0.0.10)
+    declarative-builder (0.1.0)
+      declarative-option (< 0.2.0)
+    declarative-option (0.1.0)
     delayed_job (4.1.5)
       activesupport (>= 3.0, < 5.3)
     delayed_job_active_record (4.1.3)
@@ -111,6 +120,12 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    disposable (0.4.4)
+      declarative (>= 0.0.9, < 1.0.0)
+      declarative-builder (< 0.2.0)
+      declarative-option (< 0.2.0)
+      representable (>= 2.4.0, <= 3.1.0)
+      uber (< 0.2.0)
     docile (1.3.1)
     dotenv (2.6.0)
     dotenv-rails (2.6.0)
@@ -194,6 +209,7 @@ GEM
     orm_adapter (0.5.0)
     pg (1.1.4)
     pg (1.1.4-x64-mingw32)
+    pipetree (0.1.1)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -245,7 +261,14 @@ GEM
       ffi (~> 1.0)
     recipient_interceptor (0.2.0)
       mail
+    reform (2.2.4)
+      disposable (>= 0.4.1)
+      representable (>= 2.4.0, < 3.1.0)
     regexp_parser (1.3.0)
+    representable (3.0.4)
+      declarative (< 0.1.0)
+      declarative-option (< 0.2.0)
+      uber (< 0.2.0)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
@@ -318,10 +341,26 @@ GEM
     title (0.0.7)
       i18n
       rails (>= 3.1)
+    trailblazer (2.0.7)
+      declarative
+      reform (>= 2.2.0, < 3.0.0)
+      trailblazer-operation (>= 0.0.12, < 0.1.0)
+    trailblazer-cells (0.0.3)
+      cells (>= 4.1.0.rc1, < 5.0.0)
+    trailblazer-loader (0.1.2)
+    trailblazer-operation (0.0.13)
+      declarative
+      pipetree (>= 0.1.1, < 0.2.0)
+      uber
+    trailblazer-rails (1.0.11)
+      railties (>= 4.0.0)
+      trailblazer (~> 2.0.0)
+      trailblazer-loader (>= 0.1.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     tzinfo-data (1.2018.9)
       tzinfo (>= 1.0.0)
+    uber (0.1.0)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     uniform_notifier (1.12.1)
@@ -394,6 +433,9 @@ DEPENDENCIES
   suspenders
   timecop
   title
+  trailblazer
+  trailblazer-cells
+  trailblazer-rails
   tzinfo-data
   uglifier
   web-console
