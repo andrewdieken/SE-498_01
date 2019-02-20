@@ -1,0 +1,38 @@
+p#notice= notice
+h1 Voters
+table
+  thead
+    tr
+      th Voterid
+      th Last name
+      th First name
+      th Middle name
+      th Address
+      th City
+      th State
+      th Zip
+      th Email
+      th Phone
+      th Date of birth
+      th Party affiliation
+      th colspan="3"
+  tbody
+    - @voters.each do |voter|
+      tr
+        td= voter.voterID
+        td= voter.last_name
+        td= voter.first_name
+        td= voter.middle_name
+        td= voter.address
+        td= voter.city
+        td= voter.state
+        td= voter.zip
+        td= voter.email
+        td= voter.phone
+        td= voter.date_of_birth
+        td= voter.party_affiliation
+        td= link_to 'Show', voter
+        td= link_to 'Edit', edit_voter_path(voter)
+        td= link_to 'Destroy', voter, method: :delete, data: { confirm: 'Are you sure?' }
+br/
+= link_to 'New Voter', new_voter_path
