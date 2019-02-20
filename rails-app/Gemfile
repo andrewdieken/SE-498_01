@@ -27,6 +27,7 @@ gem "kaminari"
 gem 'trailblazer'
 gem 'trailblazer-cells'
 gem 'trailblazer-rails'
+gem 'slim'
 
 
 group :development do
