@@ -1,0 +1,40 @@
+p#notice= notice
+p
+  strong Voterid:
+  = @voter.voterID
+p
+  strong Last name:
+  = @voter.last_name
+p
+  strong First name:
+  = @voter.first_name
+p
+  strong Middle name:
+  = @voter.middle_name
+p
+  strong Address:
+  = @voter.address
+p
+  strong City:
+  = @voter.city
+p
+  strong State:
+  = @voter.state
+p
+  strong Zip:
+  = @voter.zip
+p
+  strong Email:
+  = @voter.email
+p
+  strong Phone:
+  = @voter.phone
+p
+  strong Date of birth:
+  = @voter.date_of_birth
+p
+  strong Party affiliation:
+  = @voter.party_affiliation
+= link_to 'Edit', edit_voter_path(@voter)
+|  | 
+= link_to 'Back', voters_path

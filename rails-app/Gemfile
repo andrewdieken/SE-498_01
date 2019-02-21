@@ -24,6 +24,13 @@ gem "bootsnap", require: false
 gem "devise"
 gem "grape", ">= 0.10.0"
 gem "kaminari"
+gem 'trailblazer'
+gem 'trailblazer-cells'
+gem 'trailblazer-rails'
+gem 'slim'
+gem 'reform'
+gem 'reform-rails'
+gem 'dry-validation'
 
 
 group :development do

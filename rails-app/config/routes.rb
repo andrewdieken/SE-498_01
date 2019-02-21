@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :voters
 
   # Set up routes for API. Set namespace to 'api' which is where our api config file is stored.
   namespace 'api' do
