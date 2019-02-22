@@ -5,6 +5,11 @@
 
 # Development Environment Setup:
 
+## From within the root directory, `SE-498_01`, run the following command
+```shell
+$ cp rails-app/config/database.yml.sample rails-app/config/database.yml
+```
+
 ## To start the server from scratch, run the following
 - From within the rails-app folder
 ```shell
@@ -16,7 +21,6 @@ $ bundle exec rails s
 
 ## To start the severs with `docker-compose`, run the following
 - Within `rails-app/config/database.yml`, under `development`, change `host: localhost` to `host:db`
-*NOTE: CHAGNE HOST BACK TO  `host: localhost` WHEN PUSHING*
 - From within the root directory `SE-498_01`, run the following
 ```shell
 $ docker-compose up

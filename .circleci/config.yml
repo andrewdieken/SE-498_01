@@ -49,6 +49,12 @@ jobs:
           key: v4-dependencies-{{ checksum "rails-app/Gemfile.lock" }}
 
       - run:
+          name: copy sample database
+          command: |
+            cp config/database.yml.sample config/database.yml
+          working_directory: rails-app
+
+      - run:
           name: create database
           command: bundle exec rake db:create
           working_directory: rails-app
