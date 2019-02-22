@@ -23,6 +23,8 @@ $ bundle exec rails s
 - Within `rails-app/config/database.yml`, under `development`, change `host: localhost` to `host:db`
 - From within the root directory `SE-498_01`, run the following
 ```shell
+$ docker-compose down
+$ docker-compose start
 $ docker-compose up
 $ docker-compose run web bundle exec rails db:drop db:setup
 ```
