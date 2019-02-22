@@ -9,7 +9,7 @@ development: &default
   username: postgres
   password:
   host: localhost # running app and tests from the host
-  # host: db # running all in services
+  #host: db # running all in services
 
 test:
   <<: *default
