@@ -37,4 +37,5 @@ RUN gem install bundler --no-document && \
 ADD . $APP
 RUN rm -rf $APP/docs
 
-RUN bundle exec rails assets:precompile
+RUN cp $APP/config/database.yml.sample $APP/config/database.yml && \
+  bundle exec rails assets:precompile
