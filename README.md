@@ -10,6 +10,14 @@
 $ cp rails-app/config/database.yml.sample rails-app/config/database.yml
 ```
 
+## FOR WINDOWS USERS: on initial startup
+- You need to reconfigure your git settings
+- Run the following command
+```shell
+$ git config --global core.autocrlf true
+$ git clone <project>
+```
+
 ## To start the server from scratch, run the following
 - From within the rails-app folder
 ```shell
@@ -24,9 +32,25 @@ $ bundle exec rails s
 - From within the root directory `SE-498_01`, run the following
 ```shell
 $ docker-compose down
-$ docker-compose build
-$ docker-compose up
+$ docker-compose up --build
 $ docker-compose run web bundle exec rails db:drop db:setup
 ```
+
+#### FOR MAC USERS
 - Access `react-app` through `localhost:3001`
 - Access `rails-app` through `localhost:3000`
+
+#### WINDOWS USERS
+- To get your Docker IP Address, run the following
+```shell
+$ docker-machine ip
+```
+- Access `react-app` through `<DOCKER_IP_ADDRESS>:3001`
+- Access `rails-app` through `<DOCKER_IP_ADDRESS>:3000`
+
+## Error Handling
+- `web_1    | A server is already running. Check /app/tmp/pids/server.pid.`
+Run the following commands from within the `SE-498_01` folder:
+```shell
+$ rm -rf rails-app/tmp/pids/
+```
