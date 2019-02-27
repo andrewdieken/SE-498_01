@@ -101,7 +101,7 @@ jobs:
       - save_cache:
           paths:
             - react-app/node_modules
-          keys:
+          key:
             - react1-dependencies-{{ checksum "react-app/package.json" }}
 
       - run:
@@ -132,7 +132,7 @@ jobs:
       - save_cache:
           paths:
             - react-app/node_modules
-          keys:
+          key:
             - react1-dependencies-{{ checksum "react-app/package.json" }}
       - run:
           name: Build Application Docker Image
