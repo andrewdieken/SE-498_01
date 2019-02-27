@@ -235,10 +235,10 @@ workflows:
       - react_push_to_docker_hub:
           requires:
             - react_build
-          # filters:
-          #   branches:
-          #     only:
-          #       - master
+          filters:
+            branches:
+              only:
+                - master
       - push_to_docker_hub:
           requires:
             - build
