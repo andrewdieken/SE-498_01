@@ -137,13 +137,14 @@ jobs:
           name: Build Application Docker Image
           command: |
             docker build -t react-app .
+          working_directory: react-app
 
       - deploy:
           name: Push application Docker image to Dockerhub
           command: |
             docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
-            docker tag react-app react-$DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1-react
-            docker tag react-app react-$DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest-react
+            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1-react
+            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest-react
             docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1-react
             docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest-react
 
