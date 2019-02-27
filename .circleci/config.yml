@@ -119,10 +119,10 @@ jobs:
       - checkout
       - setup_remote_docker
 
-    - restore_cache:
-        keys:
-          - react1-dependencies-{{ checksum "react-app/package.json" }}
-          - react1-dependencies-
+      - restore_cache:
+          keys:
+            - react1-dependencies-{{ checksum "react-app/package.json" }}
+            - react1-dependencies-
 
       - run:
           name: Install Dependencies
