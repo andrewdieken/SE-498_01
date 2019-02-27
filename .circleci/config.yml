@@ -106,7 +106,7 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            npm run tests
+            npm run test
           working_directory: react-app
 
 
