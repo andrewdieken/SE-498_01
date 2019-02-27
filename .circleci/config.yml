@@ -231,6 +231,10 @@ workflows:
   build-push:
     jobs:
       - build
+      - react_build
+      - react_push_to_docker_hub:
+          requires:
+            - react_build
       - push_to_docker_hub:
           requires:
             - build
