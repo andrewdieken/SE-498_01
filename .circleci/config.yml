@@ -78,6 +78,77 @@ jobs:
           path: rails-app/tmp/test-results
           destination: test-results
 
+
+  react_build:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - restore_cache:
+          keys:
+            - react1-dependencies-{{ checksum "react-app/package.json" }}
+            - react1-dependencies-
+
+      - run:
+          name: Install Dependencies
+          command: |
+            npm install
+          working_directory: react-app
+
+      - save_cache:
+          paths:
+            - react-app/node_modules
+          key: react1-dependencies-{{ checksum "react-app/package.json" }}
+
+      - run:
+          name: Run Tests
+          command: |
+            npm run test
+          working_directory: react-app
+
+
+  react_push_to_docker_hub:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - restore_cache:
+          keys:
+            - react1-dependencies-{{ checksum "react-app/package.json" }}
+            - react1-dependencies-
+
+      - run:
+          name: Install Dependencies
+          command: |
+            npm install
+
+      - save_cache:
+          paths:
+            - react-app/node_modules
+          key: react1-dependencies-{{ checksum "react-app/package.json" }}
+
+      - run:
+          name: Build Application Docker Image
+          command: |
+            docker build -t react-app .
+          working_directory: react-app
+
+      - deploy:
+          name: Push application Docker image to Dockerhub
+          command: |
+            docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
+            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1-react
+            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest-react
+            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1-react
+            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest-react
+
+
   push_to_docker_hub:
     docker:
       - image: circleci/ruby:2.5.3-node-browsers
@@ -160,6 +231,14 @@ workflows:
   build-push:
     jobs:
       - build
+      - react_build
+      - react_push_to_docker_hub:
+          requires:
+            - react_build
+          filters:
+            branches:
+              only:
+                - master
       - push_to_docker_hub:
           requires:
             - build

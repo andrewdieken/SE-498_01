@@ -14,7 +14,7 @@ $ cp rails-app/config/database.yml.sample rails-app/config/database.yml
 - You need to reconfigure your git settings
 - Run the following command
 ```shell
-$ git config --global core.autocrlf true
+$ git config --global core.autocrlf false
 $ git clone <project>
 ```
 
