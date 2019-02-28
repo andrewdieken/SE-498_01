@@ -112,7 +112,7 @@ jobs:
 
   react_push_to_docker_hub:
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:jessie-browsers
     working_directory: ~/repo
     steps:
       - checkout
