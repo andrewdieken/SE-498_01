@@ -54,3 +54,7 @@ Run the following commands from within the `SE-498_01` folder:
 ```shell
 $ rm -rf rails-app/tmp/pids/
 ```
+##Running the front end with api
+- In react-app's package.json change proxy to:
+For windows "proxy": "http://your docker ip:3000/" 
+For mac and linux "proxy": "http://localhost:3000/"

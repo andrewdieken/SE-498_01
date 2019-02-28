@@ -11,73 +11,89 @@ class Canvas extends Component {
       voters: [
         {
           voterID: 1234567,
-          last_name: "Santos",
-          first_name: "Juan",
-          middle_name: "M",
-          address: "864 N Kraber St",
-          city: "Fullerton",
-          state: "CA",
-          zip: "92831",
-          phone: "714-543-2109",
-          email: "sample_email@example.com",
-          date_of_birth: "07/23/1935",
-          party_affiliation: "Republican"
-        },
-        {
-          voterID: 7654321,
-          last_name: "De La Cruz",
-          first_name: "Jane",
-          middle_name: "A",
-          address: "132 E Madrigal St",
-          city: "Orange",
-          state: "CA",
-          zip: "92866",
-          phone: "714-481-7985",
-          email: "",
-          date_of_birth: "12/02/1952",
-          party_affiliation: "Democrat"
+          last_name: "Loading...",
+          first_name: "Loading...",
+          middle_name: "Loading...",
+          address: "Loading...",
+          city: "Loading...",
+          state: "Loading...",
+          zip: "Loading...",
+          phone: "Loading...",
+          email: "Loading...",
+          date_of_birth: "00/00/2019",
+          party_affiliation: "Loading..."
         }
       ],
-      index: 0
+      index: 0,
+      test: []
     };
+  }
+
+  async componentDidMount() {
+    const response = await fetch("/api/v1/voters");
+    const data = await response.json();
+    this.setState({ voters: data.data });
   }
 
   nextVoter = () => {
     this.setState({
       index: this.state.index + 1
     });
+
+    // if (this.state.index == 2) {
+    //   this.setState({
+    //     index: 0
+    //   });
+    // }
   };
 
   render() {
     return (
       <div className="main_container">
         <div className="item-a">
-          {this.state.voters[this.state.index].first_name}{" "}
+          {JSON.parse(
+            JSON.stringify(this.state.voters[this.state.index].first_name)
+          )}{" "}
           {this.state.voters[this.state.index].last_name}
         </div>
         <div className="item-b">
-          {this.state.voters[this.state.index].party_affiliation.substring(
-            0,
-            1
-          )}
+          {JSON.parse(
+            JSON.stringify(
+              this.state.voters[this.state.index].party_affiliation
+            )
+          ).substring(0, 1)}
           <br />
           {new Date().getFullYear() -
             parseInt(
-              this.state.voters[this.state.index].date_of_birth.substring(6)
+              JSON.parse(
+                JSON.stringify(
+                  this.state.voters[this.state.index].date_of_birth
+                )
+              ).substring(6)
             )}
         </div>
         <div className="item-d">
           <h3 className="content">
-            {this.state.voters[this.state.index].party_affiliation}
+            {JSON.parse(
+              JSON.stringify(
+                this.state.voters[this.state.index].party_affiliation
+              )
+            )}
           </h3>
 
           {(() => {
-            if (this.state.voters[this.state.index].phone === "") {
+            if (
+              JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].phone)
+              ) === ""
+            ) {
               return <h3 className="content">No Phone Provided</h3>;
             } else {
               return (
                 <h3 className="content">
-                  {this.state.voters[this.state.index].phone}{" "}
+                  {JSON.parse(
+                    JSON.stringify(this.state.voters[this.state.index].phone)
+                  )}{" "}
                 </h3>
               );
             }
@@ -85,22 +101,37 @@ class Canvas extends Component {
           <img alt="hse" className="info_logo" src={info} />
 
           {(() => {
-            if (this.state.voters[this.state.index].email === "") {
+            if (
+              JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].email)
+              ) === ""
+            ) {
               return <h3 className="content">No Email Provided</h3>;
             } else {
               return (
                 <h3 className="content">
-                  {this.state.voters[this.state.index].email}{" "}
+                  {JSON.parse(
+                    JSON.stringify(this.state.voters[this.state.index].email)
+                  )}{" "}
                 </h3>
               );
             }
           })()}
           <h3 className="content1">
-            {this.state.voters[this.state.index].address}
+            {JSON.parse(
+              JSON.stringify(this.state.voters[this.state.index].address)
+            )}
             <br />
-            {this.state.voters[this.state.index].city},{" "}
-            {this.state.voters[this.state.index].state}{" "}
-            {this.state.voters[this.state.index].zip}
+            {JSON.parse(
+              JSON.stringify(this.state.voters[this.state.index].city)
+            )}
+            ,{" "}
+            {JSON.parse(
+              JSON.stringify(this.state.voters[this.state.index].state)
+            )}{" "}
+            {JSON.parse(
+              JSON.stringify(this.state.voters[this.state.index].zip)
+            )}
           </h3>
           <img alt="hse" className="house_logo" src={house} />
         </div>
