@@ -1,7 +1,7 @@
 /**
  * Dependency Modules
  */
-var assert = require("assert").strict;
+var assert = require("assert");
 var webdriver = require("selenium-webdriver");
 require("geckodriver");
 // Application Server
