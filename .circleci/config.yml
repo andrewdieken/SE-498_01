@@ -241,7 +241,7 @@ workflows:
                 - master
       - rails_push_to_docker_hub:
           requires:
-            - build
+            - rails_build
           filters:
             branches:
               only:
