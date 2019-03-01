@@ -7,6 +7,9 @@ import info from "../Images/info.png";
 class Canvas extends Component {
   constructor(props) {
     super(props);
+    this.index = 0;
+    this.url = "/api/v1/voters/?page=";
+    this.api_page = "1";
     this.state = {
       voters: [
         {
@@ -25,26 +28,46 @@ class Canvas extends Component {
         }
       ],
       index: 0,
-      test: []
+      api_page: "1"
     };
   }
 
   async componentDidMount() {
-    const response = await fetch("/api/v1/voters");
+    const response = await fetch(this.url + this.api_page);
     const data = await response.json();
-    this.setState({ voters: data.data });
+    this.setState({ voters: data.data });    
   }
 
   nextVoter = () => {
-    this.setState({
-      index: this.state.index + 1
-    });
-
-    // if (this.state.index == 2) {
-    //   this.setState({
-    //     index: 0
-    //   });
-    // }
+    this.index = this.index + 1;
+    this.setState({ index: this.index });
+    if (this.index === this.state.voters.length) {
+      this.api_page = (parseInt(this.api_page) + 1).toString();
+      this.setState({
+        api_page: this.api_page,
+        index: 0,
+        voters: [
+          {
+            voterID: 1234567,
+            last_name: "Loading...",
+            first_name: "Loading...",
+            middle_name: "Loading...",
+            address: "Loading...",
+            city: "Loading...",
+            state: "Loading...",
+            zip: "Loading...",
+            phone: "Loading...",
+            email: "Loading...",
+            date_of_birth: "00/00/2019",
+            party_affiliation: "Loading..."
+          }
+        ]
+      });
+      this.index = 0;
+      fetch(this.url + this.api_page)
+        .then(res => res.json())
+        .then(data => this.setState({ voters: data.data }));
+    }
   };
 
   render() {
@@ -136,7 +159,12 @@ class Canvas extends Component {
           <img alt="hse" className="house_logo" src={house} />
         </div>
         <div className="item-e">
-          <button className="reject" onClick={() => this.nextVoter()}>
+          <button
+            className="reject"
+            onClick={() => {
+              this.nextVoter();
+            }}
+          >
             <img alt="red" className="rx" src={red_x} />
           </button>
           <button className="accept">
@@ -147,5 +175,4 @@ class Canvas extends Component {
     );
   }
 }
-
 export default Canvas;
