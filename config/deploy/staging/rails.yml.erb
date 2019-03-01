@@ -1,0 +1,56 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  namespace: se498-staging
+  name: rails-deployment
+  annotations:
+    shipit.shopify.io/restart: "true"
+spec:
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      component: rails
+  template:
+    metadata:
+      labels:
+        component: rails
+    spec:
+      containers:
+        - name: rails-app
+          image: dieke102/se-498_01-rails:<%= current_sha %>
+          command: ["bundle", "exec", "rails", "s", "-p", "3000", "-b", "0.0.0.0"]
+          ports:
+            - name: api-port
+              containerPort: 3000
+          env: <%= partial 'env' %>
+          readinessProbe:
+            tcpSocket:
+              port: api-port
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: api-port
+            initialDelaySeconds: 80
+            timeoutSeconds: 10
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.12
+          command: ["/cloud_sql_proxy",
+          "-instances=se498-01:us-central1:staging-db=tcp:5432",
+          "-credential_file=/secrets/cloudsql/credentials.json"]
+          securityContext:
+            runAsUser: 2
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+      - name: cloudsql-instance-credentials
+        secret:
+          secretName: cloudsql-instance-credentials

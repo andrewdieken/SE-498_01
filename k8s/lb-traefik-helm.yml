@@ -30,3 +30,5 @@ kubernetes:
   namespaces:
     - default
     - kube-system
+    - se498-staging
+    - se498-prod

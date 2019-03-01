@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: se498-staging
+  name: react-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: react
+  template:
+    metadata:
+      labels:
+        component: react
+    spec:
+      containers:
+        - name: react-app
+          image: dieke102/se-498_01-react:<%= current_sha %>
+          ports:
+            - name: web-port
+              containerPort: 5000
+          readinessProbe:
+            tcpSocket:
+              port: web-port
+            initialDelaySeconds: 60
+            timeoutSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: web-port
+            initialDelaySeconds: 80
+            timeoutSeconds: 10
