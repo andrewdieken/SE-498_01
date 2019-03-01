@@ -12,11 +12,11 @@ spec:
           - path: /
             backend:
               serviceName: react-cluster-ip-service
-              servicePort: 3001
+              servicePort: 80
     - host: quartiledocs.com
       http:
         paths:
           - path: /
             backend:
               serviceName: react-cluster-ip-service
-              servicePort: 3001
+              servicePort: 80
