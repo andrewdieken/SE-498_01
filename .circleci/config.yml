@@ -1,7 +1,7 @@
 version: 2
 jobs:
   # build is for testing
-  build:
+  rails_build:
     docker:
       - image: circleci/ruby:2.5.3-node-browsers
       # need db to run tests
@@ -143,13 +143,13 @@ jobs:
           name: Push application Docker image to Dockerhub
           command: |
             docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
-            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1-react
-            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest-react
-            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1-react
-            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest-react
+            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:$CIRCLE_SHA1
+            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:latest
+            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:$CIRCLE_SHA1
+            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:latest
 
 
-  push_to_docker_hub:
+  rails_push_to_docker_hub:
     docker:
       - image: circleci/ruby:2.5.3-node-browsers
     working_directory: ~/repo
@@ -221,16 +221,16 @@ jobs:
           name: Push application Docker image to Dockerhub
           command: |
             docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
-            docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1
-            docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest
-            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:$CIRCLE_SHA1
-            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO:latest
+            docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:$CIRCLE_SHA1
+            docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:latest
+            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:$CIRCLE_SHA1
+            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:latest
 
 workflows:
   version: 2
   build-push:
     jobs:
-      - build
+      - rails_build
       - react_build
       - react_push_to_docker_hub:
           requires:
@@ -239,9 +239,9 @@ workflows:
             branches:
               only:
                 - master
-      - push_to_docker_hub:
+      - rails_push_to_docker_hub:
           requires:
-            - build
+            - rails_build
           filters:
             branches:
               only:
