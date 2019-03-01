@@ -230,7 +230,7 @@ workflows:
   version: 2
   build-push:
     jobs:
-      - build
+      - rails_build
       - react_build
       - react_push_to_docker_hub:
           requires:
@@ -239,7 +239,7 @@ workflows:
             branches:
               only:
                 - master
-      - push_to_docker_hub:
+      - rails_push_to_docker_hub:
           requires:
             - build
           filters:
