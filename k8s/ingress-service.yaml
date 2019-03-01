@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+    - host: staging.quartiledocs.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: react-cluster-ip-service
+              servicePort: 80
+    - host: quartiledocs.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: react-cluster-ip-service
+              servicePort: 80
