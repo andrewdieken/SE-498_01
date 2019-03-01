@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: react-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       component: react
@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: react-app
-          image: dieke102/se498_01:latest-react
+          image: dieke102/se-498_01-react:latest
           ports:
-            - containerPort: 3001
+            - containerPort: 5000
