@@ -35,44 +35,64 @@ class Canvas extends Component {
   async componentDidMount() {
     const response = await fetch(this.url + this.api_page);
     const data = await response.json();
-    this.setState({ voters: data.data });    
+    this.setState({ voters: data.data });
+
+  }
+
+  componentDidUpdate() {
+    console.log("Component did update");
+  }
+
+  componentWillUpdate() {
+    console.log("Component will update");    
   }
 
   nextVoter = () => {
     this.index = this.index + 1;
-    this.setState({ index: this.index });
+    this._container.className = "main_container_flicker";
+
+    setTimeout(() => {
+      this.setState({ index: this.index });
+    }, 400);
     if (this.index === this.state.voters.length) {
       this.api_page = (parseInt(this.api_page) + 1).toString();
-      this.setState({
-        api_page: this.api_page,
-        index: 0,
-        voters: [
-          {
-            voterID: 1234567,
-            last_name: "Loading...",
-            first_name: "Loading...",
-            middle_name: "Loading...",
-            address: "Loading...",
-            city: "Loading...",
-            state: "Loading...",
-            zip: "Loading...",
-            phone: "Loading...",
-            email: "Loading...",
-            date_of_birth: "00/00/2019",
-            party_affiliation: "Loading..."
-          }
-        ]
-      });
+
+      setTimeout(() => {
+        this.setState({
+          api_page: this.api_page,
+          index: 0,
+          voters: [
+            {
+              voterID: 1234567,
+              last_name: "Loading...",
+              first_name: "Loading...",
+              middle_name: "Loading...",
+              address: "Loading...",
+              city: "Loading...",
+              state: "Loading...",
+              zip: "Loading...",
+              phone: "Loading...",
+              email: "Loading...",
+              date_of_birth: "00/00/2019",
+              party_affiliation: "Loading..."
+            }
+          ]
+        });
+      }, 400);
+
       this.index = 0;
       fetch(this.url + this.api_page)
         .then(res => res.json())
         .then(data => this.setState({ voters: data.data }));
     }
+    setTimeout(() => {
+      this._container.className = "main_container";
+    }, 1000);
   };
 
   render() {
     return (
-      <div className="main_container">
+      <div className="main_container" ref={el => (this._container = el)}>
         <div className="item-a">
           {JSON.parse(
             JSON.stringify(this.state.voters[this.state.index].first_name)
@@ -149,6 +169,7 @@ class Canvas extends Component {
               JSON.stringify(this.state.voters[this.state.index].city)
             )}
             ,{" "}
+            <br />
             {JSON.parse(
               JSON.stringify(this.state.voters[this.state.index].state)
             )}{" "}
