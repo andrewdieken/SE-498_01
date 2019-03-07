@@ -15,7 +15,8 @@ test:
   <<: *default
   database: se498_test
 
-production: &deploy
+production:
+  <<: *default
   adapter: postgresql
   database: se498_prod
   encoding: utf8
