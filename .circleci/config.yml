@@ -274,14 +274,14 @@ workflows:
           filters:
             branches:
               only:
-                - gcp-deploy
+                - master
       - rails_push_to_docker_hub:
           requires:
             - rails_build
           filters:
             branches:
               only:
-                - gcp-deploy
+                - master
       - gcp_deploy:
           requires:
             - react_push_to_docker_hub
@@ -289,4 +289,4 @@ workflows:
           filters:
             branches:
               only:
-                - gcp-deploy
+                - master
