@@ -53,11 +53,11 @@ class AddColumnsToVoters < ActiveRecord::Migration[5.2]
     add_column :voters, :sDistrictID_2, :string
     add_column :voters, :iSubDistrict_2, :string
     add_column :voters, :szDistrictName_2, :string
-    add_column :voters, :sDistrict_3, :string
+    add_column :voters, :sDistrictID_3, :string
     add_column :voters, :iSubDistrict_3, :string
     add_column :voters, :szDistrictName_3, :string
     add_column :voters, :sDistrictID_4, :string
-    add_column :voters, :iSubDistrict4, :string
+    add_column :voters, :iSubDistrict_4, :string
     add_column :voters, :szDistrictName_4, :string
     add_column :voters, :sDistrictID_5, :string
     add_column :voters, :iSubDistrict_5, :string

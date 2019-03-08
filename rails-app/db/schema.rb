@@ -28,6 +28,20 @@ ActiveRecord::Schema.define(version: 2019_03_07_021619) do
   end
 
   create_table "voters", force: :cascade do |t|
+    t.integer "voterID"
+    t.string "last_name"
+    t.string "first_name"
+    t.string "middle_name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "email"
+    t.string "phone"
+    t.string "date_of_birth"
+    t.string "party_affiliation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "lVoterUniqueID"
     t.integer "sAffNumber"
     t.integer "szStateVoterID"
