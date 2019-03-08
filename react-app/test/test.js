@@ -1,21 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
-
 /**
  * Dependency Modules
  */
-var assert = require("assert").strict;
+var assert = require("assert");
 var webdriver = require("selenium-webdriver");
 require("geckodriver");
 // Application Server
-const serverUri = "localhost:3000";
+const serverUri = "http://localhost:3000/";
 const appTitle = "Campaign App";
 /**
  * Config for Chrome browser
@@ -57,12 +47,11 @@ describe("Array", function() {
   });
  });
 });
-
 describe("Campaign App", function() {
  /**
   * Test case to load our application and check the title.
   */
-  it("Should load the home page and get title", function() {
+ it("Should load the home page and get title", function() {
   return new Promise((resolve, reject) => {
    browser
     .get(serverUri)
@@ -90,7 +79,7 @@ describe("Campaign App", function() {
   * End of test cases use.
   * Closing the browser and exit.
   */
-  after(function() {
+ after(function() {
   // End of test use this.
   browser.quit();
  });

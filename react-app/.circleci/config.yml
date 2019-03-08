@@ -21,7 +21,6 @@ jobs:
           name: Update Bundler Version
           command: |
             gem install bundler -v 2.0.1
-
       # Download and cache dependencies. Reduce run time.
       - restore_cache:
           keys:
@@ -33,7 +32,6 @@ jobs:
           name: make sure yarn is up to date
           command: |
             yarn install
-
       # jobs: Install gems using parallel workers.
       # retry: Retry network and git requests that have failed
       # path: path for installations
@@ -106,14 +104,14 @@ jobs:
       - run:
           name: Run Tests
           command: |
-            npm run start
-          background: true
+            npm start |
+            npm run s-test
           working_directory: react-app
 
 
   react_push_to_docker_hub:
     docker:
-      - image: circleci/node:jessie-browsers
+      - image: circleci/node:latest
     working_directory: ~/repo
     steps:
       - checkout
@@ -128,7 +126,6 @@ jobs:
           name: Install Dependencies
           command: |
             npm install
-
       - save_cache:
           paths:
             - react-app/node_modules
@@ -148,8 +145,6 @@ jobs:
             docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:latest
             docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:$CIRCLE_SHA1
             docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:latest
-
-
   rails_push_to_docker_hub:
     docker:
       - image: circleci/ruby:2.5.3-node-browsers
@@ -162,7 +157,6 @@ jobs:
           name: Update Bundler Version
           command: |
             gem install bundler -v 2.0.1
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -173,7 +167,6 @@ jobs:
           name: make sure yarn is up to date
           command: |
             yarn install
-
       - run:
           name: install dependencies
           command: |
@@ -198,7 +191,6 @@ jobs:
           command: |
             set +o pipefail
             docker load -i /tmp/caches/app.tar | true
-
       - run:
           name: Build application Docker image
           command: |
@@ -210,7 +202,6 @@ jobs:
           command: |
             mkdir -p /tmp/caches
             docker save -o /tmp/caches/app.tar app
-
       - save_cache:
           key: v4-{{ .Branch }}-{{ epoch }}
           paths:
@@ -226,43 +217,6 @@ jobs:
             docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:latest
             docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:$CIRCLE_SHA1
             docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:latest
-
-  gcp_deploy:
-    docker:
-      - image: xaviablaza/ruby-cloudsdk
-    environment:
-      - REACT_PROJECT_NAME: "react-deployment"
-      - RAILS_PROJECT_NAME: "rails-deployment"
-      - GOOGLE_PROJECT_ID: "se498-01"
-      - GOOGLE_COMPUTE_ZONE: "us-central1-a"
-      - GOOGLE_CLUSTER_NAME: "staging"
-    working_directory: ~/repo
-    steps:
-      - checkout
-
-      - run:
-          name: Setup Google Cloud SDK
-          command: |
-            apt-get install -qq -y gettext
-            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
-            gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
-            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
-            gcloud --quiet container clusters get-credentials ${GOOGLE_CLUSTER_NAME}
-            gcloud --quiet components install kubectl
-
-      - setup_remote_docker
-
-      - run:
-          name: install kubernetes-deploy
-          command: |
-            gem install kubernetes-deploy
-
-      - run:
-          name: Deploy to Kubernetes
-          command: |
-            KUBECONFIG=~/.kube/config ENVIRONMENT=staging REVISION=$CIRCLE_SHA1 GOOGLE_APPLICATION_CREDENTIALS=$GCLOUD_SERVICE_KEY kubernetes-deploy se498-staging gke_se498-01_us-central1-a_staging
-
 workflows:
   version: 2
   build-push:
@@ -279,14 +233,6 @@ workflows:
       - rails_push_to_docker_hub:
           requires:
             - rails_build
-          filters:
-            branches:
-              only:
-                - master
-      - gcp_deploy:
-          requires:
-            - react_push_to_docker_hub
-            - rails_push_to_docker_hub
           filters:
             branches:
               only:
