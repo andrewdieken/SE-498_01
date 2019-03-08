@@ -7,11 +7,6 @@ RSpec.describe Api::V1::VotersController, type: :controller do
     expect(voter).to be_valid
   end
 
-  it 'should contain voterID' do
-    expect(voter.voterID).to eq(1)
-  end
-
-
   describe '#index' do
     it 'should return a response' do
       get :index
@@ -33,12 +28,8 @@ RSpec.describe Api::V1::VotersController, type: :controller do
     it 'should return voter' do
       get :index
       parsed_body = JSON.parse(response.body)
-    end
-
-    it 'should return voter data' do
-      get :index
-      parsed_body = JSON.parse(response.body)
-      expect(parsed_body["data"][0]["last_name"]).to eq("Aaby")
+      expect(parsed_body['data'][0]['id']).to_not be_nil
+      expect(parsed_body['data'][1]['lVoterUniqueID']).to eq(121180)
     end
   end
 
