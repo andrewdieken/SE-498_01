@@ -102,12 +102,12 @@ jobs:
           paths:
             - react-app/node_modules
           key: react1-dependencies-{{ checksum "react-app/package.json" }}
-                
+
       - run:
           name: Run Tests
           command: |
             npm run start
-            npm run s-test
+          background: true
           working_directory: react-app
 
 
