@@ -12,7 +12,7 @@ spec:
       containers:
         - name: db-seed
           image: dieke102/se-498_01-rails
-          command: ["sh script/seed"]
+          command: ["sh", "script/seed"]
           env:
             - name: DATABASE_URL
               valueFrom:
