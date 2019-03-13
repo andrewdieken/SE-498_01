@@ -12,7 +12,7 @@ spec:
       containers:
         - name: web-seed
           image: dieke102/se-498_01-rails:<%= current_sha %>
-          command: ["sh rails-app/script/seed"]
+          command: ["sh script/seed"]
           env: <%= partial "env" %>
         - name: cloudsql-proxy
           image: gcr.io/cloudsql-docker/gce-proxy:1.12
