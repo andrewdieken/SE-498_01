@@ -19,4 +19,9 @@ elsif Rails.env.development?
     voter_row = row.to_hash.select { |k, v| fields.include?(k)}
     Voter.create!(voter_row.to_hash.symbolize_keys)
   end
+else
+  CSV.foreach(Dir.pwd + "/db/Cntywd_020819.csv", headers: true) do |row|
+  voter_row = row.to_hash.select { |k, v| fields.include?(k)}
+  Voter.create!(voter_row.to_hash.symbolize_keys)
+end
 end
