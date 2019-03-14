@@ -1,0 +1,62 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-seed
+  namespace: se498-seeding
+spec:
+  completions: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: db-seed
+          image: dieke102/se-498_01-rails
+          command: ["sh", "script/seed"]
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: web
+                  key: database_url
+            - name: RAILS_ENV
+              valueFrom:
+                secretKeyRef:
+                  name: web
+                  key: rails_env
+            - name: SECRET_KEY_BASE
+              valueFrom:
+                secretKeyRef:
+                  name: web
+                  key: secret_key_base
+            - name: MAILER_HOST_URL
+              valueFrom:
+                secretKeyRef:
+                  name: web
+                  key: mailer_host_url
+            - name: SENDGRID_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: web
+                  key: sendgrid_api_key
+            - name: RAILS_SERVE_STATIC_FILES
+              valueFrom:
+                secretKeyRef:
+                  name: web
+                  key: rails_serve_static_files
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.12
+          command: ["/cloud_sql_proxy",
+          "-instances=se498-01:us-central1:staging-db=tcp:5432",
+          "-credential_file=/secrets/cloudsql/credentials.json"]
+          securityContext:
+            runAsUser: 2
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+      - name: cloudsql-instance-credentials
+        secret:
+          secretName: cloudsql-instance-credentials
