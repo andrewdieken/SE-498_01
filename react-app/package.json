@@ -28,5 +28,6 @@
   ],
   "devDependencies": {
     "mocha": "^6.0.0"
-  }
+  },
+  "proxy": "http://web:3000/"
 }
