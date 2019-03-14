@@ -1,0 +1,35 @@
+[Commit Title]
+
+# <--- COMMIT START -->
+# If commit is applied, this will:
+# [Describe the change your commit will apply. Try to limit this portion to 100 characters or less.]
+
+
+
+# Commit description:
+# [Description of the overall commit.]
+
+
+
+# Why:
+# [Why was this commit made?]
+
+
+
+# How:
+# [Text of how something was implemented--can be left blank if something simple, like text cleanup of existing code.]
+
+
+
+# Additional links (issue/tracking #, articles, references, etc.):
+# [Example: Fixes/updates/modifies story #76.]
+
+
+
+# <--- COMMIT END --->
+#
+# Remember...
+# 1) to capitalize title of the commit appropriately.
+# 2) to to use imperative mood (i.e.: "Add x to y" or "Make x do y", NOT "Added x to y" or "Made x do y", respectively).
+# 3) that commits should contain only one feature or change.
+# 4) to commit early and often.
