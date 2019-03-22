@@ -210,6 +210,10 @@ GEM
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
+    graphiql-rails (1.7.0)
+      railties
+      sprockets-rails
+    graphql (1.9.3)
     hashdiff (0.3.8)
     high_voltage (3.1.0)
     honeybadger (4.2.1)
@@ -487,6 +491,8 @@ DEPENDENCIES
   factory_bot_rails
   formulaic
   grape (>= 0.10.0)
+  graphiql-rails
+  graphql
   high_voltage
   honeybadger
   kaminari
