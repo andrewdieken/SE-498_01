@@ -35,6 +35,7 @@ gem 'rails-settings-cached'
 gem 'activeadmin'
 gem 'graphql'
 gem 'rack-cors'
+gem 'graphql'
 
 
 
@@ -79,4 +80,8 @@ gem 'bullet', group: [:development, :test]
 gem 'delayed_job_active_record'
 gem 'rack-timeout', group: :production
 
+<<<<<<< HEAD
 gem 'graphiql-rails', group: :development
+=======
+gem 'graphiql-rails', group: :development
+>>>>>>> Add initial graphql files
