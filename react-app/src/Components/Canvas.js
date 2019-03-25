@@ -12,6 +12,23 @@ import gql from "graphql-tag";
 class Canvas extends Component {
   constructor(props) {
     super(props);
+
+    //==============================================================
+    //
+    //==============================================================
+    const client = new ApolloClient ({
+      uri: "http://localhost:3000/graphql"
+    });
+    client.query({query: gql `{
+      voterByPrecinct(id:"10316") {
+        id,
+        szNameFirst}
+      }`
+    }).then(result => console.log(result.data.voterByPrecinct[0].szNameFirst))
+    //==============================================================
+    //
+    //==============================================================
+
     this.index = 0;
     this.url = "/api/v1/voters/?page=";
     this.api_page = "1";
