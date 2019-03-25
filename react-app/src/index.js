@@ -18,11 +18,16 @@ const client = new ApolloClient ({
   uri: "http://localhost:3000/graphql"
 });
 
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <ApolloProvider client={client}>
+//     <App />
+//   </ApolloProvider>,
+//   document.getElementById('root')
+// );
 
-client.query({query: gql `{allVoters {id}}`}).then(result => console.log(result))
+client.query({query: gql `{
+  voterByPrecinct(id:"10316") {
+    id,
+    szNameFirst}
+  }`
+}).then(result => console.log(result.data.voterByPrecinct[0].szNameFirst))
