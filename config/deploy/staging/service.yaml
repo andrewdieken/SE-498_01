@@ -10,7 +10,7 @@ spec:
     component: rails
   ports:
     - name: api-port
-      port: 3000
+      port: 80
       targetPort: 3000
 ---
 apiVersion: v1
