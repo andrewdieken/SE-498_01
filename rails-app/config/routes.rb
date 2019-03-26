@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       # => PATCH
       # To view all routes: `rails routes`
       resources :voters
+      resources :visits
 
     end
   end
