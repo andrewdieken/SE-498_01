@@ -21,3 +21,10 @@ spec:
             backend:
               serviceName: react-cluster-ip-service
               servicePort: 80
+    - host: api.quartiledocs.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rails-cluster-ip-service
+              servicePort: 80
