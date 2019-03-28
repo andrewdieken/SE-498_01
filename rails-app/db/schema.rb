@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_043922) do
+ActiveRecord::Schema.define(version: 2019_03_28_032550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(version: 2019_03_26_043922) do
   create_table "voters", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "lVoterUniqueID"
-    t.integer "sAffNumber"
-    t.integer "szStateVoterID"
+    t.string "lVoterUniqueID"
+    t.string "sAffNumber"
+    t.string "szStateVoterID"
     t.string "sVoterTitle"
     t.string "szNameLast"
     t.string "szNameFirst"
@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 2019_03_26_043922) do
     t.string "szSitusAddress"
     t.string "szSitusCity"
     t.string "sSitusState"
-    t.integer "sSitusZip"
-    t.integer "sHouseNum"
+    t.string "sSitusZip"
+    t.string "sHouseNum"
     t.string "sUnitAbbr"
-    t.integer "sUnitNum"
+    t.string "sUnitNum"
     t.string "szStreetName"
     t.string "sStreetSuffix"
     t.string "sPreDir"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_043922) do
     t.string "szMailAddress2"
     t.string "szMailAddress3"
     t.string "szMailAddress4"
-    t.integer "szMailZip"
+    t.string "szMailZip"
     t.string "szPhone"
     t.string "szEmailAddress"
     t.string "dtBirthDate"
@@ -69,10 +69,10 @@ ActiveRecord::Schema.define(version: 2019_03_26_043922) do
     t.string "dtRegDate"
     t.string "dtOrigRegDate"
     t.string "dtLastUpdate_dt"
-    t.integer "sStatusCode"
+    t.string "sStatusCode"
     t.string "szStatusReasonDesc"
-    t.integer "sUserCode1"
-    t.integer "sUserCode2"
+    t.string "sUserCode1"
+    t.string "sUserCode2"
     t.string "iDuplicateIDFlag"
     t.string "szLanguageName"
     t.string "szPartyName"
