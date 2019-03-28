@@ -29,7 +29,7 @@ RSpec.describe Api::V1::VotersController, type: :controller do
       get :index
       parsed_body = JSON.parse(response.body)
       expect(parsed_body['data'][0]['id']).to_not be_nil
-      expect(parsed_body['data'][1]['lVoterUniqueID']).to eq(121180)
+      expect(parsed_body['data'][1]['lVoterUniqueID']).to eq('121180')
     end
   end
 
