@@ -34,10 +34,9 @@ module Types
     #=============================
     field :voter_by_precinct, [VoterType], null: true do
       description "Find Voter by sPrecinctID"
-      argument :id, String, required: true
     end
-    def voter_by_precinct(id:)
-      Voter.where(sPrecinctID: id)
+    def voter_by_precinct()
+      Voter.where(sPrecinctID: Setting.precinct_id)
     end
 
   end
