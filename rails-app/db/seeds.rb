@@ -11,17 +11,17 @@ fields = %w{lVoterUniqueID sAffNumber szStateVoterID sVoterTitle szNameLast szNa
 
 if Rails.env.production?
 CSV.foreach(Dir.pwd + "/db/prod.csv", encoding: 'iso-8859-1:utf-8', headers: true) do |row|
-  attrs = row.to_hash.slice(*fields).transform_values { |v| v || "null" }
+  attrs = row.to_hash.slice(*fields).transform_values { |v| v || "none" }
   Voter.create!(attrs)
 end
 elsif Rails.env.development?
   CSV.foreach(Dir.pwd + "/db/Cntywd_020819.csv", headers: true) do |row|
-  attrs = row.to_hash.slice(*fields).transform_values { |v| v || "null" }
+  attrs = row.to_hash.slice(*fields).transform_values { |v| v || "none" }
   Voter.create!(attrs)
   end
 else
   CSV.foreach(Dir.pwd + "/db/Cntywd_020819.csv", headers: true) do |row|
-  attrs = row.to_hash.slice(*fields).transform_values { |v| v || "null" }
+  attrs = row.to_hash.slice(*fields).transform_values { |v| v || "none" }
   Voter.create!(attrs)
 end
 end
