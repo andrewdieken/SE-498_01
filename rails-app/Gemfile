@@ -79,12 +79,4 @@ gem 'bullet', group: [:development, :test]
 gem 'delayed_job_active_record'
 gem 'rack-timeout', group: :production
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 gem 'graphiql-rails', group: :development
-=======
-gem 'graphiql-rails', group: :development
->>>>>>> Add initial graphql files
-=======
-gem 'graphiql-rails', group: :development
->>>>>>> Add rack-cors gem to rails-app
