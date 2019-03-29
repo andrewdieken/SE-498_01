@@ -18,4 +18,8 @@ Rails.application.routes.draw do
 
     end
   end
+
+  get '/settings' => 'settings#index'
+  post '/settings' => 'settings#update'
+
 end
