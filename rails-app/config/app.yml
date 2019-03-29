@@ -1,0 +1,12 @@
+# config/app.yml for rails-settings-cached
+defaults: &defaults
+  precinct_id: 68315
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

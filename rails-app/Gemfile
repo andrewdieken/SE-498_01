@@ -31,6 +31,8 @@ gem 'slim'
 gem 'reform'
 gem 'reform-rails'
 gem 'dry-validation'
+gem 'rails-settings-cached'
+gem 'activeadmin'
 
 
 group :development do

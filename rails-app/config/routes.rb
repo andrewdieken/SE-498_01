@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users
   resources :voters
 
@@ -16,4 +18,8 @@ Rails.application.routes.draw do
 
     end
   end
+
+  get '/settings' => 'settings#index'
+  post '/settings' => 'settings#update'
+
 end
