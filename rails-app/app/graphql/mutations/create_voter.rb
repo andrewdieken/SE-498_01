@@ -1,6 +1,9 @@
 module Mutations
   class CreateVoter < BaseMutation
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Add all voter arguments to create voter mustation
 
     # Arguments passed to the 'reslove' method
     argument :lVoterUniqueID, Integer, required: false
@@ -70,6 +73,7 @@ module Mutations
     type Types::VoterType
 
     field :voter, Types::VoterType, null: true
+<<<<<<< HEAD
 
     def resolve(
       lVoterUniqueID: nil,
@@ -224,6 +228,143 @@ module Mutations
           voter: nil,
           errors: voter.errors.full_messages
 >>>>>>> Enable react app to make calls to Graphql server
+=======
+
+    def resolve(
+      lVoterUniqueID: nil,
+      sAffNumber: nil,
+      szStateVoterID: nil,
+      sVoterTitle: nil,
+      szNameLast: nil,
+      szNameFirst: nil,
+      szNameMiddle: nil,
+      sNameSuffix: nil,
+      sGender: nil,
+      szSitusAddress: nil,
+      szSitusCity: nil,
+      sSitusState: nil,
+      sSitusZip: nil,
+      sHouseNum: nil,
+      sUnitAbbr: nil,
+      sUnitNum: nil,
+      szStreetName: nil,
+      sStreetSuffix: nil,
+      sPreDir: nil,
+      sPostDir: nil,
+      szMailAddress1: nil,
+      szMailAddress2: nil,
+      szMailAddress3: nil,
+      szMailAddress4: nil,
+      szMailZip: nil,
+      szPhone: nil,
+      szEmailAddress: nil,
+      dtBirthDate: nil,
+      sBirthPlace: nil,
+      dtRegDate: nil,
+      dtOrigRegDate: nil,
+      dtLastUpdate_dt: nil,
+      sStatusCode: nil,
+      szStatusReasonDesc: nil,
+      sUserCode1: nil,
+      sUserCode2: nil,
+      iDuplicateIDFlag: nil,
+      szLanguageName: nil,
+      szPartyName: nil,
+      szAVStatusAbbr: nil,
+      szAVStatusDesc: nil,
+      szPrecinctName: nil,
+      sPrecinctID: nil,
+      sPrecinctPortion: nil,
+      sDistrictID_0: nil,
+      iSubDistrict_0: nil,
+      szDistrictName_0: nil,
+      sDistrictID_1: nil,
+      iSubDistrict_1: nil,
+      szDistrictName_1: nil,
+      sDistrictID_2: nil,
+      iSubDistrict_2: nil,
+      szDistrictName_2: nil,
+      sDistrictID_3: nil,
+      iSubDistrict_3: nil,
+      szDistrictName_3: nil,
+      sDistrictID_4: nil,
+      iSubDistrict_4: nil,
+      szDistrictName_4: nil,
+      sDistrictID_5: nil,
+      iSubDistrict_5: nil,
+      szDistrictName_5: nil
+    )
+      voter = Voter.create(
+        lVoterUniqueID: lVoterUniqueID,
+        sAffNumber: sAffNumber,
+        szStateVoterID: szStateVoterID,
+        sVoterTitle: sVoterTitle,
+        szNameLast: szNameLast,
+        szNameFirst: szNameFirst,
+        szNameMiddle: szNameMiddle,
+        sNameSuffix: sNameSuffix,
+        sGender: sGender,
+        szSitusAddress: szSitusAddress,
+        szSitusCity: szSitusCity,
+        sSitusState: sSitusState,
+        sSitusZip: sSitusZip,
+        sHouseNum: sHouseNum,
+        sUnitAbbr: sUnitAbbr,
+        sUnitNum: sUnitNum,
+        szStreetName: szStreetName,
+        sStreetSuffix: sStreetSuffix,
+        sPreDir: sPreDir,
+        sPostDir: sPostDir,
+        szMailAddress1: szMailAddress1,
+        szMailAddress2: szMailAddress2,
+        szMailAddress3: szMailAddress3,
+        szMailAddress4: szMailAddress4,
+        szMailZip: szMailZip,
+        szPhone: szPhone,
+        szEmailAddress: szEmailAddress,
+        sBirthPlace: sBirthPlace,
+        dtRegDate: dtRegDate,
+        dtOrigRegDate: dtOrigRegDate,
+        dtLastUpdate_dt: dtLastUpdate_dt,
+        sStatusCode: sStatusCode,
+        szStatusReasonDesc: szStatusReasonDesc,
+        sUserCode1: sUserCode1,
+        sUserCode2: sUserCode2,
+        iDuplicateIDFlag: iDuplicateIDFlag,
+        szLanguageName: szLanguageName,
+        szPartyName: szPartyName,
+        szAVStatusAbbr: szAVStatusAbbr,
+        szAVStatusDesc: szAVStatusDesc,
+        szPrecinctName: szPrecinctName,
+        sPrecinctID: sPrecinctID,
+        sPrecinctPortion: sPrecinctPortion,
+        sDistrictID_0: sDistrictID_0,
+        iSubDistrict_0: iSubDistrict_0,
+        szDistrictName_0: szDistrictName_0,
+        sDistrictID_1: sDistrictID_1,
+        iSubDistrict_1: iSubDistrict_1,
+        szDistrictName_1: szDistrictName_1,
+        sDistrictID_2: sDistrictID_2,
+        iSubDistrict_2: iSubDistrict_2,
+        szDistrictName_2: szDistrictName_2,
+        sDistrictID_3: sDistrictID_3,
+        iSubDistrict_3: iSubDistrict_3,
+        szDistrictName_3: szDistrictName_3,
+        sDistrictID_4: sDistrictID_4,
+        iSubDistrict_4: iSubDistrict_4,
+        szDistrictName_4: szDistrictName_4,
+        sDistrictID_5: sDistrictID_5,
+        iSubDistrict_5: iSubDistrict_5,
+        szDistrictName_5: szDistrictName_5
+      )
+      if voter.save
+        {
+          voter: voter
+        }
+      else
+        {
+          voter: nil
+>>>>>>> Add all voter arguments to create voter mustation
         }
       end
     end
