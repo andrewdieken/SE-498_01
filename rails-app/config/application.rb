@@ -25,5 +25,16 @@ module Se498
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.load_defaults 5.2
     config.generators.system_tests = nil
+
+    # Note:
+    # 1) Need to add to enable nonlocal apps making calls to API
+    # 2) https://github.com/cyu/rack-cors
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
+
   end
 end

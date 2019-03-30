@@ -33,6 +33,9 @@ gem 'reform-rails'
 gem 'dry-validation'
 gem 'rails-settings-cached'
 gem 'activeadmin'
+gem 'graphql'
+gem 'rack-cors'
+
 
 
 group :development do
@@ -75,3 +78,5 @@ gem 'simple_form'
 gem 'bullet', group: [:development, :test]
 gem 'delayed_job_active_record'
 gem 'rack-timeout', group: :production
+
+gem 'graphiql-rails', group: :development

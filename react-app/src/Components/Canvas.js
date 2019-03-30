@@ -4,9 +4,12 @@ import red_x from "../Images/red_x.png";
 import green_check from "../Images/green_check.png";
 import house from "../Images/house.png";
 import info from "../Images/info.png";
+
 class Canvas extends Component {
   constructor(props) {
     super(props);
+
+
     this.index = 0;
     this.url = "/api/v1/voters/?page=";
     this.api_page = "1";
@@ -44,7 +47,7 @@ class Canvas extends Component {
   }
 
   componentWillUpdate() {
-    console.log("Component will update");    
+    console.log("Component will update");
   }
 
   nextVoter = () => {
