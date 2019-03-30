@@ -5,29 +5,10 @@ import green_check from "../Images/green_check.png";
 import house from "../Images/house.png";
 import info from "../Images/info.png";
 
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
-import gql from "graphql-tag";
-
 class Canvas extends Component {
   constructor(props) {
     super(props);
 
-    //==============================================================
-    //
-    //==============================================================
-    const client = new ApolloClient ({
-      uri: "http://localhost:3000/graphql"
-    });
-    client.query({query: gql `{
-      voterByPrecinct(id:"10316") {
-        id,
-        szNameFirst}
-      }`
-    }).then(result => console.log(result.data.voterByPrecinct[0].szNameFirst))
-    //==============================================================
-    //
-    //==============================================================
 
     this.index = 0;
     this.url = "/api/v1/voters/?page=";
