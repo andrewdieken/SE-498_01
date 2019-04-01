@@ -1,7 +1,7 @@
 .main_container {
   height: 465px;
   width: 93vw;
-  background-color: rgb(58, 58, 58);
+  background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
   grid-template-rows: 80px 305px 80px;
@@ -17,7 +17,7 @@
 .main_container_flicker {
   height: 465px;
   width: 93vw;
-  background-color: rgb(58, 58, 58);
+  background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
   grid-template-rows: 80px 305px 80px;
@@ -36,41 +36,45 @@
 @keyframes flickerAnimation {
   0% {
     opacity: 1;
-    left:-115px;
+    left: -115px;
   }
   50% {
     opacity: 0;
-    left:-350px;
-
+    left: -350px;
   }
   100% {
     opacity: 1;
-
   }
 }
 
 .item-a {
   grid-area: header;
-  background-color: #343f4b;
+  background-color: #ffffff;
   text-align: left;
   padding-left: 7px;
   padding-top: 20px;
   vertical-align: middle;
   font-size: 30px;
   font-family: "EB Garamond", serif;
+  color: black;
+  font-weight: bold;
+  border-bottom: 2px solid black;
 }
 .item-b {
   grid-area: info;
-  background-color: #343f4b;
+  background-color: #ffffff;
   text-align: right;
   padding-right: 14px;
   font-size: 20px;
   padding-top: 12px;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  color: black;
+  font-weight: bold;
+  border-bottom:2px solid black;
 }
 .item-c {
   grid-area: circles;
-  background-color: #d4d4d4;
+  background-color: #ffffff;
   text-align: center;
   display: flex;
   color: black;
@@ -83,13 +87,13 @@
 
 .item-d {
   grid-area: main;
-  background-color: #d4d4d4;
+  background-color: #ffffff;
   text-align: left;
   word-wrap: break-word;
 }
 .item-e {
   grid-area: footer;
-  background-color: #c9c5c5;
+  background-color: #ffffff;
 }
 .content {
   margin: 0em;
@@ -127,52 +131,51 @@
 }
 
 .reject {
-  display: inline-block;
-  height: 68px;
-  width: 68px;
+  display: inline-flex;
+  height: 70px;
+  width: 70px;
   margin-left: 37px;
   margin-right: 37px;
   border-radius: 50%;
-  margin-top: 7px;
   background-color: #ffffff;
   border-color: red;
   cursor: pointer;
   overflow: hidden;
   border-style: solid;
   border-width: 2px;
+  justify-content: center;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
 }
 .accept {
-  display: inline-block;
-  height: 68px;
-  width: 68px;
+  display: inline-flex;
+  height: 70px;
+  width: 70px;
   margin-left: 37px;
   margin-right: 37px;
   border-radius: 50%;
-  margin-top: 7px;
   background-color: #ffffff;
   border-color: green;
   cursor: pointer;
   overflow: hidden;
   border-style: solid;
   border-width: 2px;
+  justify-content: center;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
 }
 .rx {
-  height: 53px;
-  width: 53px;
+  height: 63px;
+  width: 63px;
 }
 .gc {
-  height: 53px;
-  width: 53px;
-}
-.accept:hover {
-  background-color: green;
+  height: 60px;
+  width: 60px;
 }
 
 @media only screen and (min-width: 414px) {
   .main_container_flicker {
     height: 465px;
     width: 93vw;
-    background-color: rgb(58, 58, 58);
+    background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
     grid-template-rows: 80px 305px 80px;
@@ -191,27 +194,23 @@
   @keyframes flickerAnimation {
     0% {
       opacity: 1;
-      left:-125px;
+      left: -125px;
     }
     50% {
       opacity: 0;
-      left:-400px;
-  
+      left: -400px;
     }
     100% {
       opacity: 1;
-  
     }
   }
-  
-  
 }
 
 @media only screen and (min-width: 768px) {
   .main_container_flicker {
     height: 465px;
     width: 93vw;
-    background-color: rgb(58, 58, 58);
+    background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
     grid-template-rows: 80px 305px 80px;
@@ -230,18 +229,14 @@
   @keyframes flickerAnimation {
     0% {
       opacity: 1;
-      left:-500px;
+      left: -500px;
     }
     50% {
       opacity: 0;
-      left:-1000px;
-  
+      left: -1000px;
     }
     100% {
       opacity: 1;
-  
     }
   }
-  
-  
 }
