@@ -79,4 +79,4 @@ gem 'bullet', group: [:development, :test]
 gem 'delayed_job_active_record'
 gem 'rack-timeout', group: :production
 
-gem 'graphiql-rails'
+gem 'graphiql-rails', group: :production
