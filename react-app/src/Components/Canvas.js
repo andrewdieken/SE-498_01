@@ -11,9 +11,16 @@ class Canvas extends Component {
   constructor(props) {
     super(props);
 
-    this.client = new ApolloClient({
-      uri: "http://192.168.99.100:3000/graphql"
-    });
+    if (process.env.NODE_ENV == 'production') {
+      this.client = new ApolloClient({
+        uri: "http://api.quartiledocs.com/graphql"
+      });
+    } else {
+      this.client = new ApolloClient({
+        uri: "http://localhost:3000/graphql"
+      });
+    }
+
 
     this.index = 0;
     this.state = {
