@@ -13,7 +13,7 @@ class Canvas extends Component {
 
     if (process.env.NODE_ENV == 'production') {
       this.client = new ApolloClient({
-        uri: "http://api.quartiledocs.com/graphql"
+        uri: "https://api.quartiledocs.com/graphql"
       });
     } else {
       this.client = new ApolloClient({
