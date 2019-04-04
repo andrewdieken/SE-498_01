@@ -3,7 +3,7 @@ import "./Canvas.css";
 import red_x from "../Images/red_x.png";
 import green_check from "../Images/green_check.png";
 import house from "../Images/house.png";
-import info from "../Images/info.png"; 
+import info from "../Images/info.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
@@ -123,7 +123,6 @@ class Canvas extends Component {
       });
 
     this.index = this.index + 1;
-    this._container.className = "main_container_flicker_right";
 
     setTimeout(() => {
       this.setState({ index: this.index });
@@ -150,6 +149,12 @@ class Canvas extends Component {
       this.index = 0;
       this.setState({ index: this.index });
     }
+  };
+
+  animateSuccess = () => {
+    this._container.classList.remove("main_container_flicker_right");
+    void this._container.offsetWidth;
+    this._container.classList.add("main_container_flicker_right");
     setTimeout(() => {
       this._container.className = "main_container";
     }, 1000);
@@ -264,6 +269,7 @@ class Canvas extends Component {
           <button
             className="accept"
             onClick={() => {
+              this.animateSuccess();
               this.acceptVoter();
             }}
           >
