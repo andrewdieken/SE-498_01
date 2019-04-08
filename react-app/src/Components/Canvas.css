@@ -10,7 +10,7 @@
   perspective: 1px;
   box-shadow: 5px 8px #000000;
   grid-template-areas:
-    "header header header header header info info "
+    "header header header header header header info "
     "main main main main main main main  "
     "footer footer footer footer footer footer footer ";
 }
@@ -29,7 +29,7 @@
   animation: flickerAnimation 1.3s;
   animation-iteration-count: 1;
   grid-template-areas:
-    "header header header header header info info "
+    "header header header header header header info "
     "main main main main main main main  "
     "footer footer footer footer footer footer footer ";
 }
@@ -47,18 +47,52 @@
   }
 }
 
+.main_container_flicker_right {
+  height: 465px;
+  width: 93vw;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
+  grid-template-rows: 80px 305px 80px;
+  border-radius: 20px;
+  overflow: hidden;
+  perspective: 1px;
+  position: absolute;
+  box-shadow: 5px 8px #000000;
+  animation: flickerAnimationRight 1.3s;
+  animation-iteration-count: 1;
+  grid-template-areas:
+    "header header header header header header info "
+    "main main main main main main main  "
+    "footer footer footer footer footer footer footer ";
+}
+@keyframes flickerAnimationRight {
+  0% {
+    opacity: 1;
+    right: -115px;
+  }
+  50% {
+    opacity: 0;
+    right: -350px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .item-a {
   grid-area: header;
   background-color: #ffffff;
   text-align: left;
-  padding-left: 7px;
-  padding-top: 20px;
+  padding-left: 10px;
+  padding-top: 11px;
   vertical-align: middle;
-  font-size: 30px;
+  font-size: 26px;
   font-family: "EB Garamond", serif;
   color: black;
   font-weight: bold;
   border-bottom: 2px solid black;
+  line-height: 1.15em;
 }
 .item-b {
   grid-area: info;
@@ -70,7 +104,7 @@
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   color: black;
   font-weight: bold;
-  border-bottom:2px solid black;
+  border-bottom: 2px solid black;
 }
 .item-c {
   grid-area: circles;
@@ -99,10 +133,10 @@
   margin: 0em;
   color: black;
   margin-top: 15px;
-  margin-left: 10px;
+  margin-left: 5px;
   font-family: "EB Garamond", serif;
   line-height: 1em;
-  font-size: 26px;
+  font-size: 24px;
 }
 .house_logo {
   height: 45px;
@@ -122,12 +156,12 @@
   margin: 0em;
   color: black;
   margin-top: 8px;
-  margin-left: 10px;
+  margin-left: 5px;
   padding-top: 55px;
   font-family: "EB Garamond", serif;
   line-height: 1.2em;
   padding-bottom: 5px;
-  font-size: 26px;
+  font-size: 24px;
 }
 
 .reject {
@@ -165,10 +199,14 @@
 .rx {
   height: 63px;
   width: 63px;
+  position: absolute;
+  bottom: 13px;
 }
 .gc {
   height: 60px;
   width: 60px;
+  position: absolute;
+  bottom: 15px;
 }
 
 @media only screen and (min-width: 414px) {
@@ -187,7 +225,7 @@
     animation: flickerAnimation 1.3s;
     animation-iteration-count: 1;
     grid-template-areas:
-      "header header header header header info info "
+      "header header header header header header info "
       "main main main main main main main  "
       "footer footer footer footer footer footer footer ";
   }
@@ -199,6 +237,39 @@
     50% {
       opacity: 0;
       left: -400px;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .main_container_flicker_right {
+    height: 465px;
+    width: 93vw;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
+    grid-template-rows: 80px 305px 80px;
+    border-radius: 20px;
+    overflow: hidden;
+    perspective: 1px;
+    position: absolute;
+    box-shadow: 5px 8px #000000;
+    animation: flickerAnimatioRightn 1.3s;
+    animation-iteration-count: 1;
+    grid-template-areas:
+      "header header header header header header info "
+      "main main main main main main main  "
+      "footer footer footer footer footer footer footer ";
+  }
+  @keyframes flickerAnimationRight {
+    0% {
+      opacity: 1;
+      right: -125px;
+    }
+    50% {
+      opacity: 0;
+      right: -400px;
     }
     100% {
       opacity: 1;
@@ -222,7 +293,7 @@
     animation: flickerAnimation 1.3s;
     animation-iteration-count: 1;
     grid-template-areas:
-      "header header header header header info info "
+      "header header header header header header info "
       "main main main main main main main  "
       "footer footer footer footer footer footer footer ";
   }
@@ -234,6 +305,39 @@
     50% {
       opacity: 0;
       left: -1000px;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .main_container_flicker_right {
+    height: 465px;
+    width: 93vw;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
+    grid-template-rows: 80px 305px 80px;
+    border-radius: 20px;
+    overflow: hidden;
+    perspective: 1px;
+    position: absolute;
+    box-shadow: 5px 8px #000000;
+    animation: flickerAnimationRight 1.3s;
+    animation-iteration-count: 1;
+    grid-template-areas:
+      "header header header header header header info "
+      "main main main main main main main  "
+      "footer footer footer footer footer footer footer ";
+  }
+  @keyframes flickerAnimationRight {
+    0% {
+      opacity: 1;
+      right: -500px;
+    }
+    50% {
+      opacity: 0;
+      right: -1000px;
     }
     100% {
       opacity: 1;
