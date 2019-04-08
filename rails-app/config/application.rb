@@ -36,5 +36,9 @@ module Se498
       end
     end
 
+    # Add fonts to Rails pipline
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.paths << Rails.root.join("app", "assets", "vendor")
+
   end
 end
