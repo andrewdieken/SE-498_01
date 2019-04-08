@@ -32,7 +32,6 @@ gem 'reform'
 gem 'reform-rails'
 gem 'dry-validation'
 gem 'rails-settings-cached'
-gem 'activeadmin'
 gem 'graphql'
 gem 'rack-cors'
 
