@@ -256,23 +256,23 @@ class Canvas extends Component {
           <img alt="hse" className="house_logo" src={house} />
         </div>
         <div className="item-e">
-          <button
+          <input
             className="reject"
+            type="button"
+            value="×"            
             onClick={() => {
               this.nextVoter();
             }}
-          >
-            ×
-          </button>
-          <button
+          />            
+          <input
             className="accept"
+            type="button"
+            value="✓"
             onClick={() => {
               this.animateSuccess();
               this.acceptVoter();
             }}
-          >
-            ✓
-          </button>
+          />            
         </div>
       </div>
     ); 
