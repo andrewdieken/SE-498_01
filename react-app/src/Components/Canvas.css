@@ -166,10 +166,9 @@
 
 .reject {
   display: inline-block;
-  height: 70px;
-  width: 70px;
-  margin-left: 37px;
-  margin-right: 37px;
+  height: 73px;
+  width: 73px;
+  margin: -3px 37px 37px;
   border-radius: 50%;
   background-color: #ffffff;
   border-color: red;
@@ -179,15 +178,14 @@
   border-width: 2px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
   color: red;
-  font-size: 55px;
+  font-size: 45px;
   font-weight: bold;
 }
 .accept {
   display: inline-block;
-  height: 70px;
-  width: 70px;
-  margin-left: 37px;
-  margin-right: 37px;
+  height: 73px;
+  width: 73px;
+  margin: -3px 37px 37px;
   border-radius: 50%;
   background-color: #ffffff;
   border-color: green;
@@ -197,7 +195,7 @@
   border-width: 2px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
   color: green;
-  font-size: 45px;
+  font-size: 37px;
   font-weight: bold;
 }
 
