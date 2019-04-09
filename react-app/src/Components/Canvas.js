@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./Canvas.css";
-import red_x from "../Images/red_x.png";
-import green_check from "../Images/green_check.png";
 import house from "../Images/house.png";
 import info from "../Images/info.png";
 import ApolloClient from "apollo-boost";
@@ -264,7 +262,7 @@ class Canvas extends Component {
               this.nextVoter();
             }}
           >
-            <img alt="red" className="rx" src={red_x} />
+            ×
           </button>
           <button
             className="accept"
@@ -273,11 +271,11 @@ class Canvas extends Component {
               this.acceptVoter();
             }}
           >
-            <img alt="green" className="gc" src={green_check} />
+            ✓
           </button>
         </div>
       </div>
-    );
+    ); 
   }
 }
 export default Canvas;
