@@ -165,7 +165,10 @@
 }
 
 .reject {
-  display: table-cell;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  opacity: 1;
+  display: inline-block;
   height: 70px;
   width: 70px;
   margin: -3px 37px 37px;
@@ -184,7 +187,10 @@
   padding: 0px;
 }
 .accept {
-  display: table-cell;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  opacity: 1;
+  display: inline-block;
   height: 70px;
   width: 70px;
   margin: -2px 37px 37px;
