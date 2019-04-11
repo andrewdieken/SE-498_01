@@ -255,7 +255,7 @@
     perspective: 1px;
     position: absolute;
     box-shadow: 5px 8px #000000;
-    animation: flickerAnimatioRightn 1.3s;
+    animation: flickerAnimationRight 1.3s;
     animation-iteration-count: 1;
     grid-template-areas:
       "header header header header header header info "
