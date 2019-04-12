@@ -1,6 +1,7 @@
 # config/app.yml for rails-settings-cached
 defaults: &defaults
   precinct_id: 68315
+  canvasser_password: "password"
 
 development:
   <<: *defaults
