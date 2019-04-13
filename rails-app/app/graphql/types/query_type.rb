@@ -40,7 +40,7 @@ module Types
     end
 
     field :get_cavasser_password, String, null: false do
-      description "Retreive cavasser password set up admin"
+      description "Retreive cavasser password"
     end
     def get_cavasser_password()
       Setting['canvasser_password']
