@@ -36,7 +36,7 @@ module Types
       description "Find Voter by sPrecinctID"
     end
     def voter_by_precinct()
-      Voter.where(sPrecinctID: Setting.precinct_id)
+      Voter.left_outer_joins(:visits).where( visits:{ voter_id:nil }).where(sPrecinctID: Setting.precinct_id)
     end
 
   end
