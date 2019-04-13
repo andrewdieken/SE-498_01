@@ -39,10 +39,10 @@ module Types
       Voter.left_outer_joins(:visits).where( visits:{ voter_id:nil }).where(sPrecinctID: Setting.precinct_id)
     end
 
-    field :get_cavasser_password, String, null: false do
-      description "Retreive cavasser password"
+    field :get_canvasser_password, String, null: false do
+      description "Retreive canvasser password"
     end
-    def get_cavasser_password()
+    def get_canvasser_password()
       Setting['canvasser_password']
     end
 
