@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./Canvas.css";
 import house from "../Images/house.png";
 import info from "../Images/info.png";
+import map from "../Images/map.png";
+import x_house from "../Images/reject_house.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
@@ -158,6 +160,26 @@ class Canvas extends Component {
     }, 1000);
   };
 
+  openMaps = () => {
+    var address = JSON.stringify(
+      this.state.voters[this.state.index].szSitusAddress
+    );
+    var city = JSON.stringify(this.state.voters[this.state.index].szSitusCity);
+    var state = JSON.stringify(this.state.voters[this.state.index].sSitusState);
+    var zip = JSON.stringify(this.state.voters[this.state.index].sSitusZip);
+    var map =
+      "https://www.google.com/maps/search/?api=1&query=" +
+      address +
+      "+" +
+      city +
+      "+" +
+      state +
+      "+" +
+      zip +
+      '"';
+    window.open(map, "_blank");
+  };
+
   render() {
     return (
       <div className="main_container" ref={el => (this._container = el)}>
@@ -237,7 +259,12 @@ class Canvas extends Component {
               );
             }
           })()}
-          <h3 className="content1">
+          <h3
+            className="content1"
+            onClick={() => {
+              this.openMaps();
+            }}
+          >
             {JSON.parse(
               JSON.stringify(this.state.voters[this.state.index].szSitusAddress)
             )}
@@ -253,29 +280,31 @@ class Canvas extends Component {
               JSON.stringify(this.state.voters[this.state.index].sSitusZip)
             )}
           </h3>
-          <img alt="hse" className="house_logo" src={house} />
+          <img alt="mpe" className="map_logo" src={map} />
         </div>
         <div className="item-e">
-          <input
+          <button
             className="reject"
             type="button"
-            value="×"            
             onClick={() => {
               this.nextVoter();
             }}
-          />            
-          <input
+          >
+            <img alt="hse" className="x_house_logo" src={x_house} />
+          </button>
+          <button
             className="accept"
             type="button"
-            value="✓"
             onClick={() => {
               this.animateSuccess();
               this.acceptVoter();
             }}
-          />            
+          >
+            <img alt="hse" className="house_logo" src={house} />
+          </button>
         </div>
       </div>
-    ); 
+    );
   }
 }
 export default Canvas;
