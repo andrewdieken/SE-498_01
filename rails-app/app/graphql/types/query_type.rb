@@ -36,7 +36,14 @@ module Types
       description "Find Voter by sPrecinctID"
     end
     def voter_by_precinct()
-      Voter.where(sPrecinctID: Setting.precinct_id)
+      Voter.left_outer_joins(:visits).where( visits:{ voter_id:nil }).where(sPrecinctID: Setting.precinct_id)
+    end
+
+    field :get_canvasser_password, String, null: false do
+      description "Retreive canvasser password"
+    end
+    def get_canvasser_password()
+      Setting['canvasser_password']
     end
 
   end
