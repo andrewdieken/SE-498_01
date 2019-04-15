@@ -3,9 +3,10 @@ import "./Canvas.css";
 import house from "../Images/house.png";
 import info from "../Images/info.png";
 import map from "../Images/map.png";
+import x_house from "../Images/reject_house.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
-import axios from "axios"; 
+import axios from "axios";
 
 class Canvas extends Component {
   constructor(props) {
@@ -289,7 +290,7 @@ class Canvas extends Component {
               this.nextVoter();
             }}
           >
-            <img alt="hse" className="house_logo" src={house} />
+            <img alt="hse" className="x_house_logo" src={x_house} />
           </button>
           <button
             className="accept"
