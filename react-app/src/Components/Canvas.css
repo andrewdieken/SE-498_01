@@ -130,38 +130,43 @@
   background-color: #ffffff;
 }
 .content {
-  margin: 0em;
-  color: black;
-  margin-top: 15px;
-  margin-left: 5px;
-  font-family: "EB Garamond", serif;
+  color: #000;
+  margin: 15px 0 0 75px;
+  font-family: EB Garamond,serif;
   line-height: 1em;
   font-size: 24px;
 }
-.house_logo {
+
+.map_logo{
   height: 45px;
   width: 45px;
-  float: right;
-  margin-right: 35px;
-  margin-top: -65px;
+  float: left;
+  margin-left: 15px;
+  margin-top: -70px;
 }
 .info_logo {
   height: 45px;
   width: 45px;
-  float: right;
-  margin-right: 35px;
-  margin-top: -41px;
+  float: left;
+  margin-left: 15px;
+   margin-top: -41px;
+
 }
 .content1 {
-  margin: 0em;
-  color: black;
-  margin-top: 8px;
-  margin-left: 5px;
+  color: #0000EE;
+  margin: -12px 0 0 75px;
   padding-top: 55px;
-  font-family: "EB Garamond", serif;
+  font-family: EB Garamond,serif;
   line-height: 1.2em;
   padding-bottom: 5px;
   font-size: 24px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.house_logo{  
+    height: 45px;
+    width: 45px;
+    margin-top: 3px; 
 }
 
 .reject {
@@ -171,7 +176,7 @@
   display: inline-block;
   height: 70px;
   width: 70px;
-  margin: -3px 37px 37px;
+  margin: -2px 37px 37px;
   border-radius: 50%;
   background-color: #ffffff;
   border-color: red;
