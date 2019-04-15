@@ -40,7 +40,8 @@ class Canvas extends Component {
           szPartyName: "Loading..."
         }
       ],
-      index: 0
+      index: 0,
+      notes: "testing"
     };
   }
 
@@ -65,7 +66,12 @@ class Canvas extends Component {
           }
         `
       })
-      .then(result => this.setState({ voters: result.data.voterByPrecinct }));
+      .then(result => this.setState({ voters: result.data.voterByPrecinct }))
+      .catch(function(error) {
+        alert(
+          "No voters in this precinct, please contact your campaign manager."
+        );
+      });
   }
 
   componentDidUpdate() {
@@ -160,6 +166,14 @@ class Canvas extends Component {
     }, 1000);
   };
 
+  openNote = () => {
+    this._bgmodal.style.display = "flex";
+  };
+
+  closeNote = () => {
+    this._bgmodal.style.display = "none";
+  };
+
   openMaps = () => {
     var address = JSON.stringify(
       this.state.voters[this.state.index].szSitusAddress
@@ -231,7 +245,14 @@ class Canvas extends Component {
               );
             }
           })()}
-          <img alt="hse" className="info_logo" src={info} />
+          <img
+            onClick={() => {
+              this.openNote();
+            }}
+            alt="hse"
+            className="info_logo"
+            src={info}
+          />
 
           {(() => {
             if (
@@ -259,26 +280,29 @@ class Canvas extends Component {
               );
             }
           })()}
-          <h3
-            className="content1"
-            onClick={() => {
-              this.openMaps();
-            }}
-          >
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].szSitusAddress)
-            )}
-            <br />
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].szSitusCity)
-            )}
-            , <br />
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].sSitusState)
-            )}{" "}
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].sSitusZip)
-            )}
+          <h3 className="content1">
+            <span
+              onClick={() => {
+                this.openMaps();
+              }}
+            >
+              {JSON.parse(
+                JSON.stringify(
+                  this.state.voters[this.state.index].szSitusAddress
+                )
+              )}
+              <br />
+              {JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].szSitusCity)
+              )}
+              , <br />
+              {JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].sSitusState)
+              )}{" "}
+              {JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].sSitusZip)
+              )}
+            </span>
           </h3>
           <img alt="mpe" className="map_logo" src={map} />
         </div>
@@ -302,6 +326,31 @@ class Canvas extends Component {
           >
             <img alt="hse" className="house_logo" src={house} />
           </button>
+        </div>
+        <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
+          <div className="modal-contents">
+            <div
+              className="close"
+              onClick={() => {
+                this.closeNote();
+              }}
+            >
+              +
+            </div>
+
+            <form action="">
+              <textarea
+                cols="40"
+                rows="5"
+                className="modal-input"
+                type="text"
+                placeholder="Notes:"
+              >
+                {this.state.notes}
+              </textarea>
+              <button className="button-modal">Submit</button>
+            </form>
+          </div>
         </div>
       </div>
     );

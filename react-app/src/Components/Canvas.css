@@ -220,6 +220,70 @@
   padding: 0px;
 }
 
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.button-modal {
+  background-color: blue;
+  border: 2px solid white;
+  border-radius: 30px;
+  text-decoration: none;
+  padding: 10px 28px;
+  color: white;
+  margin-top: -80px;
+  display: inline-block;
+  
+}
+.bg-modal {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 3px solid rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left:-3px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: fadein 0.5s;
+  animation-iteration-count: 1;
+}
+
+.modal-contents {
+  height: 300px;
+  width: 300px;
+  background-color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  border-radius: 34px;
+}
+
+.modal-input {
+  margin: 35px auto;
+  display: block;
+  width: 95%;
+  height: 180px;
+  padding: 5px;
+  border: 1px solid black;
+  font-size: 15px;
+  font-family: EB Garamond, serif;
+  color: #000;
+
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 42px;
+  color: #333;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 414px) {
   .main_container_flicker {
     height: 465px;
