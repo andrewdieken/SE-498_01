@@ -4,6 +4,7 @@ import house from "../Images/house.png";
 import info from "../Images/info.png";
 import map from "../Images/map.png";
 import x_house from "../Images/reject_house.png";
+import nts from "../Images/notes.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
@@ -245,14 +246,7 @@ class Canvas extends Component {
               );
             }
           })()}
-          <img
-            onClick={() => {
-              this.openNote();
-            }}
-            alt="hse"
-            className="info_logo"
-            src={info}
-          />
+          <img alt="hse" className="info_logo" src={info} />
 
           {(() => {
             if (
@@ -315,6 +309,14 @@ class Canvas extends Component {
             }}
           >
             <img alt="hse" className="x_house_logo" src={x_house} />
+          </button>
+          <button
+            className="notes_button"
+            onClick={() => {
+              this.openNote();
+            }}
+          >
+            <img alt="nts" className="notes" src={nts} />
           </button>
           <button
             className="accept"
