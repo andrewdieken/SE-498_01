@@ -155,9 +155,8 @@
   height: 45px;
   width: 45px;
   margin-top: 5px;
-  
 }
-.notes_button{
+.notes_button {
   -webkit-appearance: none;
   -moz-appearance: none;
   opacity: 1;
@@ -179,7 +178,6 @@
   margin-left: 35px;
   margin-right: 35px;
   margin-bottom: 35px;
-  
 }
 .content1 {
   color: #0000ee;
@@ -264,10 +262,11 @@
   border: 2px solid white;
   border-radius: 30px;
   text-decoration: none;
-  padding: 10px 28px;
+  padding: 10px 58px;
   color: white;
-  margin-top: -80px;
+  margin-top: -150px;
   display: inline-block;
+  font-size: 14px;
 }
 .bg-modal {
   background-color: rgba(0, 0, 0, 0.8);
@@ -295,17 +294,29 @@
 }
 
 .modal-input {
-  margin: 35px auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:-10px;
+  margin-bottom: 22px;
   display: block;
   width: 95%;
-  height: 180px;
+  height: 200px;
   padding: 5px;
   border: 1px solid black;
-  font-size: 15px;
+  font-size: 17px;
   font-family: EB Garamond, serif;
   color: #000;
+  font-weight: bold;
 }
+.notes_heading{
+  color:black;
+  font-size: 22px;
+  text-align: left;
+  margin-top: -2px;
+  font-family: EB Garamond, serif;
+  font-weight: bold;
 
+}
 .close {
   position: absolute;
   top: 0;
@@ -317,7 +328,7 @@
 }
 
 @media only screen and (min-width: 325px) {
-  .notes_button{
+  .notes_button {
     -webkit-appearance: none;
     -moz-appearance: none;
     opacity: 1;
@@ -339,10 +350,8 @@
     margin-left: 45px;
     margin-right: 45px;
     margin-bottom: 37px;
-    
   }
 }
-
 
 @media only screen and (min-width: 414px) {
   .main_container_flicker {
@@ -409,7 +418,7 @@
     100% {
       opacity: 1;
     }
-  } 
+  }
 }
 
 @media only screen and (min-width: 768px) {

@@ -71,7 +71,7 @@ class Canvas extends Component {
       .catch(function(error) {
         alert(
           "No voters in this precinct, please contact your campaign manager."
-        );
+        );        
       });
   }
 
@@ -331,6 +331,7 @@ class Canvas extends Component {
         </div>
         <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
           <div className="modal-contents">
+          <h3 className="notes_heading">Voter Notes:</h3>
             <div
               className="close"
               onClick={() => {
@@ -340,7 +341,7 @@ class Canvas extends Component {
               +
             </div>
 
-            <form action="">
+            <div>
               <textarea
                 cols="40"
                 rows="5"
@@ -351,7 +352,7 @@ class Canvas extends Component {
                 {this.state.notes}
               </textarea>
               <button className="button-modal">Submit</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
