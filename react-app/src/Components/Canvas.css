@@ -258,7 +258,7 @@
 }
 
 .button-modal {
-  background-color: blue;
+  background-color: #1ab188;
   border: 2px solid white;
   border-radius: 30px;
   text-decoration: none;
@@ -296,7 +296,7 @@
 .modal-input {
   margin-left: auto;
   margin-right: auto;
-  margin-top:-10px;
+  margin-top: -10px;
   margin-bottom: 22px;
   display: block;
   width: 95%;
@@ -308,14 +308,13 @@
   color: #000;
   font-weight: bold;
 }
-.notes_heading{
-  color:black;
+.notes_heading {
+  color: black;
   font-size: 22px;
   text-align: left;
   margin-top: -2px;
   font-family: EB Garamond, serif;
   font-weight: bold;
-
 }
 .close {
   position: absolute;
