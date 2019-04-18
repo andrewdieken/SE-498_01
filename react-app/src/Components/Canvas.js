@@ -15,11 +15,14 @@ class Canvas extends Component {
 
     if (process.env.NODE_ENV == "production") {
       this.postLink = "https://api.quartiledocs.com/api/v1/visits";
+      this.patchLink = "https://api.quartiledocs.com/api/v1/voters/";
       this.client = new ApolloClient({
         uri: "https://api.quartiledocs.com/graphql"
       });
     } else {
       this.postLink = "http://192.168.99.100:3000/api/v1/visits";
+      this.patchLink = "http://192.168.99.100:3000/api/v1/voters/";
+
       this.client = new ApolloClient({
         uri: "http://192.168.99.100:3000/graphql"
       });
@@ -38,7 +41,8 @@ class Canvas extends Component {
           szPhone: "Loading...",
           szEmailAddress: "Loading...",
           dtBirthDate: "1/1/2019",
-          szPartyName: "Loading..."
+          szPartyName: "Loading...",
+          note: "testing..."
         }
       ],
       index: 0,
@@ -63,15 +67,16 @@ class Canvas extends Component {
               szPartyName
               szPhone
               szEmailAddress
+              note
             }
           }
         `
       })
-      .then(result => this.setState({ voters: result.data.voterByPrecinct }))
+      .then(result => this.setState({ voters: result.data.voterByPrecinct }))    
       .catch(function(error) {
         alert(
           "No voters in this precinct, please contact your campaign manager."
-        );        
+        );
       });
   }
 
@@ -81,6 +86,12 @@ class Canvas extends Component {
 
   componentWillUpdate() {
     console.log("Component will update");
+  }
+
+  handleChange = (event)=>{
+    const {voters} = this.state;
+    voters[this.state.index].note =event.target.value;
+    this.setState({ voters });
   }
 
   nextVoter = () => {
@@ -103,7 +114,8 @@ class Canvas extends Component {
             szPhone: "Loading...",
             szEmailAddress: "Loading...",
             dtBirthDate: "1/1/2019",
-            szPartyName: "Loading..."
+            szPartyName: "Loading...",
+            note: "Loading..."
           }
         ],
         index: 0
@@ -147,7 +159,8 @@ class Canvas extends Component {
             szPhone: "Loading...",
             szEmailAddress: "Loading...",
             dtBirthDate: "1/1/2019",
-            szPartyName: "Loading..."
+            szPartyName: "Loading...",
+            note: "Loading..."
           }
         ],
         index: 0
@@ -169,10 +182,24 @@ class Canvas extends Component {
 
   openNote = () => {
     this._bgmodal.style.display = "flex";
+    console.log();
   };
 
   closeNote = () => {
     this._bgmodal.style.display = "none";
+  };
+
+  updateNote = () => {
+    axios
+      .patch(this.patchLink + this.state.voters[this.state.index].id, {
+        note: this._tarea.value
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   openMaps = () => {
@@ -331,7 +358,7 @@ class Canvas extends Component {
         </div>
         <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
           <div className="modal-contents">
-          <h3 className="notes_heading">Voter Notes:</h3>
+            <h3 className="notes_heading">Voter Notes:</h3>
             <div
               className="close"
               onClick={() => {
@@ -348,10 +375,18 @@ class Canvas extends Component {
                 className="modal-input"
                 type="text"
                 placeholder="Notes:"
+                ref={txt => (this._tarea = txt)}
+                value={JSON.parse(JSON.stringify(this.state.voters[this.state.index].note))}
+                onChange={this.handleChange}                
+              />               
+              <button
+                onClick={() => {
+                  this.updateNote();
+                }}
+                className="button-modal"
               >
-                {this.state.notes}
-              </textarea>
-              <button className="button-modal">Submit</button>
+                Submit
+              </button>
             </div>
           </div>
         </div>
