@@ -42,7 +42,7 @@ class Canvas extends Component {
           szEmailAddress: "Loading...",
           dtBirthDate: "1/1/2019",
           szPartyName: "Loading...",
-          note: "testing..."
+          note: ""
         }
       ],
       index: 0,
@@ -89,10 +89,13 @@ class Canvas extends Component {
   }
 
   handleChange = (event)=>{
-    const {voters} = this.state;
-    voters[this.state.index].note =event.target.value;
+    let voters= [...this.state.voters];
+    let voter ={...voters[this.state.index]}
+    voter.note = event.target.value
+    voters[this.state.index]=voter;
     this.setState({ voters });
   }
+ 
 
   nextVoter = () => {
     this.index = this.index + 1;
@@ -100,6 +103,7 @@ class Canvas extends Component {
 
     setTimeout(() => {
       this.setState({ index: this.index });
+      this._tarea.value=this.state.voters[this.index].note;
     }, 400);
     if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
       this.setState({
@@ -145,6 +149,7 @@ class Canvas extends Component {
 
     setTimeout(() => {
       this.setState({ index: this.index });
+      this._tarea.value=this.state.voters[this.index].note;
     }, 400);
     if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
       this.setState({
@@ -200,6 +205,9 @@ class Canvas extends Component {
       .catch(function(error) {
         console.log(error);
       });
+
+      this._bgmodal.style.display = "none";
+
   };
 
   openMaps = () => {
