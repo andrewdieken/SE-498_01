@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_171610) do
+ActiveRecord::Schema.define(version: 2019_04_18_024842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_171610) do
     t.string "sDistrictID_5", default: "none"
     t.string "iSubDistrict_5", default: "none"
     t.string "szDistrictName_5", default: "none"
+    t.string "note"
   end
 
   add_foreign_key "visits", "voters"

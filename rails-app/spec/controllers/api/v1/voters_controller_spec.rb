@@ -41,4 +41,11 @@ RSpec.describe Api::V1::VotersController, type: :controller do
       expect ( '{:status, :message, :data}')
     end
   end
+
+  describe '#update' do
+    it 'should update the voter object with a note' do
+      patch :update, params: {id:voter.id, note:"foobar"}
+      expect(Voter.find_by_id(voter.id).note).to eq("foobar")
+    end
+  end
 end

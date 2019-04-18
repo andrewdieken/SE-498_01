@@ -18,6 +18,16 @@ module Api
         end
       end
 
+      def update
+        voter = Voter.find_by_id(params[:id])
+        voter.note = params[:note]
+        if voter.save
+          render json: {status: 'SUCCESS', id: params[:id]},status: :ok
+        else
+          render json: {status: 'FAILED', id: params[:id]}, status: :unprocessable_entity
+        end
+      end
+
     end
   end
 end
