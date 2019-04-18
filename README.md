@@ -1,9 +1,17 @@
+
+
 # SE-498_01
 
 - See `react-app` for the frontend app
 - See `rails-app` for the backend app
 
+
+
 # Development Environment Setup:
+
+##
+Ruby  - 2.5.3
+Rails - 5.2
 
 ## From within the root directory, `SE-498_01`, run the following command
 ```shell
