@@ -209,8 +209,9 @@ input.input100 {
 
 
 textarea.input100 {
-  min-height: 169px;
+  min-height: 62px;
   padding: 19px 35px 0 35px;
+  resize: vertical;
 }
 
 /*------------------------------------------------------------------
