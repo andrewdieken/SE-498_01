@@ -2,6 +2,7 @@
 defaults: &defaults
   precinct_id: 68315
   canvasser_password: "password"
+  note: ""
 
 development:
   <<: *defaults
