@@ -46,5 +46,18 @@ module Types
       Setting['canvasser_password']
     end
 
+    field :get_note_by_id, String, null: true do
+      description "Retrieve note for voter"
+      argument :id, ID, required: true
+    end
+    def get_note_by_id(id:)
+      voter_note = Voter.find(id).note
+      if voter_note.nil?
+        Setting['note']
+      else
+        voter_note
+      end
+    end
+
   end
 end
