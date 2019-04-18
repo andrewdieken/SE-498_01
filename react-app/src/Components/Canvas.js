@@ -4,6 +4,7 @@ import house from "../Images/house.png";
 import info from "../Images/info.png";
 import map from "../Images/map.png";
 import x_house from "../Images/reject_house.png";
+import nts from "../Images/notes.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
@@ -40,7 +41,8 @@ class Canvas extends Component {
           szPartyName: "Loading..."
         }
       ],
-      index: 0
+      index: 0,
+      notes: "testing"
     };
   }
 
@@ -65,7 +67,12 @@ class Canvas extends Component {
           }
         `
       })
-      .then(result => this.setState({ voters: result.data.voterByPrecinct }));
+      .then(result => this.setState({ voters: result.data.voterByPrecinct }))
+      .catch(function(error) {
+        alert(
+          "No voters in this precinct, please contact your campaign manager."
+        );        
+      });
   }
 
   componentDidUpdate() {
@@ -158,6 +165,14 @@ class Canvas extends Component {
     setTimeout(() => {
       this._container.className = "main_container";
     }, 1000);
+  };
+
+  openNote = () => {
+    this._bgmodal.style.display = "flex";
+  };
+
+  closeNote = () => {
+    this._bgmodal.style.display = "none";
   };
 
   openMaps = () => {
@@ -259,26 +274,29 @@ class Canvas extends Component {
               );
             }
           })()}
-          <h3
-            className="content1"
-            onClick={() => {
-              this.openMaps();
-            }}
-          >
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].szSitusAddress)
-            )}
-            <br />
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].szSitusCity)
-            )}
-            , <br />
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].sSitusState)
-            )}{" "}
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].sSitusZip)
-            )}
+          <h3 className="content1">
+            <span
+              onClick={() => {
+                this.openMaps();
+              }}
+            >
+              {JSON.parse(
+                JSON.stringify(
+                  this.state.voters[this.state.index].szSitusAddress
+                )
+              )}
+              <br />
+              {JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].szSitusCity)
+              )}
+              , <br />
+              {JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].sSitusState)
+              )}{" "}
+              {JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].sSitusZip)
+              )}
+            </span>
           </h3>
           <img alt="mpe" className="map_logo" src={map} />
         </div>
@@ -293,6 +311,14 @@ class Canvas extends Component {
             <img alt="hse" className="x_house_logo" src={x_house} />
           </button>
           <button
+            className="notes_button"
+            onClick={() => {
+              this.openNote();
+            }}
+          >
+            <img alt="nts" className="notes" src={nts} />
+          </button>
+          <button
             className="accept"
             type="button"
             onClick={() => {
@@ -302,6 +328,32 @@ class Canvas extends Component {
           >
             <img alt="hse" className="house_logo" src={house} />
           </button>
+        </div>
+        <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
+          <div className="modal-contents">
+          <h3 className="notes_heading">Voter Notes:</h3>
+            <div
+              className="close"
+              onClick={() => {
+                this.closeNote();
+              }}
+            >
+              +
+            </div>
+
+            <div>
+              <textarea
+                cols="40"
+                rows="5"
+                className="modal-input"
+                type="text"
+                placeholder="Notes:"
+              >
+                {this.state.notes}
+              </textarea>
+              <button className="button-modal">Submit</button>
+            </div>
+          </div>
         </div>
       </div>
     );
