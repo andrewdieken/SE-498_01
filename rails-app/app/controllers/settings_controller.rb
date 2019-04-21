@@ -1,4 +1,5 @@
 class SettingsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @precinct_id = Setting['precinct_id']
     @precinct_string = @precinct_id.join(',')
