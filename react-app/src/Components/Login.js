@@ -18,7 +18,7 @@ class Login extends Component {
     }
 
     this.state = {
-      global_password: ""
+      global_password: "xxx-xxx-xxx"
     };
   }
 
@@ -33,7 +33,7 @@ class Login extends Component {
       })
       .then(result =>
         this.setState({ global_password: result.data.getCanvasserPassword })
-      )      
+      )
       .catch(function(error) {
         alert(
           "There is no active campaign, please contact your campaign manager."
@@ -43,9 +43,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div className='bground'>
+      <div className="bground">
         <h2 className="heading">Ready to Canvas?</h2>
-        <form className="login-form" action="">
+        <div className="login-form">
           <div className="container">
             <label className="special" htmlFor="uname">
               <h4 className="lbl">Name</h4>
@@ -54,8 +54,7 @@ class Login extends Component {
               className="inp"
               type="text"
               placeholder="Enter your Name"
-              name="uname"
-              required
+              name="uname"              
             />
             <label htmlFor="psw">
               <h4 className="lbl">Password</h4>
@@ -70,17 +69,20 @@ class Login extends Component {
             />
             <button
               onClick={() => {
-                authenticate.login(this.state.global_password, this._password.value, () => {
-                  this.props.history.push("/");
-                });
+                authenticate.login(
+                  this.state.global_password,
+                  this._password.value,
+                  () => {
+                    this.props.history.push("/");
+                  }
+                );
               }}
               className="login"
-              type="submit"
             >
               Login
             </button>
           </div>
-        </form>
+        </div>
       </div>
     );
   }
