@@ -46,7 +46,8 @@ class Canvas extends Component {
         }
       ],
       index: 0,
-      notes: "testing"
+      notes: "testing",
+      voterScore:"4"
     };
   }
 
@@ -74,7 +75,7 @@ class Canvas extends Component {
       })
       .then(result => this.setState({ voters: result.data.voterByPrecinct }))
       .catch(function(error) {
-       console.log(error)
+        console.log(error);
       });
   }
 
@@ -237,6 +238,18 @@ class Canvas extends Component {
             )}{" "}
             <br />
             {this.state.voters[this.state.index].szNameLast}
+            {(() => {
+              if (parseInt(this.state.voterScore) < 3) {
+                return <h3 className="red">{this.state.voterScore}</h3>;
+              } else if (
+                parseInt(this.state.voterScore) <= 4 &&
+                parseInt(this.state.voterScore) >= 3
+              ) {
+                return <h3 className="orange">{this.state.voterScore}</h3>;
+              } else if (parseInt(this.state.voterScore) >= 5) {
+                return <h3 className="green">{this.state.voterScore}</h3>;
+              }
+            })()}
           </div>
           <div className="item-b">
             {JSON.parse(
