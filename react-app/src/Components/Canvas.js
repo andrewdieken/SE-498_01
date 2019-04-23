@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Canvas.css";
+import "../CSS/Canvas.css";
 import house from "../Images/house.png";
 import info from "../Images/info.png";
 import map from "../Images/map.png";
@@ -80,13 +80,9 @@ class Canvas extends Component {
       });
   }
 
-  componentDidUpdate() {
-    console.log("Component did update");
-  }
+  componentDidUpdate() {}
 
-  componentWillUpdate() {
-    console.log("Component will update");
-  }
+  componentWillUpdate() {}
 
   handleChange = event => {
     let voters = [...this.state.voters];
@@ -105,6 +101,9 @@ class Canvas extends Component {
       this._tarea.value = this.state.voters[this.index].note;
     }, 400);
     if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
+      alert(
+        "No voters in this precinct, please contact your campaign manager."
+      );
       this.setState({
         voters: [
           {
@@ -151,6 +150,9 @@ class Canvas extends Component {
       this._tarea.value = this.state.voters[this.index].note;
     }, 400);
     if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
+      alert(
+        "No voters in this precinct, please contact your campaign manager."
+      );
       this.setState({
         voters: [
           {
@@ -186,7 +188,6 @@ class Canvas extends Component {
 
   openNote = () => {
     this._bgmodal.style.display = "flex";
-    console.log();
   };
 
   closeNote = () => {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Login.css";
+import "../CSS/Login.css";
 import authenticate from "../Classes/authenticate";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
@@ -31,8 +31,9 @@ class Login extends Component {
           }
         `
       })
-      // .then(result => this.setState({ global_password: result.data.getCanvasserPassword}))
-      .then(result => console.log(result))
+      .then(result =>
+        this.setState({ global_password: result.data.getCanvasserPassword })
+      )      
       .catch(function(error) {
         alert(
           "There is no active campaign, please contact your campaign manager."
@@ -42,7 +43,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className='bground'>
         <h2 className="heading">Ready to Canvas?</h2>
         <form className="login-form" action="">
           <div className="container">
@@ -65,10 +66,11 @@ class Login extends Component {
               placeholder="Enter Password"
               name="psw"
               required
+              ref={pwd => (this._password = pwd)}
             />
             <button
               onClick={() => {
-                authenticate.login("123", "123", () => {
+                authenticate.login(this.state.global_password, this._password.value, () => {
                   this.props.history.push("/");
                 });
               }}

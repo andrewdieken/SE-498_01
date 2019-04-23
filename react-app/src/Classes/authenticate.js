@@ -3,12 +3,12 @@ class Authenticate{
         this.authenticated =false;
     }
 
-    login(globalPass,userInput,cb){
+    login(globalPass,userInput,cb){       
         if(globalPass===userInput){
             this.authenticated =true;
             cb();
         }else{
-            return;
+            alert("Incorrect password! Please try a new password or contact your campaign manager for the password.");
         }
      
 

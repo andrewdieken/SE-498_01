@@ -4,6 +4,7 @@ import Canvas from "./Components/Canvas";
 import Login from "./Components/Login";
 import { Route, Switch } from "react-router-dom";
 import { ProtectedRoute } from "./Components/ProtectedRoute";
+import Error404 from "./Components/Error404";
 
 class App extends Component {
   render() {
@@ -12,7 +13,7 @@ class App extends Component {
         <Switch>
           <ProtectedRoute exact path="/" component={Canvas} />
           <Route exact path="/login" component={Login} />
-          <Route path="*" component={()=>"404 NOT FOUND"}/>
+          <Route path="*" component={Error404}/>
         </Switch>
       </div>
     );

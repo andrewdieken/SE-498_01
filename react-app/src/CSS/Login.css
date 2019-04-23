@@ -5,11 +5,21 @@
   width: 90vw;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20px;
+  margin-top: -10px;
+}
+.bground{
+  background-color: #dfdfdf;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 .heading {
   text-align: center;
-  margin-top: 60px;
+  margin-top: -30px;
   color: black;
   font-size: 25px;
 }
@@ -60,5 +70,14 @@
 .heading{
     text-align: center;
     color:black;
-    font-size: 35px;
+    font-size: 25px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  }
+  @media only screen and (min-width: 325px) {
+    .heading{
+      text-align: center;
+      color:black;
+      font-size: 35px;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    }
   }
