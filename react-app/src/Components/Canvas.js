@@ -74,9 +74,7 @@ class Canvas extends Component {
       })
       .then(result => this.setState({ voters: result.data.voterByPrecinct }))
       .catch(function(error) {
-        alert(
-          "No voters in this precinct, please contact your campaign manager."
-        );
+       console.log(error)
       });
   }
 
