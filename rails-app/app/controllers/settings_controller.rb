@@ -18,7 +18,8 @@ class SettingsController < ApplicationController
     Visit.delete_all
     flash[:notice] = "All visit records deleted"
     redirect_to settings_path
-
+  end
+  
   def exportcsv
     @visits = Visit.all
     respond_to do |format|
