@@ -8,8 +8,7 @@ import nts from "../Images/notes.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
-import {Link} from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 class Canvas extends Component {
   constructor(props) {
@@ -78,7 +77,24 @@ class Canvas extends Component {
       })
       .then(result => this.setState({ voters: result.data.voterByPrecinct }))
       .catch(error => {
-        this.setState({ isLoaded: false });
+        this.setState({
+          voters: [
+            {
+              szNameLast: "Loading...",
+              szNameFirst: "Loading...",
+              szSitusAddress: "Loading...",
+              szSitusCity: "Loading...",
+              sSitusState: "Loading...",
+              sSitusZip: "Loading...",
+              szPhone: "Loading...",
+              szEmailAddress: "Loading...",
+              dtBirthDate: "1/1/2019",
+              szPartyName: "Loading...",
+              note: "Loading..."
+            }
+          ],
+          isLoaded: false
+        });
         console.log(error);
       });
   }
@@ -253,7 +269,7 @@ class Canvas extends Component {
                 JSON.stringify(this.state.voters[this.state.index].szNameFirst)
               )}{" "}
               <br />
-              {this.state.voters[this.state.index].szNameLast}             
+              {this.state.voters[this.state.index].szNameLast}
             </div>
             <div className="item-b">
               {JSON.parse(
