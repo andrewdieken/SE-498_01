@@ -14,12 +14,11 @@ class SettingsController < ApplicationController
     redirect_to settings_path
   end
 
-<<<<<<< HEAD
   def delete_visits
     Visit.delete_all
     flash[:notice] = "All visit records deleted"
     redirect_to settings_path
-=======
+
   def exportcsv
     @visits = Visit.all
     respond_to do |format|
@@ -31,7 +30,6 @@ class SettingsController < ApplicationController
     )
     }
     end
->>>>>>> Added links to download csv and xsl
   end
 
 end
