@@ -8,8 +8,7 @@ import nts from "../Images/notes.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
-import { Link } from "react-router-dom";
-
+import NoVoters from "../Components/NoVoters";
 class Canvas extends Component {
   constructor(props) {
     super(props);
@@ -34,7 +33,7 @@ class Canvas extends Component {
       voters: [
         {
           szNameLast: "Loading...",
-          szNameFirst: "Loading",
+          szNameFirst: "Loading...",
           szSitusAddress: "Loading...",
           szSitusCity: "Loading...",
           sSitusState: "Loading...",
@@ -80,21 +79,7 @@ class Canvas extends Component {
       )
       .catch(error => {
         this.setState({
-          voters: [
-            {
-              szNameLast: "Loading...",
-              szNameFirst: "Loading...",
-              szSitusAddress: "Loading...",
-              szSitusCity: "Loading...",
-              sSitusState: "Loading...",
-              sSitusZip: "Loading...",
-              szPhone: "Loading...",
-              szEmailAddress: "Loading...",
-              dtBirthDate: "1/1/2019",
-              szPartyName: "Loading...",
-              note: ""
-            }
-          ], isLoaded:"0"
+          isLoaded:"3"
         });
       });
   }
@@ -245,34 +230,19 @@ class Canvas extends Component {
   };
 
   render() {
-    if (
-      JSON.parse(
-        JSON.stringify(this.state.voters[this.state.index].szNameFirst)
-      ) === "Loading..."
-    ) {
+    if (this.state.isLoaded==="1") {
       return (
-        <div className="bground2">
-          <div className="error2">
-            <div className="container2">
-              <h2 className="heading2">NO VOTERS IN YOUR ASSIGNED PRECINCT</h2>
-              <Link to="/login">
-                <button className="back2" type="submit">
-                  Back to Login
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      );
-    } else if (this.state.isLoaded === "1") {
-      return (
-        <div className="bground2">
-          <div className="error2">
-            <div className="container2">
+        <div className="bground4">
+          <div className="error4">
+            <div className="container4">
               <h2 className="heading4">Loading Voters</h2>
             </div>
           </div>
         </div>
+      );
+    } else if (this.state.isLoaded==="3" || !Array.isArray(this.state.voters) || !this.state.voters.length) {
+      return(
+        <NoVoters />
       );
     } else {
       return (
