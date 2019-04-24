@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import "../CSS/NoCampaign.css";
+
 
 class NoCampaign extends Component {
   tryAgain = () => {
@@ -7,17 +9,17 @@ class NoCampaign extends Component {
 
   render() {
     return (
-      <div className="bground2">
-        <div className="error2">
-          <div className="container2">
-            <h2 className="heading2">
+      <div className="bground3">
+        <div className="error3">
+          <div className="container3">
+            <h2 className="heading3">
               THERE IS NO CAMPAIGN CURRENTLY IN PROGRESS
             </h2>
             <button
               onClick={() => {
                 this.tryAgain();
               }}
-              className="back2"
+              className="back3"
               type="submit"
             >
               Try Again?

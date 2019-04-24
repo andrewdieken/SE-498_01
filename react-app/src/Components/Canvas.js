@@ -228,7 +228,7 @@ class Canvas extends Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <NoVoters/>;
+      return <NoVoters />
     } else {
       return (
         <div className="App-header">

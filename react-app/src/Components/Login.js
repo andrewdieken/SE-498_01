@@ -43,7 +43,7 @@ class Login extends Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <NoCampaign />;
+      return <NoCampaign />
     } else {
       return (
         <div className="bground">
