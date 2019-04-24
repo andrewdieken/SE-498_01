@@ -14,4 +14,10 @@ class SettingsController < ApplicationController
     redirect_to settings_path
   end
 
+  def delete_visits
+    Visit.delete_all
+    flash[:notice] = "All visit records deleted"
+    redirect_to settings_path
+  end
+
 end

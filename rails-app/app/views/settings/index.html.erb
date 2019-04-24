@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <div class="container-contact100">
 
 	<div class="wrap-contact100">
@@ -40,6 +41,10 @@
 						update
 					</span>
 				</button>
+			</div>
+
+			<div class="container-contact100-form-btn">
+        <%= link_to 'Reset Visited Records', delete_visits_path, class: 'contact100-form-btn' %>
 			</div>
 
 		</form>
