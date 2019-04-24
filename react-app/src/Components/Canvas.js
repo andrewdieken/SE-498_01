@@ -8,6 +8,7 @@ import nts from "../Images/notes.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
+import NoVoters from '../Components/NoVoters'; 
 
 class Canvas extends Component {
   constructor(props) {
@@ -47,7 +48,8 @@ class Canvas extends Component {
       ],
       index: 0,
       notes: "testing",
-      voterScore:"4"
+      voterScore: "4",
+      isLoaded: true
     };
   }
 
@@ -74,8 +76,8 @@ class Canvas extends Component {
         `
       })
       .then(result => this.setState({ voters: result.data.voterByPrecinct }))
-      .catch(function(error) {
-        console.log(error);
+      .catch(error => {
+        this.setState({ isLoaded: false });
       });
   }
 
@@ -100,9 +102,6 @@ class Canvas extends Component {
       this._tarea.value = this.state.voters[this.index].note;
     }, 400);
     if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
-      alert(
-        "No voters in this precinct, please contact your campaign manager."
-      );
       this.setState({
         voters: [
           {
@@ -119,7 +118,8 @@ class Canvas extends Component {
             note: "Loading..."
           }
         ],
-        index: 0
+        index: 0,
+        isLoaded: false
       });
     } else if (this.index === this.state.voters.length) {
       this.index = 0;
@@ -149,9 +149,6 @@ class Canvas extends Component {
       this._tarea.value = this.state.voters[this.index].note;
     }, 400);
     if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
-      alert(
-        "No voters in this precinct, please contact your campaign manager."
-      );
       this.setState({
         voters: [
           {
@@ -168,7 +165,8 @@ class Canvas extends Component {
             note: "Loading..."
           }
         ],
-        index: 0
+        index: 0,
+        isLoaded: false
       });
     } else if (this.index === this.state.voters.length) {
       this.index = 0;
@@ -229,197 +227,205 @@ class Canvas extends Component {
   };
 
   render() {
-    return (
-      <div className="App-header">
-        <div className="main_container" ref={el => (this._container = el)}>
-          <div className="item-a">
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].szNameFirst)
-            )}{" "}
-            <br />
-            {this.state.voters[this.state.index].szNameLast}
-            {(() => {
-              if (parseInt(this.state.voterScore) < 3) {
-                return <h3 className="red">{this.state.voterScore}</h3>;
-              } else if (
-                parseInt(this.state.voterScore) <= 4 &&
-                parseInt(this.state.voterScore) >= 3
-              ) {
-                return <h3 className="orange">{this.state.voterScore}</h3>;
-              } else if (parseInt(this.state.voterScore) >= 5) {
-                return <h3 className="green">{this.state.voterScore}</h3>;
-              }
-            })()}
-          </div>
-          <div className="item-b">
-            {JSON.parse(
-              JSON.stringify(this.state.voters[this.state.index].szPartyName)
-            ).substring(0, 1)}
-            <br />
-            {new Date().getFullYear() -
-              parseInt(
-                JSON.parse(
-                  JSON.stringify(
-                    new Date(this.state.voters[this.state.index].dtBirthDate)
-                  )
-                ).substring(0, 5)
-              )}
-          </div>
-          <div className="item-d">
-            <h3 className="content">
+    if (!this.state.isLoaded) {
+      return <NoVoters/>;
+    } else {
+      return (
+        <div className="App-header">
+          <div className="main_container" ref={el => (this._container = el)}>
+            <div className="item-a">
+              {JSON.parse(
+                JSON.stringify(this.state.voters[this.state.index].szNameFirst)
+              )}{" "}
+              <br />
+              {this.state.voters[this.state.index].szNameLast}
+              {(() => {
+                if (parseInt(this.state.voterScore) < 3) {
+                  return <h3 className="red">{this.state.voterScore}</h3>;
+                } else if (
+                  parseInt(this.state.voterScore) <= 4 &&
+                  parseInt(this.state.voterScore) >= 3
+                ) {
+                  return <h3 className="orange">{this.state.voterScore}</h3>;
+                } else if (parseInt(this.state.voterScore) >= 5) {
+                  return <h3 className="green">{this.state.voterScore}</h3>;
+                }
+              })()}
+            </div>
+            <div className="item-b">
               {JSON.parse(
                 JSON.stringify(this.state.voters[this.state.index].szPartyName)
-              )}
-            </h3>
-
-            {(() => {
-              if (
-                JSON.parse(
-                  JSON.stringify(this.state.voters[this.state.index].szPhone)
-                ) === null ||
-                JSON.parse(
-                  JSON.stringify(this.state.voters[this.state.index].szPhone)
-                ) === "none"
-              ) {
-                return <h3 className="content">No Phone Provided</h3>;
-              } else {
-                return (
-                  <h3 className="content">
-                    {JSON.parse(
-                      JSON.stringify(
-                        this.state.voters[this.state.index].szPhone
-                      )
-                    )}{" "}
-                  </h3>
-                );
-              }
-            })()}
-            <img alt="hse" className="info_logo" src={info} />
-
-            {(() => {
-              if (
-                JSON.parse(
-                  JSON.stringify(
-                    this.state.voters[this.state.index].szEmailAddress
-                  )
-                ) === null ||
-                JSON.parse(
-                  JSON.stringify(
-                    this.state.voters[this.state.index].szEmailAddress
-                  )
-                ) === "none"
-              ) {
-                return <h3 className="content">No Email Provided</h3>;
-              } else {
-                return (
-                  <h3 className="content">
-                    {JSON.parse(
-                      JSON.stringify(
-                        this.state.voters[this.state.index].szEmailAddress
-                      )
-                    )}{" "}
-                  </h3>
-                );
-              }
-            })()}
-            <h3 className="content1">
-              <span
-                onClick={() => {
-                  this.openMaps();
-                }}
-              >
+              ).substring(0, 1)}
+              <br />
+              {new Date().getFullYear() -
+                parseInt(
+                  JSON.parse(
+                    JSON.stringify(
+                      new Date(this.state.voters[this.state.index].dtBirthDate)
+                    )
+                  ).substring(0, 5)
+                )}
+            </div>
+            <div className="item-d">
+              <h3 className="content">
                 {JSON.parse(
                   JSON.stringify(
-                    this.state.voters[this.state.index].szSitusAddress
+                    this.state.voters[this.state.index].szPartyName
                   )
                 )}
-                <br />
-                {JSON.parse(
-                  JSON.stringify(
-                    this.state.voters[this.state.index].szSitusCity
-                  )
-                )}
-                , <br />
-                {JSON.parse(
-                  JSON.stringify(
-                    this.state.voters[this.state.index].sSitusState
-                  )
-                )}{" "}
-                {JSON.parse(
-                  JSON.stringify(this.state.voters[this.state.index].sSitusZip)
-                )}
-              </span>
-            </h3>
-            <img alt="mpe" className="map_logo" src={map} />
-          </div>
-          <div className="item-e">
-            <button
-              className="reject"
-              type="button"
-              onClick={() => {
-                this.nextVoter();
-              }}
-            >
-              <img alt="hse" className="x_house_logo" src={x_house} />
-            </button>
-            <button
-              className="notes_button"
-              onClick={() => {
-                this.openNote();
-              }}
-            >
-              <img alt="nts" className="notes" src={nts} />
-            </button>
-            <button
-              className="accept"
-              type="button"
-              onClick={() => {
-                this.animateSuccess();
-                this.acceptVoter();
-              }}
-            >
-              <img alt="hse" className="house_logo" src={house} />
-            </button>
-          </div>
-          <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
-            <div className="modal-contents">
-              <h3 className="notes_heading">Voter Notes:</h3>
-              <div
-                className="close"
-                onClick={() => {
-                  this.closeNote();
-                }}
-              >
-                +
-              </div>
+              </h3>
 
-              <div>
-                <textarea
-                  cols="40"
-                  rows="5"
-                  className="modal-input"
-                  type="text"
-                  placeholder="Notes:"
-                  ref={txt => (this._tarea = txt)}
-                  value={JSON.parse(
-                    JSON.stringify(this.state.voters[this.state.index].note)
-                  )}
-                  onChange={this.handleChange}
-                />
-                <button
+              {(() => {
+                if (
+                  JSON.parse(
+                    JSON.stringify(this.state.voters[this.state.index].szPhone)
+                  ) === null ||
+                  JSON.parse(
+                    JSON.stringify(this.state.voters[this.state.index].szPhone)
+                  ) === "none"
+                ) {
+                  return <h3 className="content">No Phone Provided</h3>;
+                } else {
+                  return (
+                    <h3 className="content">
+                      {JSON.parse(
+                        JSON.stringify(
+                          this.state.voters[this.state.index].szPhone
+                        )
+                      )}{" "}
+                    </h3>
+                  );
+                }
+              })()}
+              <img alt="hse" className="info_logo" src={info} />
+
+              {(() => {
+                if (
+                  JSON.parse(
+                    JSON.stringify(
+                      this.state.voters[this.state.index].szEmailAddress
+                    )
+                  ) === null ||
+                  JSON.parse(
+                    JSON.stringify(
+                      this.state.voters[this.state.index].szEmailAddress
+                    )
+                  ) === "none"
+                ) {
+                  return <h3 className="content">No Email Provided</h3>;
+                } else {
+                  return (
+                    <h3 className="content">
+                      {JSON.parse(
+                        JSON.stringify(
+                          this.state.voters[this.state.index].szEmailAddress
+                        )
+                      )}{" "}
+                    </h3>
+                  );
+                }
+              })()}
+              <h3 className="content1">
+                <span
                   onClick={() => {
-                    this.updateNote();
+                    this.openMaps();
                   }}
-                  className="button-modal"
                 >
-                  Submit
-                </button>
+                  {JSON.parse(
+                    JSON.stringify(
+                      this.state.voters[this.state.index].szSitusAddress
+                    )
+                  )}
+                  <br />
+                  {JSON.parse(
+                    JSON.stringify(
+                      this.state.voters[this.state.index].szSitusCity
+                    )
+                  )}
+                  , <br />
+                  {JSON.parse(
+                    JSON.stringify(
+                      this.state.voters[this.state.index].sSitusState
+                    )
+                  )}{" "}
+                  {JSON.parse(
+                    JSON.stringify(
+                      this.state.voters[this.state.index].sSitusZip
+                    )
+                  )}
+                </span>
+              </h3>
+              <img alt="mpe" className="map_logo" src={map} />
+            </div>
+            <div className="item-e">
+              <button
+                className="reject"
+                type="button"
+                onClick={() => {
+                  this.nextVoter();
+                }}
+              >
+                <img alt="hse" className="x_house_logo" src={x_house} />
+              </button>
+              <button
+                className="notes_button"
+                onClick={() => {
+                  this.openNote();
+                }}
+              >
+                <img alt="nts" className="notes" src={nts} />
+              </button>
+              <button
+                className="accept"
+                type="button"
+                onClick={() => {
+                  this.animateSuccess();
+                  this.acceptVoter();
+                }}
+              >
+                <img alt="hse" className="house_logo" src={house} />
+              </button>
+            </div>
+            <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
+              <div className="modal-contents">
+                <h3 className="notes_heading">Voter Notes:</h3>
+                <div
+                  className="close"
+                  onClick={() => {
+                    this.closeNote();
+                  }}
+                >
+                  +
+                </div>
+
+                <div>
+                  <textarea
+                    cols="40"
+                    rows="5"
+                    className="modal-input"
+                    type="text"
+                    placeholder="Notes:"
+                    ref={txt => (this._tarea = txt)}
+                    value={JSON.parse(
+                      JSON.stringify(this.state.voters[this.state.index].note)
+                    )}
+                    onChange={this.handleChange}
+                  />
+                  <button
+                    onClick={() => {
+                      this.updateNote();
+                    }}
+                    className="button-modal"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 export default Canvas;
