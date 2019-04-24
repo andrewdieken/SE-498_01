@@ -46,7 +46,6 @@
     opacity: 1;
   }
 }
-
 .main_container_flicker_right {
   height: 465px;
   width: 93vw;
@@ -98,7 +97,7 @@
   grid-area: info;
   background-color: #ffffff;
   text-align: right;
-  padding-right: 14px;
+  padding-right: 20px;
   font-size: 20px;
   padding-top: 12px;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
@@ -339,7 +338,101 @@
   cursor: pointer;
 }
 
+.red {
+  height: 50px;
+  width: 30px;
+  background-color: red;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 21px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: black;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+  margin-left: 210px;
+  margin-top: -54px;
+}
+.orange {
+  height: 50px;
+  width: 30px;
+  background-color: orange;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 21px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: black;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+  margin-left: 210px;
+  margin-top: -54px;
+}
+
+.green {
+  height: 50px;
+  width: 30px;
+  background-color: green;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 21px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: black;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+  margin-left: 210px;
+  margin-top: -54px;
+}
+
 @media only screen and (min-width: 325px) {
+
+  .red {
+    height: 50px;
+    width: 30px;
+    background-color: red;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 255px;
+    margin-top: -54px;
+}
+  .orange {
+    height: 50px;
+    width: 30px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 255px;
+    margin-top: -54px;
+  }
+  
+  .green {
+    height: 50px;
+    width: 30px;
+    background-color: green;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 255px;
+    margin-top: -54px;
+  }
   .notes_button {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -364,8 +457,106 @@
     margin-bottom: 37px;
   }
 }
+@media only screen and (min-width: 360px) {
 
-@media only screen and (min-width: 414px) {
+  .red {
+    height: 50px;
+    width: 30px;
+    background-color: red;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 244px;
+    margin-top: -54px;
+}
+  .orange {
+    height: 50px;
+    width: 30px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 244px;
+    margin-top: -54px;
+  }
+  
+  .green {
+    height: 50px;
+    width: 30px;
+    background-color: green;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 244px;
+    margin-top: -54px;
+  }
+}
+@media only screen and (min-width: 375px) {
+
+  .red {
+    height: 50px;
+    width: 30px;
+    background-color: red;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 255px;
+    margin-top: -54px;
+}
+  .orange {
+    height: 50px;
+    width: 30px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 255px;
+    margin-top: -54px;
+  }
+  
+  .green {
+    height: 50px;
+    width: 30px;
+    background-color: green;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 255px;
+    margin-top: -54px;
+  }
+}
+
+@media only screen and (min-width: 411px) {
   .main_container_flicker {
     height: 465px;
     width: 93vw;
@@ -430,6 +621,52 @@
     100% {
       opacity: 1;
     }
+  }
+  .red {
+    height: 50px;
+    width: 30px;
+    background-color: red;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 285px;
+    margin-top: -54px;
+}
+  .orange {
+    height: 50px;
+    width: 30px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 285px;
+    margin-top: -54px;
+  }
+  
+  .green {
+    height: 50px;
+    width: 30px;
+    background-color: green;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 285px;
+    margin-top: -54px;
   }
 }
 
@@ -498,5 +735,189 @@
     100% {
       opacity: 1;
     }
+  }
+  .red {
+    height: 50px;
+    width: 30px;
+    background-color: red;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 565px;
+    margin-top: -54px;
+}
+  .orange {
+    height: 50px;
+    width: 30px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 565px;
+    margin-top: -54px;
+  }
+  
+  .green {
+    height: 50px;
+    width: 30px;
+    background-color: green;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 565px;
+    margin-top: -54px;
+  }
+  .item-b {
+    grid-area: info;
+    background-color: #ffffff;
+    text-align: right;
+    padding-right: 50px;
+    font-size: 20px;
+    padding-top: 12px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .main_container_flicker {
+    height: 465px;
+    width: 93vw;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
+    grid-template-rows: 80px 305px 80px;
+    border-radius: 20px;
+    overflow: hidden;
+    perspective: 1px;
+    position: absolute;
+    box-shadow: 5px 8px #000000;
+    animation: flickerAnimation 1.3s;
+    animation-iteration-count: 1;
+    grid-template-areas:
+      "header header header header header header info "
+      "main main main main main main main  "
+      "footer footer footer footer footer footer footer ";
+  }
+  @keyframes flickerAnimation {
+    0% {
+      opacity: 1;
+      left: -500px;
+    }
+    50% {
+      opacity: 0;
+      left: -1000px;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .main_container_flicker_right {
+    height: 465px;
+    width: 93vw;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
+    grid-template-rows: 80px 305px 80px;
+    border-radius: 20px;
+    overflow: hidden;
+    perspective: 1px;
+    position: absolute;
+    box-shadow: 5px 8px #000000;
+    animation: flickerAnimationRight 1.3s;
+    animation-iteration-count: 1;
+    grid-template-areas:
+      "header header header header header header info "
+      "main main main main main main main  "
+      "footer footer footer footer footer footer footer ";
+  }
+  @keyframes flickerAnimationRight {
+    0% {
+      opacity: 1;
+      right: -500px;
+    }
+    50% {
+      opacity: 0;
+      right: -1000px;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .red {
+    height: 50px;
+    width: 30px;
+    background-color: red;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 765px;
+    margin-top: -54px;
+}
+  .orange {
+    height: 50px;
+    width: 30px;
+    background-color: orange;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 765px;
+    margin-top: -54px;
+  }
+  
+  .green {
+    height: 50px;
+    width: 30px;
+    background-color: green;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 21px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: black;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+    margin-left: 765px;
+    margin-top: -54px;
+  }
+  .item-b {
+    grid-area: info;
+    background-color: #ffffff;
+    text-align: right;
+    padding-right: 70px;
+    font-size: 20px;
+    padding-top: 12px;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    color: black;
+    font-weight: bold;
+    border-bottom: 2px solid black;
   }
 }
