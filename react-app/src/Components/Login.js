@@ -37,7 +37,7 @@ class Login extends Component {
         this.setState({ global_password: result.data.getCanvasserPassword })
       )
       .catch(error => {
-        this.setState({ isLoaded: true });
+        this.setState({ isLoaded: false });
       });
   }
 
