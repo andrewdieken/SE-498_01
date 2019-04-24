@@ -11,7 +11,7 @@ class NoCampaign extends Component {
         <div className="error2">
           <div className="container2">
             <h2 className="heading2">
-              THERE IS NOT CAMPAIGN CURRENTLY IN PROGRESS
+              THERE IS NO CAMPAIGN CURRENTLY IN PROGRESS
             </h2>
             <button
               onClick={() => {
