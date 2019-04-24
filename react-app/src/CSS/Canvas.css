@@ -1,3 +1,47 @@
+.error2 {
+  background-color: #13232f;
+  font-family: "Titillium Web", sans-serif;
+  box-shadow: 0 0 12px #2d2d2d;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -20px;
+}
+.heading2 {
+  text-align: center;
+  margin-top: 60px;
+  color: white;
+  font-size: 25px;
+}
+
+.back2 {
+  background-color: #1ab188;
+  color: white;
+  border: 2px solid #1ab188;
+  font-weight: bold;
+  font-family: "Titillium Web", sans-serif;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 35px;
+  font-size: 25px;
+}
+.bground2 {
+  background-color: #dfdfdf;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.container2 {
+  padding: 16px;
+}
+
 .main_container {
   height: 470px;
   width: 93vw;
@@ -384,12 +428,11 @@
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
   margin-right: 6px;
-    margin-top: -75px;
-    float: right;
+  margin-top: -75px;
+  float: right;
 }
 
 @media only screen and (min-width: 325px) {
-
   .red {
     height: 50px;
     width: 30px;
@@ -405,7 +448,7 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
-}
+  }
   .orange {
     height: 50px;
     width: 30px;
@@ -422,7 +465,7 @@
     margin-top: -75px;
     float: right;
   }
-  
+
   .green {
     height: 50px;
     width: 30px;
@@ -464,7 +507,6 @@
   }
 }
 @media only screen and (min-width: 360px) {
-
   .red {
     height: 50px;
     width: 30px;
@@ -480,7 +522,7 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
-}
+  }
   .orange {
     height: 50px;
     width: 30px;
@@ -497,7 +539,7 @@
     margin-top: -75px;
     float: right;
   }
-  
+
   .green {
     height: 50px;
     width: 30px;
@@ -516,7 +558,6 @@
   }
 }
 @media only screen and (min-width: 375px) {
-
   .red {
     height: 50px;
     width: 30px;
@@ -532,7 +573,7 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
-}
+  }
   .orange {
     height: 50px;
     width: 30px;
@@ -549,7 +590,7 @@
     margin-top: -75px;
     float: right;
   }
-  
+
   .green {
     height: 50px;
     width: 30px;
@@ -649,7 +690,7 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
-}
+  }
   .orange {
     height: 50px;
     width: 30px;
@@ -666,7 +707,7 @@
     margin-top: -75px;
     float: right;
   }
-  
+
   .green {
     height: 50px;
     width: 30px;
@@ -766,7 +807,7 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
-}
+  }
   .orange {
     height: 50px;
     width: 30px;
@@ -783,7 +824,7 @@
     margin-top: -75px;
     float: right;
   }
-  
+
   .green {
     height: 50px;
     width: 30px;
@@ -799,7 +840,7 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
-  }  
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -883,7 +924,7 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
-}
+  }
   .orange {
     height: 50px;
     width: 30px;
@@ -900,7 +941,7 @@
     margin-top: -75px;
     float: right;
   }
-  
+
   .green {
     height: 50px;
     width: 30px;
@@ -916,5 +957,5 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
-  }  
+  }
 }

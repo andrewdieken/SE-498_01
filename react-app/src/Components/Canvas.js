@@ -8,7 +8,8 @@ import nts from "../Images/notes.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
-import NoVoters from "../Components/NoVoters"; 
+import {Link} from "react-router-dom";
+
 
 class Canvas extends Component {
   constructor(props) {
@@ -78,6 +79,7 @@ class Canvas extends Component {
       .then(result => this.setState({ voters: result.data.voterByPrecinct }))
       .catch(error => {
         this.setState({ isLoaded: false });
+        console.log(error);
       });
   }
 
@@ -228,7 +230,20 @@ class Canvas extends Component {
 
   render() {
     if (!this.state.isLoaded) {
-      return <NoVoters />
+      return (
+        <div className="bground2">
+          <div className="error2">
+            <div className="container2">
+              <h2 className="heading2">NO VOTERS IN YOUR ASSIGNED PRECINCT</h2>
+              <Link to="/login">
+                <button className="back2" type="submit">
+                  Back to Login
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      );
     } else {
       return (
         <div className="App-header">
