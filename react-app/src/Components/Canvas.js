@@ -8,7 +8,7 @@ import nts from "../Images/notes.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
-import NoVoters from '../Components/NoVoters'; 
+import NoVoters from "../Components/NoVoters"; 
 
 class Canvas extends Component {
   constructor(props) {
