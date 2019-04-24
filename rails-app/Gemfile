@@ -34,6 +34,7 @@ gem 'dry-validation'
 gem 'rails-settings-cached'
 gem 'graphql'
 gem 'rack-cors'
+gem 'omniauth-google-oauth2'
 
 
 
