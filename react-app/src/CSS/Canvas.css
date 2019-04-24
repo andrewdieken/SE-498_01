@@ -99,7 +99,7 @@
   text-align: right;
   padding-right: 20px;
   font-size: 20px;
-  padding-top: 12px;
+  padding-top: 15px;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   color: black;
   font-weight: bold;
@@ -350,9 +350,9 @@
   font-weight: bold;
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-  margin-right: 2px;
-  margin-top: -25px;
-  float: right
+  margin-right: 6px;
+  margin-top: -75px;
+  float: right;
 }
 .orange {
   height: 50px;
@@ -366,9 +366,9 @@
   font-weight: bold;
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-  margin-right: 2px;
-  margin-top: -25px;
-  float: right
+  margin-right: 6px;
+  margin-top: -75px;
+  float: right;
 }
 
 .green {
@@ -383,9 +383,9 @@
   font-weight: bold;
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-  margin-right: 2px;
-  margin-top: -25px;
-  float: right
+  margin-right: 6px;
+    margin-top: -75px;
+    float: right;
 }
 
 @media only screen and (min-width: 325px) {
@@ -402,9 +402,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-  margin-top: -25px;
-  float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
 }
   .orange {
     height: 50px;
@@ -418,9 +418,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-  margin-top: -25px;
-  float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
   
   .green {
@@ -435,9 +435,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
   .notes_button {
     -webkit-appearance: none;
@@ -477,9 +477,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
 }
   .orange {
     height: 50px;
@@ -493,9 +493,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
   
   .green {
@@ -510,9 +510,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
 }
 @media only screen and (min-width: 375px) {
@@ -529,9 +529,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
 }
   .orange {
     height: 50px;
@@ -545,9 +545,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
   
   .green {
@@ -562,9 +562,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
 }
 
@@ -646,9 +646,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
 }
   .orange {
     height: 50px;
@@ -662,9 +662,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
   
   .green {
@@ -679,9 +679,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
 }
 
@@ -763,9 +763,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
 }
   .orange {
     height: 50px;
@@ -779,9 +779,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
   
   .green {
@@ -796,22 +796,10 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
-  }
-  .item-b {
-    grid-area: info;
-    background-color: #ffffff;
-    text-align: right;
-    padding-right: 50px;
-    font-size: 20px;
-    padding-top: 12px;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    color: black;
-    font-weight: bold;
-    border-bottom: 4px solid black;
-  }
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
+  }  
 }
 
 @media only screen and (min-width: 1024px) {
@@ -892,9 +880,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
 }
   .orange {
     height: 50px;
@@ -908,9 +896,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
   }
   
   .green {
@@ -925,20 +913,8 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-right: 2px;
-    margin-top: -25px;
-    float: right
-  }
-  .item-b {
-    grid-area: info;
-    background-color: #ffffff;
-    text-align: right;
-    padding-right: 70px;
-    font-size: 20px;
-    padding-top: 12px;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-    color: black;
-    font-weight: bold;
-    border-bottom: 4px solid black;
-  }
+    margin-right: 6px;
+    margin-top: -75px;
+    float: right;
+  }  
 }

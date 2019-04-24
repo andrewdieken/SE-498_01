@@ -238,19 +238,7 @@ class Canvas extends Component {
                 JSON.stringify(this.state.voters[this.state.index].szNameFirst)
               )}{" "}
               <br />
-              {this.state.voters[this.state.index].szNameLast}
-              {(() => {
-                if (parseInt(this.state.voterScore) < 3) {
-                  return <h3 className="red">{this.state.voterScore}</h3>;
-                } else if (
-                  parseInt(this.state.voterScore) <= 4 &&
-                  parseInt(this.state.voterScore) >= 3
-                ) {
-                  return <h3 className="orange">{this.state.voterScore}</h3>;
-                } else if (parseInt(this.state.voterScore) >= 5) {
-                  return <h3 className="green">{this.state.voterScore}</h3>;
-                }
-              })()}
+              {this.state.voters[this.state.index].szNameLast}             
             </div>
             <div className="item-b">
               {JSON.parse(
@@ -298,6 +286,18 @@ class Canvas extends Component {
                 }
               })()}
               <img alt="hse" className="info_logo" src={info} />
+              {(() => {
+                if (parseInt(this.state.voterScore) < 3) {
+                  return <h3 className="red">{this.state.voterScore}</h3>;
+                } else if (
+                  parseInt(this.state.voterScore) <= 4 &&
+                  parseInt(this.state.voterScore) >= 3
+                ) {
+                  return <h3 className="orange">{this.state.voterScore}</h3>;
+                } else if (parseInt(this.state.voterScore) >= 5) {
+                  return <h3 className="green">{this.state.voterScore}</h3>;
+                }
+              })()}
 
               {(() => {
                 if (
