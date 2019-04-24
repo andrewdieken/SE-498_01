@@ -13,6 +13,12 @@
   color: white;
   font-size: 25px;
 }
+.heading4 {
+  text-align: center;
+  margin-top: 30px;
+  color: white;
+  font-size: 25px;
+}
 
 .back2 {
   background-color: #1ab188;
@@ -41,6 +47,9 @@
 .container2 {
   padding: 16px;
 }
+
+
+
 
 .main_container {
   height: 470px;

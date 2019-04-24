@@ -49,7 +49,7 @@ class Canvas extends Component {
       index: 0,
       notes: "testing",
       voterScore: "4",
-      isLoaded: true
+      isLoaded: "1"
     };
   }
 
@@ -75,25 +75,10 @@ class Canvas extends Component {
           }
         `
       })
-      .then(result => this.setState({ voters: result.data.voterByPrecinct }))
+      .then(result => this.setState({ voters: result.data.voterByPrecinct, isLoaded:"2" }))
       .catch(error => {
-        this.setState({
-          voters: [
-            {
-              szNameLast: "Loading...",
-              szNameFirst: "Loading...",
-              szSitusAddress: "Loading...",
-              szSitusCity: "Loading...",
-              sSitusState: "Loading...",
-              sSitusZip: "Loading...",
-              szPhone: "Loading...",
-              szEmailAddress: "Loading...",
-              dtBirthDate: "1/1/2019",
-              szPartyName: "Loading...",
-              note: "Loading..."
-            }
-          ],
-          isLoaded: false
+        this.setState({         
+          isLoaded: "3"
         });
         console.log(error);
       });
@@ -137,7 +122,7 @@ class Canvas extends Component {
           }
         ],
         index: 0,
-        isLoaded: false
+        isLoaded: "3"
       });
     } else if (this.index === this.state.voters.length) {
       this.index = 0;
@@ -184,7 +169,7 @@ class Canvas extends Component {
           }
         ],
         index: 0,
-        isLoaded: false
+        isLoaded: "3"
       });
     } else if (this.index === this.state.voters.length) {
       this.index = 0;
@@ -245,7 +230,7 @@ class Canvas extends Component {
   };
 
   render() {
-    if (!this.state.isLoaded) {
+    if (this.state.isLoaded==="3") {
       return (
         <div className="bground2">
           <div className="error2">
@@ -260,7 +245,18 @@ class Canvas extends Component {
           </div>
         </div>
       );
-    } else {
+    }else if (this.state.isLoaded==="1") {
+      return (
+        <div className="bground2">
+          <div className="error2">
+            <div className="container2">
+              <h2 className="heading4">Loading Voters</h2>              
+            </div>
+          </div>
+        </div>
+      );
+    }
+     else {
       return (
         <div className="App-header">
           <div className="main_container" ref={el => (this._container = el)}>
