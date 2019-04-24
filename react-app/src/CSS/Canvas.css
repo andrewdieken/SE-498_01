@@ -1,10 +1,10 @@
 .main_container {
-  height: 465px;
+  height: 470px;
   width: 93vw;
   background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-  grid-template-rows: 80px 305px 80px;
+  grid-template-rows: 85px 305px 80px;
   border-radius: 20px;
   overflow: hidden;
   perspective: 1px;
@@ -15,12 +15,12 @@
     "footer footer footer footer footer footer footer ";
 }
 .main_container_flicker {
-  height: 465px;
+  height: 470px;
   width: 93vw;
   background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-  grid-template-rows: 80px 305px 80px;
+  grid-template-rows: 85px 305px 80px;
   border-radius: 20px;
   overflow: hidden;
   perspective: 1px;
@@ -47,12 +47,12 @@
   }
 }
 .main_container_flicker_right {
-  height: 465px;
+  height: 470px;
   width: 93vw;
   background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-  grid-template-rows: 80px 305px 80px;
+  grid-template-rows: 85px 305px 80px;
   border-radius: 20px;
   overflow: hidden;
   perspective: 1px;
@@ -90,7 +90,7 @@
   font-family: "EB Garamond", serif;
   color: black;
   font-weight: bold;
-  border-bottom: 2px solid black;
+  border-bottom: 4px solid black;
   line-height: 1.15em;
 }
 .item-b {
@@ -103,7 +103,7 @@
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   color: black;
   font-weight: bold;
-  border-bottom: 2px solid black;
+  border-bottom: 4px solid black;
 }
 .item-c {
   grid-area: circles;
@@ -350,8 +350,9 @@
   font-weight: bold;
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-  margin-left: 210px;
-  margin-top: -54px;
+  margin-right: 2px;
+  margin-top: -25px;
+  float: right
 }
 .orange {
   height: 50px;
@@ -365,8 +366,9 @@
   font-weight: bold;
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-  margin-left: 210px;
-  margin-top: -54px;
+  margin-right: 2px;
+  margin-top: -25px;
+  float: right
 }
 
 .green {
@@ -381,8 +383,9 @@
   font-weight: bold;
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-  margin-left: 210px;
-  margin-top: -54px;
+  margin-right: 2px;
+  margin-top: -25px;
+  float: right
 }
 
 @media only screen and (min-width: 325px) {
@@ -399,8 +402,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 255px;
-    margin-top: -54px;
+    margin-right: 2px;
+  margin-top: -25px;
+  float: right
 }
   .orange {
     height: 50px;
@@ -414,8 +418,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 255px;
-    margin-top: -54px;
+    margin-right: 2px;
+  margin-top: -25px;
+  float: right
   }
   
   .green {
@@ -430,8 +435,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 255px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
   .notes_button {
     -webkit-appearance: none;
@@ -471,8 +477,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 244px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
 }
   .orange {
     height: 50px;
@@ -486,8 +493,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 244px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
   
   .green {
@@ -502,8 +510,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 244px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
 }
 @media only screen and (min-width: 375px) {
@@ -520,8 +529,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 255px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
 }
   .orange {
     height: 50px;
@@ -535,8 +545,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 255px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
   
   .green {
@@ -551,19 +562,20 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 255px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
 }
 
 @media only screen and (min-width: 411px) {
   .main_container_flicker {
-    height: 465px;
+    height: 470px;
     width: 93vw;
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-    grid-template-rows: 80px 305px 80px;
+    grid-template-rows: 85px 305px 80px;
     border-radius: 20px;
     overflow: hidden;
     perspective: 1px;
@@ -591,12 +603,12 @@
   }
 
   .main_container_flicker_right {
-    height: 465px;
+    height: 470px;
     width: 93vw;
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-    grid-template-rows: 80px 305px 80px;
+    grid-template-rows: 85px 305px 80px;
     border-radius: 20px;
     overflow: hidden;
     perspective: 1px;
@@ -634,8 +646,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 285px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
 }
   .orange {
     height: 50px;
@@ -649,8 +662,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 285px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
   
   .green {
@@ -665,19 +679,20 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 285px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
 }
 
 @media only screen and (min-width: 768px) {
   .main_container_flicker {
-    height: 465px;
+    height: 470px;
     width: 93vw;
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-    grid-template-rows: 80px 305px 80px;
+    grid-template-rows: 85px 305px 80px;
     border-radius: 20px;
     overflow: hidden;
     perspective: 1px;
@@ -705,12 +720,12 @@
   }
 
   .main_container_flicker_right {
-    height: 465px;
+    height: 470px;
     width: 93vw;
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-    grid-template-rows: 80px 305px 80px;
+    grid-template-rows: 85px 305px 80px;
     border-radius: 20px;
     overflow: hidden;
     perspective: 1px;
@@ -748,8 +763,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 565px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
 }
   .orange {
     height: 50px;
@@ -763,8 +779,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 565px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
   
   .green {
@@ -779,8 +796,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 565px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
   .item-b {
     grid-area: info;
@@ -792,18 +810,18 @@
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     color: black;
     font-weight: bold;
-    border-bottom: 2px solid black;
+    border-bottom: 4px solid black;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .main_container_flicker {
-    height: 465px;
+    height: 470px;
     width: 93vw;
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-    grid-template-rows: 80px 305px 80px;
+    grid-template-rows: 85px 305px 80px;
     border-radius: 20px;
     overflow: hidden;
     perspective: 1px;
@@ -831,12 +849,12 @@
   }
 
   .main_container_flicker_right {
-    height: 465px;
+    height: 470px;
     width: 93vw;
     background-color: rgb(255, 255, 255);
     display: grid;
     grid-template-columns: 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw 13.28vw;
-    grid-template-rows: 80px 305px 80px;
+    grid-template-rows: 85px 305px 80px;
     border-radius: 20px;
     overflow: hidden;
     perspective: 1px;
@@ -874,8 +892,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 765px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
 }
   .orange {
     height: 50px;
@@ -889,8 +908,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 765px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
   
   .green {
@@ -905,8 +925,9 @@
     font-weight: bold;
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    margin-left: 765px;
-    margin-top: -54px;
+    margin-right: 2px;
+    margin-top: -25px;
+    float: right
   }
   .item-b {
     grid-area: info;
@@ -918,6 +939,6 @@
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
     color: black;
     font-weight: bold;
-    border-bottom: 2px solid black;
+    border-bottom: 4px solid black;
   }
 }
