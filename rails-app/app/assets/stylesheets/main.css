@@ -103,6 +103,7 @@ button {
 	outline: none !important;
 	border: none;
 	background: transparent;
+	-webkit-appearance: none;
 }
 
 button:hover {
