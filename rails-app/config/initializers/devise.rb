@@ -259,7 +259,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :google_oauth2, '158573331153-3p7o7sr79vm1uloq83v1tmfjclcefg6b.apps.googleusercontent.com', 'Au4Px0v2NaPfPXzkqYtISPR_', token_params: { parse: :json }
+  config.omniauth :google_oauth2, '158573331153-3p7o7sr79vm1uloq83v1tmfjclcefg6b.apps.googleusercontent.com', 'Au4Px0v2NaPfPXzkqYtISPR_', skip_jwt: true 
   OmniAuth.config.full_host = Rails.env.production? ? 'https://domain.com' : 'http://localhost:3000'
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
