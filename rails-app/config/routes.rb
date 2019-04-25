@@ -23,9 +23,18 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/settings' => 'settings#index'
-  post '/settings' => 'settings#update'
-  get '/delete_visits' => 'settings#delete_visits'
+  devise_scope :user do
+    unauthenticated do
+      root 'devise/sessions#new'
+    end
+    authenticated do
+      root 'settings#index'
+      get '/settings' => 'settings#index'
+      post '/settings' => 'settings#update'
+      get '/delete_visits' => 'settings#delete_visits'
 
-  get '/settings/exportcsv' => 'settings#exportcsv'
+      get '/settings/exportcsv' => 'settings#exportcsv'
+    end
+
+  end
 end
