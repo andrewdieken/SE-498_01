@@ -43,7 +43,6 @@
 			</div>
 
 			<%=link_to 'Export to CSV', settings_exportcsv_path(:format => "csv")%>
-			<%=link_to 'Export to Excel', settings_exportcsv_path(:format => "xsl")%>
 
 		</form>
 
@@ -56,6 +55,16 @@
         </button>
       </div>
     </form>
+
+		<form class="contact100-form export-csv" action="/exportcsv" method="get">
+			<div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" type="submit">
+          <span>
+            Export to CSV
+          </span>
+        </button>
+      </div>
+		</form>
 
 	</div>
 </div>

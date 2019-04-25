@@ -19,9 +19,11 @@ elsif Rails.env.development?
   attrs = row.to_hash.slice(*fields).transform_values { |v| v || "none" }
   Voter.create!(attrs)
   end
-else
+elsif
   CSV.foreach(Dir.pwd + "/db/Cntywd_020819.csv", headers: true) do |row|
   attrs = row.to_hash.slice(*fields).transform_values { |v| v || "none" }
   Voter.create!(attrs)
 end
+else
+  visit = Visit.create(:created_at => '2019-04-24 19:42:31', :updated_at => '2019-04-24 19:45:00', :voter_id => '0123456789')
 end
