@@ -20,9 +20,7 @@ class SettingsController < ApplicationController
     redirect_to settings_path
   end
 
-
-
-  def exportcsv
+  def export_csv
     @visits = Visit.all
     respond_to do |format|
     format.html

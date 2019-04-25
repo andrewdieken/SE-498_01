@@ -41,10 +41,6 @@
 					</span>
 				</button>
 			</div>
-
-			<%=link_to 'Export to CSV', settings_exportcsv_path(:format => "csv")%>
-			<%=link_to 'Export to Excel', settings_exportcsv_path(:format => "xsl")%>
-
 		</form>
 
     <form class="contact100-form validate-form" action="/delete_visits" method="get">
@@ -56,6 +52,10 @@
         </button>
       </div>
     </form>
+
+			<div class="container-contact100-form-btn">
+            <%=link_to 'Export to CSV', settings_export_csv_path(:format => "csv"),:class => "contact100-form-btn"%>
+      </div>
 
 	</div>
 </div>
