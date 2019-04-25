@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get '/settings' => 'settings#index'
   post '/settings' => 'settings#update'
-  post '/delete_visits' => 'settings#delete_visits'
+  get '/delete_visits' => 'settings#delete_visits'
 
   get '/settings/exportcsv' => 'settings#exportcsv'
 end
