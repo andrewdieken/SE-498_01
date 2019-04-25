@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "Settings page", type: :feature do
   let(:voter) { create(:voter) }
   let(:visit1) { create(:visit, voter_id: voter.id) }
+  let(:user) { create(:user) }
 
   it "updates the precinct id and canvasser_password global variable" do
     visit settings_path
@@ -13,6 +14,11 @@ RSpec.describe "Settings page", type: :feature do
   end
 
   it "deletes all the visit records" do
+    visit new_user_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_on "Log in"
+
     visit settings_path
     click_on "Reset Visited Records"
     expect(page).to have_content("All visit records deleted")
