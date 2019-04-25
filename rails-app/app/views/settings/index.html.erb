@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 <div class="container-contact100">
 
 	<div class="wrap-contact100">
@@ -36,12 +37,25 @@
 			<div class="container-contact100-form-btn">
 				<button class="contact100-form-btn" type="submit">
 					<span>
-						<i class="fa fa-paper-plane-o m-r-6" aria-hidden="true"></i>
 						update
 					</span>
 				</button>
 			</div>
 
+			<%=link_to 'Export to CSV', settings_exportcsv_path(:format => "csv")%>
+			<%=link_to 'Export to Excel', settings_exportcsv_path(:format => "xsl")%>
+
 		</form>
+
+    <form class="contact100-form validate-form" action="/delete_visits" method="get">
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" type="submit">
+          <span>
+            Reset Visited Records
+          </span>
+        </button>
+      </div>
+    </form>
+
 	</div>
 </div>
