@@ -7,6 +7,7 @@ RSpec.describe SettingsController, type: :controller do
       expect(Setting['precinct_id']).to be_an_instance_of(Array)
     end
   end
+<<<<<<< HEAD
 
   it "updates the precinct id and canvasser_password global variable" do
     visit settings_path
@@ -15,4 +16,6 @@ RSpec.describe SettingsController, type: :controller do
     click_on "update"
     expect(page).to have_selector("textarea", :text => "12345,67890")
   end
+=======
+>>>>>>> a69d2b1b9c02abd943213ace9cb356e1f93d4bbb
 end
