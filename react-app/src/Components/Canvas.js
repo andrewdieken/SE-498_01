@@ -12,14 +12,14 @@ import axios from "axios";
 class Canvas extends Component {
   constructor(props) {
     super(props);
-
+    
     if (process.env.NODE_ENV == "production") {
       this.postLink = "https://api.quartiledocs.com/api/v1/visits";
       this.patchLink = "https://api.quartiledocs.com/api/v1/voters/";
       this.client = new ApolloClient({
         uri: "https://api.quartiledocs.com/graphql"
       });
-    } else {
+    } else {  
       this.postLink = "http://192.168.99.100:3000/api/v1/visits";
       this.patchLink = "http://192.168.99.100:3000/api/v1/voters/";
 
@@ -27,7 +27,7 @@ class Canvas extends Component {
         uri: "http://192.168.99.100:3000/graphql"
       });
     }
-
+    this.counter = 0;
     this.index = 0;
     this.state = {
       voters: [
@@ -144,10 +144,26 @@ class Canvas extends Component {
       .catch(function(error) {
         console.log(error);
       });
-
+      
     this.index = this.index + 1;
+    
 
     setTimeout(() => {
+      this.counter++;
+      if (this.counter === 10){
+        alert("Great Job! You have canvassed 10 houses in your precinct. Keep going!");
+      }
+      else if (this.counter === 25){
+        alert("Wow! 25 completed, more to come!");
+      }
+      else if (this.counter === 50){
+        alert("Unbelievable! 50 and counting, you're a star!");
+      }
+      else if (this.counter === 100){
+        alert("Incredible, you have now canvassed 100 houses. You're a legend! ");
+      }
+
+      
       this.setState({ index: this.index });
       this._tarea.value=this.state.voters[this.index].note;
     }, 400);
