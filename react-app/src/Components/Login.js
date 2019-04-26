@@ -32,7 +32,7 @@ class Login extends Component {
             getCanvasserPassword
           }
         `
-      })
+      }) 
       .then(result =>
         this.setState({ global_password: result.data.getCanvasserPassword })
       )
