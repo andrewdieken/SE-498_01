@@ -419,6 +419,16 @@ class Canvas extends Component {
             </div>
             <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
               <div className="modal-contents">
+              <h3 className="notes_heading2">Manager Notes:</h3>
+              <textarea
+                    cols="40"
+                    rows="5"
+                    className="modal-input2"
+                    type="text"
+                    placeholder="Default Notes:"
+                    readOnly
+                    value={"Default Notes go here"}                   
+                  />
                 <h3 className="notes_heading">Voter Notes:</h3>
                 <div
                   className="close"
