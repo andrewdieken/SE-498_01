@@ -5,16 +5,6 @@ RSpec.feature "user logs in" do
   let(:visit1) { create(:visit, voter_id: voter.id) }
   let(:user) { create(:user) }
 
-  =begin
-  scenario "using google oauth2" do
-    stub_omniauth
-    visit root_path
-    expect(page).to have_link("Sign in with Google")
-    click_link "Sign in with Google"
-    expect(page).to have_link("Logout")
-  end
-  =end
-
   it "updates the precinct id and canvasser_password global variable" do
     visit new_user_session_path
     fill_in "Email", with: user.email
