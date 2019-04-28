@@ -7,8 +7,8 @@ RSpec.feature "user logs in" do
 
   it "updates the precinct id and canvasser_password global variable" do
     visit new_user_session_path
-    fill_in "email", with: user.email
-    fill_in "password", with: user.password
+    fill_in(session, "Email", with: user.email)
+    fill_in(session, "Password", with: user.password)
     click_on "Log in"
 
     visit settings_path
@@ -19,8 +19,8 @@ RSpec.feature "user logs in" do
 
   it "deletes all the visit records" do
     visit new_user_session_path
-    fill_in "email", with: user.email
-    fill_in "password", with: user.password
+    fill_in(session, "Email", with: User.email)
+    fill_in(session, "Password", with: User.password)
     click_on "Log in"
 
     visit settings_path
