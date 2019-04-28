@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
   post "/graphql", to: "graphql#execute"
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :voters
 
   # Set up routes for API. Set namespace to 'api' which is where our api config file is stored.
@@ -23,6 +23,15 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_scope :user do
+    unauthenticated do
+      root 'devise/registrations#new'
+    end
+    authenticated do
+      root 'settings#index'
+    end
+
+  end
   get '/settings' => 'settings#index'
   post '/settings' => 'settings#update'
   get '/delete_visits' => 'settings#delete_visits'

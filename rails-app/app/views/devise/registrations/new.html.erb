@@ -1,0 +1,49 @@
+<div class="container-contact100">
+
+  <div class="wrap-contact100">
+    <div class="container-contact100-form-btn">
+      <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "contact100-form-btn" %>
+    </div>
+    <br>
+    <hr
+    <br>
+    <div class="contact100-form-title">Sign Up </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="input-title">
+        <%= f.label :email %><br />
+      </div>
+      <div class="wrap-input100">
+        <%= f.email_field :email, autofocus: false, class: 'input100' %>
+      </div>
+
+      <div class="input-title">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+      </div>
+      <div class="wrap-input100">
+        <%= f.password_field :password, autocomplete: "off", class: 'input100' %>
+      </div>
+
+      <div class="input-title">
+        <%= f.label :password_confirmation %><br >
+      </div>
+      <div class="wrap-input100">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'input100' %>
+      </div>
+
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn">
+          <%= f.submit "Sign up", class: "contact100-form-btn" %>
+        </button>
+			</div>
+    <% end %>
+    <div class="text-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
