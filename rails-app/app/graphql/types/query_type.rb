@@ -46,6 +46,7 @@ module Types
       Setting['canvasser_password']
     end
 
+    # TODO: Remove if not being used
     field :get_note_by_id, String, null: true do
       description "Retrieve note for voter"
       argument :id, ID, required: true
@@ -57,6 +58,13 @@ module Types
       else
         voter_note
       end
+    end
+
+    field :get_default_note, String, null: true do
+      description "Retrieve default note"
+    end
+    def get_default_note()
+      Setting['note']
     end
 
   end
