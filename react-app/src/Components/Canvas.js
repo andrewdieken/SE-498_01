@@ -5,21 +5,23 @@ import info from "../Images/info.png";
 import map from "../Images/map.png";
 import x_house from "../Images/reject_house.png";
 import nts from "../Images/notes.png";
+import lgt from "../Images/logout.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
 import NoVoters from "../Components/NoVoters";
+import authenticate from "../Classes/authenticate";
 class Canvas extends Component {
   constructor(props) {
     super(props);
-    
+
     if (process.env.NODE_ENV == "production") {
       this.postLink = "https://api.quartiledocs.com/api/v1/visits";
       this.patchLink = "https://api.quartiledocs.com/api/v1/voters/";
       this.client = new ApolloClient({
         uri: "https://api.quartiledocs.com/graphql"
       });
-    } else {  
+    } else {
       this.postLink = "http://192.168.99.100:3000/api/v1/visits";
       this.patchLink = "http://192.168.99.100:3000/api/v1/voters/";
 
@@ -29,6 +31,7 @@ class Canvas extends Component {
     }
     this.counter = 0;
     this.index = 0;
+    this.score = JSON.parse(localStorage.getItem("score")) || 0;
     this.state = {
       voters: [
         {
@@ -79,8 +82,9 @@ class Canvas extends Component {
       )
       .catch(error => {
         this.setState({
-          isLoaded:"3"
+          isLoaded: "2"
         });
+        this._myBar.style.width = this.score + "%";
       });
   }
 
@@ -144,26 +148,25 @@ class Canvas extends Component {
       .catch(function(error) {
         console.log(error);
       });
-      
+
     this.index = this.index + 1;
-    
 
     setTimeout(() => {
       this.counter++;
-      if (this.counter === 10){
-        alert("Great Job! You have canvassed 10 houses in your precinct. Keep going!");
-      }
-      else if (this.counter === 25){
+      if (this.counter === 10) {
+        alert(
+          "Great Job! You have canvassed 10 houses in your precinct. Keep going!"
+        );
+      } else if (this.counter === 25) {
         alert("Wow! 25 completed, more to come!");
-      }
-      else if (this.counter === 50){
+      } else if (this.counter === 50) {
         alert("Unbelievable! 50 and counting, you're a star!");
-      }
-      else if (this.counter === 100){
-        alert("Incredible, you have now canvassed 100 houses. You're a legend! ");
+      } else if (this.counter === 100) {
+        alert(
+          "Incredible, you have now canvassed 100 houses. You're a legend! "
+        );
       }
 
-      
       this.setState({ index: this.index });
       this._tarea.value = this.state.voters[this.index].note;
     }, 400);
@@ -195,10 +198,17 @@ class Canvas extends Component {
 
   animateSuccess = () => {
     this._container.classList.remove("main_container_flicker_right");
+    this._myBar.style.visibility = "hidden";
+    this._myPG.style.visibility = "hidden";
+    this._pgHeading.style.visibility="hidden";
     void this._container.offsetWidth;
     this._container.classList.add("main_container_flicker_right");
     setTimeout(() => {
       this._container.className = "main_container";
+      this._myBar.style.visibility = "visible";
+      this._myPG.style.visibility = "visible";
+      this._pgHeading.style.visibility="visible";
+
     }, 1000);
   };
 
@@ -225,6 +235,12 @@ class Canvas extends Component {
     this._bgmodal.style.display = "none";
   };
 
+  increaseScore = () => {
+    this.score++;
+    localStorage.setItem("score", this.score);
+    this._myBar.style.width = this.score + "%";
+  };
+
   openMaps = () => {
     var address = JSON.stringify(
       this.state.voters[this.state.index].szSitusAddress
@@ -246,7 +262,7 @@ class Canvas extends Component {
   };
 
   render() {
-    if (this.state.isLoaded==="1") {
+    if (this.state.isLoaded === "1") {
       return (
         <div className="bground4">
           <div className="error4">
@@ -256,13 +272,37 @@ class Canvas extends Component {
           </div>
         </div>
       );
-    } else if (this.state.isLoaded==="3" || !Array.isArray(this.state.voters) || !this.state.voters.length) {
-      return(
-        <NoVoters />
-      );
+    } else if (
+      this.state.isLoaded === "3" ||
+      !Array.isArray(this.state.voters) ||
+      !this.state.voters.length
+    ) {
+      return <NoVoters />;
     } else {
       return (
         <div className="App-header">
+          <button
+            className="logout"
+            type="button"
+            onClick={() => {
+
+              if (window.confirm("Are you sure you want to logout? Your score will be lost...")) {
+                authenticate.logout(() => {
+                  this.props.history.push("/login");
+                });
+              } else {
+                return;
+              }
+             
+            }}
+          >
+            <img alt="hse" className="logout_logo" src={lgt} />
+          </button>
+          <h2 ref={hed => (this._pgHeading = hed)} className="progress_heading">Your Progress:</h2>
+          <div ref={pg => (this._myPG = pg)} className="myProgress">
+            <div ref={prog => (this._myBar = prog)} className="myBar" />
+          </div>
+
           <div className="main_container" ref={el => (this._container = el)}>
             <div className="item-a">
               {JSON.parse(
@@ -410,8 +450,18 @@ class Canvas extends Component {
                 className="accept"
                 type="button"
                 onClick={() => {
-                  this.animateSuccess();
-                  this.acceptVoter();
+                  if (
+                    this.state.voters[this.state.index].note !== "" ||
+                    this.state.voters[this.state.index].note.length > 0
+                  ) {
+                    this.animateSuccess();
+                    this.acceptVoter();
+                    this.increaseScore();
+                  } else {
+                    alert(
+                      "Please at some notes to this voter before proceeding!"
+                    );
+                  }
                 }}
               >
                 <img alt="hse" className="house_logo" src={house} />
@@ -419,16 +469,16 @@ class Canvas extends Component {
             </div>
             <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
               <div className="modal-contents">
-              <h3 className="notes_heading2">Manager Notes:</h3>
-              <textarea
-                    cols="40"
-                    rows="5"
-                    className="modal-input2"
-                    type="text"
-                    placeholder="Default Notes:"
-                    readOnly
-                    value={"Default Notes go here"}                   
-                  />
+                <h3 className="notes_heading2">Manager Notes:</h3>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  className="modal-input2"
+                  type="text"
+                  placeholder="Default Notes:"
+                  readOnly
+                  value={"Default Notes go here"}
+                />
                 <h3 className="notes_heading">Voter Notes:</h3>
                 <div
                   className="close"
