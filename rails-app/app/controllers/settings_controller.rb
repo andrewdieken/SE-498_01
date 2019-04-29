@@ -30,13 +30,18 @@ class SettingsController < ApplicationController
   def export_csv
     @visits = Visit.all
     respond_to do |format|
-    format.html
-    format.csv { send_data @visits
-                 .to_csv(['created_at',
-                 'updated_at',
-    'voter_id']
-    )
-    }
+      format.html
+      format.csv { send_data @visits
+        .to_csv([
+          'created_at',
+          'updated_at',
+          'first_name',
+          'last_name',
+          'address',
+          'phone',
+          'email',
+          'note'
+      ])}
     end
   end
 
