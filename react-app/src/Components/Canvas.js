@@ -10,6 +10,7 @@ import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
 import NoVoters from "../Components/NoVoters";
+import NoInternet from "../Components/NoInternet";
 import authenticate from "../Classes/authenticate";
 class Canvas extends Component {
   constructor(props) {
@@ -29,7 +30,6 @@ class Canvas extends Component {
         uri: "http://192.168.99.100:3000/graphql"
       });
     }
-    this.counter = 0;
     this.index = 0;
     this.score = JSON.parse(localStorage.getItem("score")) || 0;
     this.state = {
@@ -82,13 +82,18 @@ class Canvas extends Component {
       )
       .catch(error => {
         this.setState({
-          isLoaded: "2"
+          isLoaded: "3"
         });
-        this._myBar.style.width = this.score + "%";
       });
   }
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+    if (this.state.isLoaded === "2") {
+      this._myBar.style.width = this.score + "%";
+    } else {
+      return;
+    }
+  }
 
   componentWillUpdate() {}
 
@@ -129,6 +134,7 @@ class Canvas extends Component {
         isLoaded: "3"
       });
     } else if (this.index === this.state.voters.length) {
+      window.location.reload();
       this.index = 0;
       this.setState({ index: this.index });
     }
@@ -152,16 +158,15 @@ class Canvas extends Component {
     this.index = this.index + 1;
 
     setTimeout(() => {
-      this.counter++;
-      if (this.counter === 10) {
+      if (this.score === 10) {
         alert(
           "Great Job! You have canvassed 10 houses in your precinct. Keep going!"
         );
-      } else if (this.counter === 25) {
+      } else if (this.score === 25) {
         alert("Wow! 25 completed, more to come!");
-      } else if (this.counter === 50) {
+      } else if (this.score === 50) {
         alert("Unbelievable! 50 and counting, you're a star!");
-      } else if (this.counter === 100) {
+      } else if (this.score === 100) {
         alert(
           "Incredible, you have now canvassed 100 houses. You're a legend! "
         );
@@ -191,6 +196,7 @@ class Canvas extends Component {
         isLoaded: "3"
       });
     } else if (this.index === this.state.voters.length) {
+      window.location.reload();
       this.index = 0;
       this.setState({ index: this.index });
     }
@@ -200,24 +206,29 @@ class Canvas extends Component {
     this._container.classList.remove("main_container_flicker_right");
     this._myBar.style.visibility = "hidden";
     this._myPG.style.visibility = "hidden";
-    this._pgHeading.style.visibility="hidden";
+    this._pgHeading.style.visibility = "hidden";
     void this._container.offsetWidth;
     this._container.classList.add("main_container_flicker_right");
     setTimeout(() => {
       this._container.className = "main_container";
       this._myBar.style.visibility = "visible";
       this._myPG.style.visibility = "visible";
-      this._pgHeading.style.visibility="visible";
-
+      this._pgHeading.style.visibility = "visible";
     }, 1000);
   };
 
   openNote = () => {
     this._bgmodal.style.display = "flex";
+    this._myBar.style.visibility = "hidden";
+    this._myPG.style.visibility = "hidden";
+    this._pgHeading.style.visibility = "hidden";
   };
 
   closeNote = () => {
     this._bgmodal.style.display = "none";
+    this._myBar.style.visibility = "visible";
+    this._myPG.style.visibility = "visible";
+    this._pgHeading.style.visibility = "visible";
   };
 
   updateNote = () => {
@@ -233,12 +244,23 @@ class Canvas extends Component {
       });
 
     this._bgmodal.style.display = "none";
+    this._myBar.style.visibility = "visible";
+    this._myPG.style.visibility = "visible";
+    this._pgHeading.style.visibility = "visible";
   };
 
   increaseScore = () => {
-    this.score++;
-    localStorage.setItem("score", this.score);
-    this._myBar.style.width = this.score + "%";
+    if(this.score>=90){
+      window.alert("We are resetting your score so you can see more progress!");
+      this.score=0;
+      localStorage.setItem("score", this.score);
+      this._myBar.style.width = this.score + "%";
+    }else{
+      this.score++;
+      localStorage.setItem("score", this.score);
+      this._myBar.style.width = this.score + "%";
+    }
+    
   };
 
   openMaps = () => {
@@ -272,11 +294,9 @@ class Canvas extends Component {
           </div>
         </div>
       );
-    } else if (
-      this.state.isLoaded === "3" ||
-      !Array.isArray(this.state.voters) ||
-      !this.state.voters.length
-    ) {
+    } else if (this.state.isLoaded === "3") {
+      return <NoInternet />;
+    } else if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
       return <NoVoters />;
     } else {
       return (
@@ -285,20 +305,24 @@ class Canvas extends Component {
             className="logout"
             type="button"
             onClick={() => {
-
-              if (window.confirm("Are you sure you want to logout? Your score will be lost...")) {
+              if (
+                window.confirm(
+                  "Are you sure you want to logout? Your score will be lost..."
+                )
+              ) {
                 authenticate.logout(() => {
                   this.props.history.push("/login");
                 });
               } else {
                 return;
               }
-             
             }}
           >
             <img alt="hse" className="logout_logo" src={lgt} />
           </button>
-          <h2 ref={hed => (this._pgHeading = hed)} className="progress_heading">Your Progress:</h2>
+          <h2 ref={hed => (this._pgHeading = hed)} className="progress_heading">
+            Your Progress:
+          </h2>
           <div ref={pg => (this._myPG = pg)} className="myProgress">
             <div ref={prog => (this._myBar = prog)} className="myBar" />
           </div>
