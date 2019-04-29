@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def after_sign_in_path_for(resource)
     root_path
   end
@@ -17,6 +17,7 @@ class SettingsController < ApplicationController
     Setting.precinct_id = @precinct_string.split(',').map(&:to_i)
     Setting.canvasser_password = params[:canvasser_password]
     Setting.note = params[:note]
+    flash[:notice] = "All fields updated"
     redirect_to settings_path
   end
 
