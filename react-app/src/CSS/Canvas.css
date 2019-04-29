@@ -37,6 +37,7 @@
   border-radius: 20px;
   overflow: hidden;
   perspective: 1px;
+  margin-bottom:35px; 
   box-shadow: 5px 8px #000000;
   grid-template-areas:
     "header header header header header header info "
@@ -326,6 +327,59 @@
   animation-iteration-count: 1;
 }
 
+.logout {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  opacity: 1;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border-color: #ffffff;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.logout_logo {
+  height: 17px;
+  width: 17px;
+  margin-top: 2px;
+}
+
+.myProgress {
+  width: 90%;
+  margin-bottom: 8px;
+  margin-top: 12px;
+  border: 2px solid #1ab188;
+  background-color: none; 
+}
+.myBar {
+  width: 1%;
+  height: 16px;
+  background-color: #1ab188;
+  text-align: center;
+  
+}
+.progress_heading{
+  font-size: 15px;
+  color:white;
+  text-align: left;
+  position: relative;
+  left:-95px;
+  bottom: -12px;
+}
+
 .modal-contents {
   height: 410px;
   width: 300px;
@@ -517,6 +571,53 @@
     margin-right: 45px;
     margin-bottom: 37px;
   }
+  .logout {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    opacity: 1;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+  .logout_logo {
+    height: 20px;
+    width: 20px;
+    margin-top: 2px;
+  }
+  .myProgress {
+    width: 90%;
+    border: 2px solid #1ab188;
+    background-color: none;
+  }
+  .myBar {
+    width: 1%;
+    height: 20px;
+    background-color: #1ab188;
+  }
+  .progress_heading{
+    font-size: 15px;
+    color:white;
+    text-align: left;
+    position: relative;
+    left:-135px;
+    bottom: -12px;
+  }
 }
 @media only screen and (min-width: 360px) {
   .red {
@@ -568,6 +669,53 @@
     margin-top: -75px;
     float: right;
   }
+  .logout {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    opacity: 1;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+  .logout_logo {
+    height: 20px;
+    width: 20px;
+    margin-top: 2px;
+  }
+  .myProgress {
+    width: 90%;
+    border: 2px solid #1ab188;
+    background-color: none;
+  }
+  .myBar {
+    width: 1%;
+    height: 20px;
+    background-color: #1ab188;
+  }
+  .progress_heading{
+    font-size: 15px;
+    color:white;
+    text-align: left;
+    position: relative;
+    left:-115px;
+    bottom: -12px;
+  }
 }
 @media only screen and (min-width: 375px) {
   .red {
@@ -618,6 +766,53 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
+  }
+  .logout {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    opacity: 1;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+  .logout_logo {
+    height: 20px;
+    width: 20px;
+    margin-top: 2px;
+  }
+  .myProgress {
+    width: 90%;
+    border: 2px solid #1ab188;
+    background-color: none;
+  }
+  .myBar {
+    width: 1%;
+    height: 20px;
+    background-color: #1ab188;
+  }
+  .progress_heading{
+    font-size: 15px;
+    color:white;
+    text-align: left;
+    position: relative;
+    left:-120px;
+    bottom: -12px;
   }
 }
 
@@ -736,6 +931,53 @@
     margin-top: -75px;
     float: right;
   }
+  .logout {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    opacity: 1;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 8px;
+    margin-top: 8px;
+  }
+  .logout_logo {
+    height: 20px;
+    width: 20px;
+    margin-top: 2px;
+  }
+  .myProgress {
+    width: 90%;
+    border: 2px solid #1ab188;
+    background-color: none;
+  }
+  .myBar {
+    width: 1%;
+    height: 20px;
+    background-color: #1ab188;
+  }
+  .progress_heading{
+    font-size: 15px;
+    color:white;
+    text-align: left;
+    position: relative;
+    left:-135px;
+    bottom: -12px;
+  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -853,6 +1095,53 @@
     margin-top: -75px;
     float: right;
   }
+  .logout {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    opacity: 1;
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 12px;
+    margin-top: 12px;
+  }
+  .logout_logo {
+    height: 25px;
+    width: 25px;
+    margin-top: 2px;
+  }
+  .myProgress {
+    width: 90%;
+    border: 2px solid #1ab188;
+    background-color: none;
+  }
+  .myBar {
+    width: 1%;
+    height: 20px;
+    background-color: #1ab188;
+  }
+  .progress_heading{
+    font-size: 15px;
+    color:white;
+    text-align: left;
+    position: relative;
+    left:-295px;
+    bottom: -12px;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -969,5 +1258,52 @@
     margin-right: 6px;
     margin-top: -75px;
     float: right;
+  }
+  .logout {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    opacity: 1;
+    display: inline-block;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border-color: #ffffff;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 12px;
+    margin-top: 12px;
+  }
+  .logout_logo {
+    height: 25px;
+    width: 25px;
+    margin-top: 2px;
+  }
+  .myProgress {
+    width: 90%;
+    border: 2px solid #1ab188;
+    background-color: none;
+  }
+  .myBar {
+    width: 1%;
+    height: 20px;
+    background-color: #1ab188;
+  }
+  .progress_heading{
+    font-size: 25px;
+    color:white;
+    text-align: left;
+    position: relative;
+    left:-382px;
+    bottom: -12px;
   }
 }
