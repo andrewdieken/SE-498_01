@@ -1,7 +1,7 @@
 <div class="container-contact100">
 
 	<div class="wrap-contact100">
-		<form class="contact100-form validate-form" action="/settings" method="post">
+		<form class="contact100-form validate-form" action="/settings_update" method="get">
 			<span class="contact100-form-title">
 				Admin Dashboard
 			</span>
@@ -51,7 +51,7 @@
         </button>
       </div>
     </form>
-		
+
 			<div class="container-contact100-form-btn">
             <%=link_to 'Export to CSV', settings_export_csv_path(:format => "csv"),:class => "contact100-form-btn"%>
       </div>
