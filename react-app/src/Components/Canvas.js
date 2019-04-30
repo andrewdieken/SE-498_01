@@ -325,7 +325,7 @@ class Canvas extends Component {
             <img alt="hse" className="logout_logo" src={lgt} />
           </button>
           <div ref={pg => (this._myPG = pg)} className="myProgress">
-            <div ref={prog => (this._myBar = prog)} className="myBar" />
+            <div ref={prog => (this._myBar = prog)} className="myBar"/>
           </div>
 
           <div className="main_container" ref={el => (this._container = el)}>
