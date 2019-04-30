@@ -4,6 +4,7 @@ import authenticate from "../Classes/authenticate";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import NoCampaign from "../Components/NoCampaign";
+import NoInternet from "./NoInternet";
 
 class Login extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Login extends Component {
             getCanvasserPassword
           }
         `
-      })
+      }) 
       .then(result =>
         this.setState({ global_password: result.data.getCanvasserPassword })
       )
@@ -43,7 +44,10 @@ class Login extends Component {
 
   render() {
     if (!this.state.isLoaded) {
+      return <NoInternet />
+    }else if(this.state.global_password===""){
       return <NoCampaign />
+
     } else {
       return (
         <div className="bground">

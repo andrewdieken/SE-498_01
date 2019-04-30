@@ -5,30 +5,30 @@ import info from "../Images/info.png";
 import map from "../Images/map.png";
 import x_house from "../Images/reject_house.png";
 import nts from "../Images/notes.png";
+import lgt from "../Images/logout.png";
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import axios from "axios";
 import NoVoters from "../Components/NoVoters";
+import NoInternet from "../Components/NoInternet";
+import authenticate from "../Classes/authenticate";
 class Canvas extends Component {
   constructor(props) {
     super(props);
-    
+
     if (process.env.NODE_ENV == "production") {
-      this.postLink = "https://api.quartiledocs.com/api/v1/visits";
       this.patchLink = "https://api.quartiledocs.com/api/v1/voters/";
       this.client = new ApolloClient({
         uri: "https://api.quartiledocs.com/graphql"
       });
-    } else {  
-      this.postLink = "http://192.168.99.100:3000/api/v1/visits";
+    } else {
       this.patchLink = "http://192.168.99.100:3000/api/v1/voters/";
-
       this.client = new ApolloClient({
         uri: "http://192.168.99.100:3000/graphql"
       });
     }
-    this.counter = 0;
     this.index = 0;
+    this.score = JSON.parse(localStorage.getItem("score")) || 0;
     this.state = {
       voters: [
         {
@@ -48,7 +48,8 @@ class Canvas extends Component {
       index: 0,
       notes: "testing",
       voterScore: "4",
-      isLoaded: "1"
+      isLoaded: "1",
+      manager_notes: "Loading..."
     };
   }
 
@@ -71,22 +72,33 @@ class Canvas extends Component {
               szEmailAddress
               note
             }
+            getDefaultNote
           }
         `
       })
       .then(result =>
-        this.setState({ voters: result.data.voterByPrecinct, isLoaded: "2" })
+        this.setState({
+          voters: result.data.voterByPrecinct,
+          isLoaded: "2",
+          manager_notes: result.data.getDefaultNote
+        })
       )
       .catch(error => {
         this.setState({
-          isLoaded:"3"
+          isLoaded: "3"
         });
       });
   }
 
-  componentDidUpdate() {}
+  componentDidUpdate() {
+    if (this.state.isLoaded === "2" && this.state.voters.length) {
+      this._myBar.style.width = this.score + "%";
+    } else {
+      return;
+    }
+  }
 
-  componentWillUpdate() {}
+  componentWillUpdate() {} 
 
   handleChange = event => {
     let voters = [...this.state.voters];
@@ -99,6 +111,9 @@ class Canvas extends Component {
   nextVoter = () => {
     this.index = this.index + 1;
     this._container.className = "main_container_flicker";
+    this._myBar.style.visibility = "hidden";
+    this._myPG.style.visibility = "hidden";
+    this._pgHeading.style.visibility = "hidden";
 
     setTimeout(() => {
       this.setState({ index: this.index });
@@ -125,45 +140,54 @@ class Canvas extends Component {
         isLoaded: "3"
       });
     } else if (this.index === this.state.voters.length) {
+      window.location.reload();
       this.index = 0;
       this.setState({ index: this.index });
     }
     setTimeout(() => {
       this._container.className = "main_container";
+      this._myBar.style.visibility = "visible";
+      this._myPG.style.visibility = "visible";
+      this._pgHeading.style.visibility = "visible";
     }, 1000);
   };
 
   acceptVoter = () => {
+    if (process.env.NODE_ENV == "production") {
+      this.postLink = `https://api.quartiledocs.com/api/v1/visits?id=${
+        this.state.voters[this.state.index].id
+      }`;
+    } else {
+      this.postLink = `http://192.168.99.100:3000/api/v1/visits?id=${
+        this.state.voters[this.state.index].id
+      }`;
+    }
     axios
-      .post(this.postLink, {
-        id: JSON.stringify(this.state.voters[this.state.index].id)
-      })
+      .post(this.postLink)
       .then(function(response) {
         console.log(response);
       })
       .catch(function(error) {
         console.log(error);
       });
-      
+
     this.index = this.index + 1;
-    
 
     setTimeout(() => {
-      this.counter++;
-      if (this.counter === 10){
-        alert("Great Job! You have canvassed 10 houses in your precinct. Keep going!");
-      }
-      else if (this.counter === 25){
+      if (this.score === 10) {
+        alert(
+          "Great Job! You have canvassed 10 houses in your precinct. Keep going!"
+        );
+      } else if (this.score === 25) {
         alert("Wow! 25 completed, more to come!");
-      }
-      else if (this.counter === 50){
+      } else if (this.score === 50) {
         alert("Unbelievable! 50 and counting, you're a star!");
-      }
-      else if (this.counter === 100){
-        alert("Incredible, you have now canvassed 100 houses. You're a legend! ");
+      } else if (this.score === 100) {
+        alert(
+          "Incredible, you have now canvassed 100 houses. You're a legend! "
+        );
       }
 
-      
       this.setState({ index: this.index });
       this._tarea.value = this.state.voters[this.index].note;
     }, 400);
@@ -188,6 +212,7 @@ class Canvas extends Component {
         isLoaded: "3"
       });
     } else if (this.index === this.state.voters.length) {
+      window.location.reload();
       this.index = 0;
       this.setState({ index: this.index });
     }
@@ -195,19 +220,31 @@ class Canvas extends Component {
 
   animateSuccess = () => {
     this._container.classList.remove("main_container_flicker_right");
+    this._myBar.style.visibility = "hidden";
+    this._myPG.style.visibility = "hidden";
+    this._pgHeading.style.visibility = "hidden";
     void this._container.offsetWidth;
     this._container.classList.add("main_container_flicker_right");
     setTimeout(() => {
       this._container.className = "main_container";
+      this._myBar.style.visibility = "visible";
+      this._myPG.style.visibility = "visible";
+      this._pgHeading.style.visibility = "visible";
     }, 1000);
   };
 
   openNote = () => {
     this._bgmodal.style.display = "flex";
+    this._myBar.style.visibility = "hidden";
+    this._myPG.style.visibility = "hidden";
+    this._pgHeading.style.visibility = "hidden";
   };
 
   closeNote = () => {
     this._bgmodal.style.display = "none";
+    this._myBar.style.visibility = "visible";
+    this._myPG.style.visibility = "visible";
+    this._pgHeading.style.visibility = "visible";
   };
 
   updateNote = () => {
@@ -216,13 +253,29 @@ class Canvas extends Component {
         note: this._tarea.value
       })
       .then(function(response) {
-        console.log(response);
+        
       })
       .catch(function(error) {
-        console.log(error);
+        
       });
 
     this._bgmodal.style.display = "none";
+    this._myBar.style.visibility = "visible";
+    this._myPG.style.visibility = "visible";
+    this._pgHeading.style.visibility = "visible";
+  };
+
+  increaseScore = () => {
+    if (this.score >= 90) {
+      window.alert("We are resetting your score so you can see more progress!");
+      this.score = 0;
+      localStorage.setItem("score", this.score);
+      this._myBar.style.width = this.score + "%";
+    } else {
+      this.score++;
+      localStorage.setItem("score", this.score);
+      this._myBar.style.width = this.score + "%";
+    }
   };
 
   openMaps = () => {
@@ -246,7 +299,7 @@ class Canvas extends Component {
   };
 
   render() {
-    if (this.state.isLoaded==="1") {
+    if (this.state.isLoaded === "1") {
       return (
         <div className="bground4">
           <div className="error4">
@@ -256,13 +309,39 @@ class Canvas extends Component {
           </div>
         </div>
       );
-    } else if (this.state.isLoaded==="3" || !Array.isArray(this.state.voters) || !this.state.voters.length) {
-      return(
-        <NoVoters />
-      );
+    } else if (this.state.isLoaded === "3") {
+      return <NoInternet />;
+    } else if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
+      return <NoVoters />;
     } else {
       return (
         <div className="App-header">
+          <button
+            className="logout"
+            type="button"
+            onClick={() => {
+              if (
+                window.confirm(
+                  "Are you sure you want to logout? Your score will be lost..."
+                )
+              ) {
+                authenticate.logout(() => {
+                  this.props.history.push("/login");
+                });
+              } else {
+                return;
+              }
+            }}
+          >
+            <img alt="hse" className="logout_logo" src={lgt} />
+          </button>
+          <h2 ref={hed => (this._pgHeading = hed)} className="progress_heading">
+            Your Progress:
+          </h2>
+          <div ref={pg => (this._myPG = pg)} className="myProgress">
+            <div ref={prog => (this._myBar = prog)} className="myBar" />
+          </div>
+
           <div className="main_container" ref={el => (this._container = el)}>
             <div className="item-a">
               {JSON.parse(
@@ -410,8 +489,18 @@ class Canvas extends Component {
                 className="accept"
                 type="button"
                 onClick={() => {
-                  this.animateSuccess();
-                  this.acceptVoter();
+                  if (
+                    this.state.voters[this.state.index].note !== "" ||
+                    this.state.voters[this.state.index].note.length > 0
+                  ) {
+                    this.animateSuccess();
+                    this.acceptVoter();
+                    this.increaseScore();
+                  } else {
+                    alert(
+                      "Please at some notes to this voter before proceeding!"
+                    );
+                  }
                 }}
               >
                 <img alt="hse" className="house_logo" src={house} />
@@ -419,6 +508,16 @@ class Canvas extends Component {
             </div>
             <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
               <div className="modal-contents">
+                <h3 className="notes_heading2">Manager Notes:</h3>
+                <textarea
+                  cols="40"
+                  rows="5"
+                  className="modal-input2"
+                  type="text"
+                  placeholder="Default Notes:"
+                  readOnly
+                  value={JSON.parse(JSON.stringify(this.state.manager_notes))}
+                />
                 <h3 className="notes_heading">Voter Notes:</h3>
                 <div
                   className="close"
