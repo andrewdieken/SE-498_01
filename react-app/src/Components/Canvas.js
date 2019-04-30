@@ -17,15 +17,12 @@ class Canvas extends Component {
     super(props);
 
     if (process.env.NODE_ENV == "production") {
-      this.postLink = "https://api.quartiledocs.com/api/v1/visits";
       this.patchLink = "https://api.quartiledocs.com/api/v1/voters/";
       this.client = new ApolloClient({
         uri: "https://api.quartiledocs.com/graphql"
       });
     } else {
-      this.postLink = "http://192.168.99.100:3000/api/v1/visits";
       this.patchLink = "http://192.168.99.100:3000/api/v1/voters/";
-
       this.client = new ApolloClient({
         uri: "http://192.168.99.100:3000/graphql"
       });
@@ -51,7 +48,8 @@ class Canvas extends Component {
       index: 0,
       notes: "testing",
       voterScore: "4",
-      isLoaded: "1"
+      isLoaded: "1",
+      manager_notes: "Loading..."
     };
   }
 
@@ -74,11 +72,16 @@ class Canvas extends Component {
               szEmailAddress
               note
             }
+            getDefaultNote
           }
         `
       })
       .then(result =>
-        this.setState({ voters: result.data.voterByPrecinct, isLoaded: "2" })
+        this.setState({
+          voters: result.data.voterByPrecinct,
+          isLoaded: "2",
+          manager_notes: result.data.getDefaultNote
+        })
       )
       .catch(error => {
         this.setState({
@@ -88,7 +91,7 @@ class Canvas extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.isLoaded === "2") {
+    if (this.state.isLoaded === "2" && this.state.voters.length) {
       this._myBar.style.width = this.score + "%";
     } else {
       return;
@@ -108,6 +111,9 @@ class Canvas extends Component {
   nextVoter = () => {
     this.index = this.index + 1;
     this._container.className = "main_container_flicker";
+    this._myBar.style.visibility = "hidden";
+    this._myPG.style.visibility = "hidden";
+    this._pgHeading.style.visibility = "hidden";
 
     setTimeout(() => {
       this.setState({ index: this.index });
@@ -140,14 +146,24 @@ class Canvas extends Component {
     }
     setTimeout(() => {
       this._container.className = "main_container";
+      this._myBar.style.visibility = "visible";
+      this._myPG.style.visibility = "visible";
+      this._pgHeading.style.visibility = "visible";
     }, 1000);
   };
 
   acceptVoter = () => {
+    if (process.env.NODE_ENV == "production") {
+      this.postLink = `https://api.quartiledocs.com/api/v1/visits?id=${
+        this.state.voters[this.state.index].id
+      }`;
+    } else {
+      this.postLink = `http://192.168.99.100:3000/api/v1/visits?id=${
+        this.state.voters[this.state.index].id
+      }`;
+    }
     axios
-      .post(this.postLink, {
-        id: JSON.stringify(this.state.voters[this.state.index].id)
-      })
+      .post(this.postLink)
       .then(function(response) {
         console.log(response);
       })
@@ -237,10 +253,10 @@ class Canvas extends Component {
         note: this._tarea.value
       })
       .then(function(response) {
-        console.log(response);
+        
       })
       .catch(function(error) {
-        console.log(error);
+        
       });
 
     this._bgmodal.style.display = "none";
@@ -250,17 +266,16 @@ class Canvas extends Component {
   };
 
   increaseScore = () => {
-    if(this.score>=90){
+    if (this.score >= 90) {
       window.alert("We are resetting your score so you can see more progress!");
-      this.score=0;
+      this.score = 0;
       localStorage.setItem("score", this.score);
       this._myBar.style.width = this.score + "%";
-    }else{
+    } else {
       this.score++;
       localStorage.setItem("score", this.score);
       this._myBar.style.width = this.score + "%";
     }
-    
   };
 
   openMaps = () => {
@@ -501,7 +516,7 @@ class Canvas extends Component {
                   type="text"
                   placeholder="Default Notes:"
                   readOnly
-                  value={"Default Notes go here"}
+                  value={JSON.parse(JSON.stringify(this.state.manager_notes))}
                 />
                 <h3 className="notes_heading">Voter Notes:</h3>
                 <div

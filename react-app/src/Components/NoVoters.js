@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../CSS/NoVoters.css";
-import {Link} from 'react-router-dom';
+import authenticate from "../Classes/authenticate";
+
 
 class NoVoters extends Component {
   render() {
@@ -9,11 +10,13 @@ class NoVoters extends Component {
         <div className="error2">
           <div className="container2">
             <h2 className="heading2">NO VOTERS IN YOUR ASSIGNED PRECINCT</h2>
-            <Link to="/login">
-              <button className="back2" type="submit">
+              <button onClick={()=>{
+                authenticate.logout(()=>{
+                  this.props.history.push("/login");
+                })
+              }} className="back2" type="submit">
                 Back to Login
               </button>
-            </Link>
           </div>
         </div>
       </div>
