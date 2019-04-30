@@ -1,0 +1,43 @@
+.error7 {
+  background-color: #13232f;
+  font-family: "Titillium Web", sans-serif;
+  box-shadow: 0 0 12px #2d2d2d;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+.bground7{
+    background-color: #dfdfdf;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+
+.heading7 {
+  text-align: left;
+  margin-top: 10px;
+  color: white;
+  font-size: 20px;
+}
+
+.container7 {
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.name7 {
+  text-align: left;
+  margin-top: 10px;
+  color: white;
+  font-size: 25px;
+  color: #1ab188;
+}
+.hold7 {
+  line-height: 0.6em;
+}

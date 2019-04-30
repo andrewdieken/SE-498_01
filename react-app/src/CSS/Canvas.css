@@ -37,7 +37,7 @@
   border-radius: 20px;
   overflow: hidden;
   perspective: 1px;
-  margin-bottom:35px; 
+  margin-bottom: 35px;
   box-shadow: 5px 8px #000000;
   grid-template-areas:
     "header header header header header header info "
@@ -360,24 +360,15 @@
 .myProgress {
   width: 90%;
   margin-bottom: 8px;
-  margin-top: 12px;
+  margin-top: 42px;
   border: 2px solid #1ab188;
-  background-color: none; 
+  background-color: none;
 }
 .myBar {
   width: 1%;
   height: 16px;
   background-color: #1ab188;
   text-align: center;
-  
-}
-.progress_heading{
-  font-size: 15px;
-  color:white;
-  text-align: left;
-  position: relative;
-  left:-95px;
-  bottom: -12px;
 }
 
 .modal-contents {
@@ -610,14 +601,6 @@
     height: 20px;
     background-color: #1ab188;
   }
-  .progress_heading{
-    font-size: 15px;
-    color:white;
-    text-align: left;
-    position: relative;
-    left:-135px;
-    bottom: -12px;
-  }
 }
 @media only screen and (min-width: 360px) {
   .red {
@@ -708,14 +691,6 @@
     height: 20px;
     background-color: #1ab188;
   }
-  .progress_heading{
-    font-size: 15px;
-    color:white;
-    text-align: left;
-    position: relative;
-    left:-115px;
-    bottom: -12px;
-  }
 }
 @media only screen and (min-width: 375px) {
   .red {
@@ -805,14 +780,6 @@
     width: 1%;
     height: 20px;
     background-color: #1ab188;
-  }
-  .progress_heading{
-    font-size: 15px;
-    color:white;
-    text-align: left;
-    position: relative;
-    left:-120px;
-    bottom: -12px;
   }
 }
 
@@ -970,14 +937,6 @@
     height: 20px;
     background-color: #1ab188;
   }
-  .progress_heading{
-    font-size: 15px;
-    color:white;
-    text-align: left;
-    position: relative;
-    left:-135px;
-    bottom: -12px;
-  }
 }
 
 @media only screen and (min-width: 768px) {
@@ -1134,14 +1093,6 @@
     height: 20px;
     background-color: #1ab188;
   }
-  .progress_heading{
-    font-size: 15px;
-    color:white;
-    text-align: left;
-    position: relative;
-    left:-295px;
-    bottom: -12px;
-  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -1297,13 +1248,5 @@
     width: 1%;
     height: 20px;
     background-color: #1ab188;
-  }
-  .progress_heading{
-    font-size: 25px;
-    color:white;
-    text-align: left;
-    position: relative;
-    left:-382px;
-    bottom: -12px;
   }
 }

@@ -17,11 +17,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.heading {
-  text-align: center;
-  margin-top: -30px;
+.headingsub {
+  text-align: left;
   color: black;
-  font-size: 25px;
+  font-size: 15px;
+  margin-top:-5px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-weight: bold;
 }
 
 .inp {
@@ -72,12 +74,22 @@
     color:black;
     font-size: 25px;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    margin-top:-30px;
   }
   @media only screen and (min-width: 325px) {
     .heading{
       text-align: center;
       color:black;
-      font-size: 35px;
+      font-size: 30px;
       font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    }
+    .headingsub {
+      text-align: left;
+      color: black;
+      font-size: 19px;
+      margin-top:-5px;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      font-weight: bold;
+
     }
   }
