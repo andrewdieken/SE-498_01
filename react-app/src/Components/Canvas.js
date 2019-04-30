@@ -475,8 +475,12 @@ class Canvas extends Component {
                 className="accept"
                 type="button"
                 onClick={() => {
+                  var theNote = this.state.voters[this.state.index].note;
+                  if(theNote===null){
+                    theNote="";
+                  }
                   if (
-                    this.state.voters[this.state.index].note.match(
+                    theNote.match(
                       /[0-9a-zA-Z]/i
                     )
                   ) {
@@ -485,7 +489,7 @@ class Canvas extends Component {
                     this.increaseScore();
                   } else {
                     alert(
-                      "Please at some notes to this voter before proceeding!"
+                      "Please add some notes to this voter before proceeding!"
                     );
                   }
                 }}
