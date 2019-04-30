@@ -22,10 +22,6 @@ class Canvas extends Component {
         uri: "https://api.quartiledocs.com/graphql"
       });
     } else {
-<<<<<<< HEAD
-=======
-      this.postLink = "http://192.168.99.100:3000/api/v1/visits";
->>>>>>> 75ccaa81aa0f6c5985bd09ebbe820327060a5a66
       this.patchLink = "http://192.168.99.100:3000/api/v1/voters/";
       this.client = new ApolloClient({
         uri: "http://192.168.99.100:3000/graphql"
@@ -95,18 +91,14 @@ class Canvas extends Component {
   }
 
   componentDidUpdate() {
-<<<<<<< HEAD
     if (this.state.isLoaded === "2" && this.state.voters.length) {
-=======
-    if (this.state.isLoaded === "2") {
->>>>>>> 75ccaa81aa0f6c5985bd09ebbe820327060a5a66
       this._myBar.style.width = this.score + "%";
     } else {
       return;
     }
   }
 
-  componentWillUpdate() {}
+  componentWillUpdate() {} 
 
   handleChange = event => {
     let voters = [...this.state.voters];
@@ -274,29 +266,16 @@ class Canvas extends Component {
   };
 
   increaseScore = () => {
-<<<<<<< HEAD
     if (this.score >= 90) {
       window.alert("We are resetting your score so you can see more progress!");
       this.score = 0;
       localStorage.setItem("score", this.score);
       this._myBar.style.width = this.score + "%";
     } else {
-=======
-    if(this.score>=90){
-      window.alert("We are resetting your score so you can see more progress!");
-      this.score=0;
-      localStorage.setItem("score", this.score);
-      this._myBar.style.width = this.score + "%";
-    }else{
->>>>>>> 75ccaa81aa0f6c5985bd09ebbe820327060a5a66
       this.score++;
       localStorage.setItem("score", this.score);
       this._myBar.style.width = this.score + "%";
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> 75ccaa81aa0f6c5985bd09ebbe820327060a5a66
   };
 
   openMaps = () => {
@@ -537,11 +516,7 @@ class Canvas extends Component {
                   type="text"
                   placeholder="Default Notes:"
                   readOnly
-<<<<<<< HEAD
                   value={JSON.parse(JSON.stringify(this.state.manager_notes))}
-=======
-                  value={"Default Notes go here"}
->>>>>>> 75ccaa81aa0f6c5985bd09ebbe820327060a5a66
                 />
                 <h3 className="notes_heading">Voter Notes:</h3>
                 <div
