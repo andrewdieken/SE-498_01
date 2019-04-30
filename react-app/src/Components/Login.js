@@ -45,7 +45,7 @@ class Login extends Component {
   render() {
     if (!this.state.isLoaded) {
       return <NoInternet />
-    }else if(this.state.global_password===""){
+    }else if(!this.state.global_password.match(/[0-9a-zA-Z]/i)){
       return <NoCampaign />
 
     } else {

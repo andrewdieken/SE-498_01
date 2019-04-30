@@ -98,7 +98,7 @@ class Canvas extends Component {
     }
   }
 
-  componentWillUpdate() {} 
+  componentWillUpdate() {}
 
   handleChange = event => {
     let voters = [...this.state.voters];
@@ -113,7 +113,6 @@ class Canvas extends Component {
     this._container.className = "main_container_flicker";
     this._myBar.style.visibility = "hidden";
     this._myPG.style.visibility = "hidden";
-    this._pgHeading.style.visibility = "hidden";
 
     setTimeout(() => {
       this.setState({ index: this.index });
@@ -148,7 +147,6 @@ class Canvas extends Component {
       this._container.className = "main_container";
       this._myBar.style.visibility = "visible";
       this._myPG.style.visibility = "visible";
-      this._pgHeading.style.visibility = "visible";
     }, 1000);
   };
 
@@ -222,14 +220,12 @@ class Canvas extends Component {
     this._container.classList.remove("main_container_flicker_right");
     this._myBar.style.visibility = "hidden";
     this._myPG.style.visibility = "hidden";
-    this._pgHeading.style.visibility = "hidden";
     void this._container.offsetWidth;
     this._container.classList.add("main_container_flicker_right");
     setTimeout(() => {
       this._container.className = "main_container";
       this._myBar.style.visibility = "visible";
       this._myPG.style.visibility = "visible";
-      this._pgHeading.style.visibility = "visible";
     }, 1000);
   };
 
@@ -237,14 +233,12 @@ class Canvas extends Component {
     this._bgmodal.style.display = "flex";
     this._myBar.style.visibility = "hidden";
     this._myPG.style.visibility = "hidden";
-    this._pgHeading.style.visibility = "hidden";
   };
 
   closeNote = () => {
     this._bgmodal.style.display = "none";
     this._myBar.style.visibility = "visible";
     this._myPG.style.visibility = "visible";
-    this._pgHeading.style.visibility = "visible";
   };
 
   updateNote = () => {
@@ -252,17 +246,12 @@ class Canvas extends Component {
       .patch(this.patchLink + this.state.voters[this.state.index].id, {
         note: this._tarea.value
       })
-      .then(function(response) {
-        
-      })
-      .catch(function(error) {
-        
-      });
+      .then(function(response) {})
+      .catch(function(error) {});
 
     this._bgmodal.style.display = "none";
     this._myBar.style.visibility = "visible";
     this._myPG.style.visibility = "visible";
-    this._pgHeading.style.visibility = "visible";
   };
 
   increaseScore = () => {
@@ -335,9 +324,6 @@ class Canvas extends Component {
           >
             <img alt="hse" className="logout_logo" src={lgt} />
           </button>
-          <h2 ref={hed => (this._pgHeading = hed)} className="progress_heading">
-            Your Progress:
-          </h2>
           <div ref={pg => (this._myPG = pg)} className="myProgress">
             <div ref={prog => (this._myBar = prog)} className="myBar" />
           </div>
@@ -490,8 +476,9 @@ class Canvas extends Component {
                 type="button"
                 onClick={() => {
                   if (
-                    this.state.voters[this.state.index].note !== "" ||
-                    this.state.voters[this.state.index].note.length > 0
+                    this.state.voters[this.state.index].note.match(
+                      /[0-9a-zA-Z]/i
+                    )
                   ) {
                     this.animateSuccess();
                     this.acceptVoter();
