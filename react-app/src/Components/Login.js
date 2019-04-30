@@ -51,7 +51,8 @@ class Login extends Component {
     } else {
       return (
         <div className="bground">
-          <h2 className="heading">Ready to Canvas?</h2>
+          <h2 className="heading">Welcome to Campaignify</h2>
+          <h4 className="headingsub">Please Login below...</h4>
           <div className="login-form">
             <div className="container">
               <label className="special" htmlFor="uname">
