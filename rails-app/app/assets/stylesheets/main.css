@@ -121,14 +121,33 @@ iframe {
 }
 
 
+.container-functions {
+  max-height: 50%;
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  grid-auto-rows: auto;
+  grid-template-areas:
+    "export reset logout";
+}
 
+.item-a {
+  grid-area: export;
+}
+
+.item-b {
+  grid-area: reset;
+}
+
+.item-c {
+  grid-area: logout;
+}
 
 /*//////////////////////////////////////////////////////////////////
 [ Contact ]*/
 
 .container-contact100 {
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -142,10 +161,28 @@ iframe {
   background-color: #f2f2f2;
 }
 
+html {
+  background-color: #f2f2f2;
+}
+
+.container-buttons100 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #f2f2f2;
+}
+
 .wrap-contact100 {
   width: 550px;
   background: transparent;
-  padding: 50px 0px 160px 0px;
+  padding: 50px 0px 0px 0px;
 }
 
 
