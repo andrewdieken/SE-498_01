@@ -49,7 +49,7 @@ class Canvas extends Component {
       notes: "testing",
       voterScore: "4",
       isLoaded: "1",
-      manager_notes: "Loading..."
+      manager_notes: "-Loading..."
     };
   }
 
@@ -489,7 +489,7 @@ class Canvas extends Component {
                     this.increaseScore();
                   } else {
                     alert(
-                      "Please add some notes to this voter before proceeding!"
+                      "Please add some notes to this voter before proceeding."
                     );
                   }
                 }}
@@ -499,7 +499,7 @@ class Canvas extends Component {
             </div>
             <div className="bg-modal" ref={mode => (this._bgmodal = mode)}>
               <div className="modal-contents">
-                <h3 className="notes_heading2">Manager Notes:</h3>
+                <h3 className="notes_heading2">Campaign Manager Notes:</h3>
                 <textarea
                   cols="40"
                   rows="5"
