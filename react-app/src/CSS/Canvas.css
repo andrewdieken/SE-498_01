@@ -382,6 +382,8 @@
 }
 
 .modal-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   margin-left: auto;
   margin-right: auto;
   margin-top: -15px;
@@ -398,6 +400,8 @@
   resize: none;
 }
 .modal-input2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   margin-left: auto;
   margin-right: auto;
   margin-top: -17px;
@@ -416,6 +420,8 @@
   line-height: 1.1em;
 }
 .modal-input:focus {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   border: 1px solid #1ab188;
 }
 .notes_heading {
