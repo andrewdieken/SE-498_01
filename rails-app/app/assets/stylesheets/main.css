@@ -120,9 +120,14 @@ iframe {
 	max-width: 1200px;
 }
 
+.login-form {
+  background-color: #13232f;
+  box-shadow: 0 0 12px #2d2d2d;
+}
+
 .container-stats {
   max-height: 50%;
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
   display: grid;
   grid-template-columns: 300px 300px;
   grid-template-rows: 100px;
@@ -188,11 +193,11 @@ iframe {
   align-items: center;
   padding: 15px;
   position: relative;
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
 }
 
 html {
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
 }
 
 .container-buttons100 {
@@ -206,7 +211,7 @@ html {
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
 }
 
 .wrap-contact100 {
@@ -223,11 +228,12 @@ html {
   width: 100%;
 }
 
+/* FORM TITLE */
 .contact100-form-title {
   display: block;
   font-family: Ubuntu-Bold;
   font-size: 30px;
-  color: #403866;
+  color: Black;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
@@ -260,7 +266,7 @@ html {
   position: relative;
   display: block;
   width: 100%;
-  background: #fff;
+  background: #13232f;
   border-radius: 31px;
   font-family: Ubuntu-Bold;
   font-size: 18px;
@@ -299,7 +305,7 @@ textarea.input100 {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   border-radius: 31px;
-  background-color: #fff;
+  background-color: #13232f;
   pointer-events: none;
 
   -webkit-transition: all 0.4s;
@@ -369,7 +375,7 @@ textarea.input100 {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   border-radius: 31px;
-  background-color: #827ffe;
+  background-color: #1ab188;
   pointer-events: none;
 
   -webkit-transition: all 0.4s;
@@ -379,7 +385,7 @@ textarea.input100 {
 }
 
 .contact100-form-btn:hover:before {
-  background-color: #403866;
+  background-color: #0b4f3d;
   width: calc(100% + 20px);
 }
 
