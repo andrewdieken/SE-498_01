@@ -33,7 +33,7 @@ class Login extends Component {
             getCanvasserPassword
           }
         `
-      }) 
+      })
       .then(result =>
         this.setState({ global_password: result.data.getCanvasserPassword })
       )
@@ -41,13 +41,11 @@ class Login extends Component {
         this.setState({ isLoaded: false });
       });
   }
-
   render() {
     if (!this.state.isLoaded) {
-      return <NoInternet />
-    }else if(!this.state.global_password.match(/[0-9a-zA-Z]/i)){
-      return <NoCampaign />
-
+      return <NoInternet />;
+    } else if (!this.state.global_password.match(/[0-9a-zA-Z]/i)) {
+      return <NoCampaign />;
     } else {
       return (
         <div className="bground">
@@ -64,7 +62,6 @@ class Login extends Component {
                 placeholder="Enter your Name"
                 name="uname"
                 ref={unme => (this._name = unme)}
-
               />
               <label htmlFor="psw">
                 <h4 className="lbl">Password</h4>
@@ -81,9 +78,26 @@ class Login extends Component {
                 onClick={() => {
                   authenticate.login(
                     this.state.global_password,
-                    this._password.value,this._name.value,
+                    this._password.value,
+                    this._name.value,
                     () => {
                       this.props.history.push("/");
+                    },
+                    () => {
+                      this.client
+                        .query({
+                          query: gql`
+                            mutation {
+                              updateVolunteers(numberOfVolunteers: 1) {
+                                success
+                              }
+                            }
+                          `
+                        })
+                        .then(result => console.log(result))
+                        .catch(error => {
+                          console.log(error);
+                        });
                     }
                   );
                 }}
