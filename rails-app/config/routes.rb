@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     end
 
   end
+  get '/settings/stats' => 'settings#stats'
   get '/settings' => 'settings#index'
   post '/settings' => 'settings#update'
   get '/settings_update' => 'settings#update'
