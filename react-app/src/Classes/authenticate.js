@@ -24,6 +24,7 @@ class Authenticate{
         this.authenticated=false;
         localStorage.removeItem("loggedIn");
         localStorage.removeItem("score");
+        localStorage.removeItem("counter");
         cb();
     }
     isAuthenticated(){

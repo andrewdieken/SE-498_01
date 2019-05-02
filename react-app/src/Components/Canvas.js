@@ -29,6 +29,8 @@ class Canvas extends Component {
     }
     this.index = 0;
     this.score = JSON.parse(localStorage.getItem("score")) || 0;
+    this.counter = JSON.parse(localStorage.getItem("counter")) || 0;
+
     this.state = {
       voters: [
         {
@@ -54,6 +56,7 @@ class Canvas extends Component {
   }
 
   componentDidMount() {
+    this.getLocation();
     this.client
       .query({
         query: gql`
@@ -99,6 +102,22 @@ class Canvas extends Component {
   }
 
   componentWillUpdate() {}
+
+
+   getLocation =()=> {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else { 
+     console.log("Geolocation is not supported by this browser.");
+    }
+  }
+  
+   showPosition=(position)=> {
+   console.log(position.coords.latitude) 
+    console.log(position.coords.longitude);
+  }
+
+
 
   handleChange = event => {
     let voters = [...this.state.voters];
@@ -170,17 +189,18 @@ class Canvas extends Component {
       });
 
     this.index = this.index + 1;
-
+    this.counter=this.counter+1;
+    localStorage.setItem("counter", this.counter);
     setTimeout(() => {
-      if (this.score === 10) {
+      if (this.counter === 10) {
         alert(
           "Great Job! You have canvassed 10 houses in your precinct. Keep going!"
         );
-      } else if (this.score === 25) {
-        alert("Wow! 25 completed, more to come!");
-      } else if (this.score === 50) {
+      } else if (this.counter === 30) {
+        alert("Wow! 30 completed, more to come!");
+      } else if (this.counter === 50) {
         alert("Unbelievable! 50 and counting, you're a star!");
-      } else if (this.score === 100) {
+      } else if (this.counter === 100) {
         alert(
           "Incredible, you have now canvassed 100 houses. You're a legend! "
         );
@@ -210,7 +230,7 @@ class Canvas extends Component {
         isLoaded: "3"
       });
     } else if (this.index === this.state.voters.length) {
-      window.location.reload();
+      //window.location.reload();
       this.index = 0;
       this.setState({ index: this.index });
     }
@@ -255,13 +275,12 @@ class Canvas extends Component {
   };
 
   increaseScore = () => {
-    if (this.score >= 90) {
-      window.alert("We are resetting your score so you can see more progress!");
-      this.score = 0;
+    if (this.score >= 100) {
+      this.score = 10;
       localStorage.setItem("score", this.score);
       this._myBar.style.width = this.score + "%";
     } else {
-      this.score++;
+      this.score=this.score+10;
       localStorage.setItem("score", this.score);
       this._myBar.style.width = this.score + "%";
     }
