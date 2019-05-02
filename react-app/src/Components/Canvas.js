@@ -230,7 +230,7 @@ class Canvas extends Component {
         isLoaded: "3"
       });
     } else if (this.index === this.state.voters.length) {
-      //window.location.reload();
+      window.location.reload();
       this.index = 0;
       this.setState({ index: this.index });
     }
