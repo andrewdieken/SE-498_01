@@ -74,6 +74,7 @@ class Canvas extends Component {
               szPhone
               szEmailAddress
               note
+              historyScore
             }
             getDefaultNote
           }
