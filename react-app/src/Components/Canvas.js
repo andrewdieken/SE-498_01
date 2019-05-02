@@ -343,20 +343,7 @@ class Canvas extends Component {
                     this.props.history.push("/login");
                   },
                   () => {
-                    this.client
-                      .query({
-                        query: gql`
-                    mutation {
-                      updateHouses(numberOfHouses: ${this.counter}) {
-                        success
-                      }
-                    }
-                    `
-                      })
-                      .then(result => console.log(result))
-                      .catch(error => {
-                        console.log(error);
-                      });
+                    console.log("Post request here to increment visited houses");
                   }
                 );
               } else {

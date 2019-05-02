@@ -84,20 +84,8 @@ class Login extends Component {
                       this.props.history.push("/");
                     },
                     () => {
-                      this.client
-                        .query({
-                          query: gql`
-                            mutation {
-                              updateVolunteers(numberOfVolunteers: 1) {
-                                success
-                              }
-                            }
-                          `
-                        })
-                        .then(result => console.log(result))
-                        .catch(error => {
-                          console.log(error);
-                        });
+                      console.log("Post request here to increment participants");
+
                     }
                   );
                 }}
