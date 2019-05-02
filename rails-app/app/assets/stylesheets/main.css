@@ -120,27 +120,57 @@ iframe {
 	max-width: 1200px;
 }
 
+.container-stats {
+  max-height: 50%;
+  background-color: #f2f2f2;
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: 100px;
+  grid-template-areas:
+    "houses volunteers"
 
+}
+
+.item-houses {
+  grid-area: houses;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+.item-volunteers {
+  grid-area: volunteers;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+/* buttons==================================================================  */
 .container-functions {
   max-height: 50%;
   display: grid;
-  grid-template-columns: 200px 200px 200px;
+  grid-template-columns: 250px 250px 250px 250px;
   grid-auto-rows: auto;
   grid-template-areas:
-    "export reset logout";
+    "stats export reset logout";
 }
 
-.item-a {
+.item-stats {
+  grid-area: stats;
+}
+
+.item-export {
   grid-area: export;
 }
 
-.item-b {
+.item-reset {
   grid-area: reset;
 }
 
-.item-c {
+.item-logout {
   grid-area: logout;
 }
+/* =========================================================================  */
 
 /*//////////////////////////////////////////////////////////////////
 [ Contact ]*/
@@ -304,7 +334,7 @@ textarea.input100 {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  min-width: 150px;
+  width: 200px;
   height: 62px;
   background-color: transparent;
   border-radius: 31px;
