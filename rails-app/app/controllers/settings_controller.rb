@@ -46,4 +46,9 @@ class SettingsController < ApplicationController
     end
   end
 
+  def stats
+    @houses = Setting['houses_canvassed']
+    @volunteers = Setting['volunteers']
+  end
+
 end

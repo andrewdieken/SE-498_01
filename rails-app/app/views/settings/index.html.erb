@@ -47,12 +47,12 @@
 
 <div class="container-buttons100">
 	<section class="container-functions">
-		<div class="item-a">
+		<div class="item-export">
 			<div class="container-contact100-form-btn">
 						<%=link_to 'Export to CSV', settings_export_csv_path(:format => "csv"),:class => "contact100-form-btn"%>
 			</div>
 		</div>
-		<div class="item-b">
+		<div class="item-reset">
 			<form class="contact100-form validate-form" action="/delete_visits" method="get">
 				<div class="container-contact100-form-btn">
 					<button class="contact100-form-btn" type="submit">
@@ -63,9 +63,14 @@
 				</div>
 			</form>
 		</div>
-		<div class="item-c">
+		<div class="item-logout">
 			<div class="container-contact100-form-btn">
 				<%= link_to('Logout', destroy_user_session_path, method: :delete, class: "contact100-form-btn") %>
+			</div>
+		</div>
+		<div class="item-stats">
+			<div class="container-contact100-form-btn">
+				<%= link_to('Stats', settings_stats_path, class: "contact100-form-btn") %>
 			</div>
 		</div>
 	</section>
