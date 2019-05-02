@@ -66,5 +66,6 @@ module Types
     field :iSubDistrict_5, String, null: true, hash_key: "iSubDistrict_5"
     field :szDistrictName_5, String, null: true, hash_key: "szDistrictName_5"
     field :note, String, null: true, hash_key: "note"
+    field :history_score, String, null: true, hash_key: "history_score"
   end
 end
