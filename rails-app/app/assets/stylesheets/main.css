@@ -120,14 +120,13 @@ iframe {
 	max-width: 1200px;
 }
 
-.login-form {
-  background-color: #13232f;
-  box-shadow: 0 0 12px #2d2d2d;
-}
-
 .container-stats {
   max-height: 50%;
   background-color: #dfdfdf;
+  text-transform: uppercase;
+  color: Black;
+  font-family: Ubuntu-Bold;
+  font-size: 20px;
   display: grid;
   grid-template-columns: 300px 300px;
   grid-template-rows: 100px;
@@ -270,7 +269,7 @@ html {
   border-radius: 31px;
   font-family: Ubuntu-Bold;
   font-size: 18px;
-  color: #8f8fa1;
+  color: #fff;
   line-height: 1.2;
 }
 
