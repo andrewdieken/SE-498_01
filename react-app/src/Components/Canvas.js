@@ -44,12 +44,12 @@ class Canvas extends Component {
           szEmailAddress: "Loading...",
           dtBirthDate: "1/1/2019",
           szPartyName: "Loading...",
-          note: ""
+          note: "",
+          historyScore: 0
         }
       ],
       index: 0,
       notes: "testing",
-      voterScore: "4",
       isLoaded: "1",
       manager_notes: "-Loading..."
     };
@@ -74,6 +74,7 @@ class Canvas extends Component {
               szPhone
               szEmailAddress
               note
+              historyScore
             }
             getDefaultNote
           }
@@ -103,21 +104,18 @@ class Canvas extends Component {
 
   componentWillUpdate() {}
 
-
-   getLocation =()=> {
+  getLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this.showPosition);
-    } else { 
-     console.log("Geolocation is not supported by this browser.");
+    } else {
+      console.log("Geolocation is not supported by this browser.");
     }
-  }
-  
-   showPosition=(position)=> {
-   console.log(position.coords.latitude) 
+  };
+
+  showPosition = position => {
+    console.log(position.coords.latitude);
     console.log(position.coords.longitude);
-  }
-
-
+  };
 
   handleChange = event => {
     let voters = [...this.state.voters];
@@ -151,7 +149,8 @@ class Canvas extends Component {
             szEmailAddress: "Loading...",
             dtBirthDate: "1/1/2019",
             szPartyName: "Loading...",
-            note: "Loading..."
+            note: "Loading...",
+            historyScore: 0
           }
         ],
         index: 0,
@@ -189,7 +188,7 @@ class Canvas extends Component {
       });
 
     this.index = this.index + 1;
-    this.counter=this.counter+1;
+    this.counter = this.counter + 1;
     localStorage.setItem("counter", this.counter);
     setTimeout(() => {
       if (this.counter === 10) {
@@ -223,7 +222,8 @@ class Canvas extends Component {
             szEmailAddress: "Loading...",
             dtBirthDate: "1/1/2019",
             szPartyName: "Loading...",
-            note: "Loading..."
+            note: "Loading...",
+            historyScore: 0
           }
         ],
         index: 0,
@@ -259,6 +259,11 @@ class Canvas extends Component {
     this._bgmodal.style.display = "none";
     this._myBar.style.visibility = "visible";
     this._myPG.style.visibility = "visible";
+    let voters = [...this.state.voters];
+    let voter = { ...voters[this.state.index] };
+    voter.note = "";
+    voters[this.state.index] = voter;
+    this.setState({ voters });
   };
 
   updateNote = () => {
@@ -280,7 +285,7 @@ class Canvas extends Component {
       localStorage.setItem("score", this.score);
       this._myBar.style.width = this.score + "%";
     } else {
-      this.score=this.score+10;
+      this.score = this.score + 10;
       localStorage.setItem("score", this.score);
       this._myBar.style.width = this.score + "%";
     }
@@ -333,18 +338,41 @@ class Canvas extends Component {
                   "Are you sure you want to logout? Your score will be lost..."
                 )
               ) {
-                authenticate.logout(() => {
-                  this.props.history.push("/login");
-                });
+                authenticate.logout(
+                  () => {
+                    this.props.history.push("/login");
+                  },
+                  () => {
+<<<<<<< HEAD
+                    console.log("Post request here to increment visited houses");
+=======
+                    this.client
+                      .query({
+                        query: gql`
+                    mutation {
+                      updateHouses(numberOfHouses: ${this.counter}) {
+                        success
+                      }
+                    }
+                    `
+                      })
+                      .then(result => console.log(result))
+                      .catch(error => {
+                        console.log(error);
+                      });
+>>>>>>> 1f5856d0bef1b83e46bc9ecee3fba08780da6207
+                  }
+                );
               } else {
                 return;
               }
             }}
           >
+            <span className="btn-txt">Quit</span>{" "}
             <img alt="hse" className="logout_logo" src={lgt} />
           </button>
           <div ref={pg => (this._myPG = pg)} className="myProgress">
-            <div ref={prog => (this._myBar = prog)} className="myBar"/>
+            <div ref={prog => (this._myBar = prog)} className="myBar" />
           </div>
 
           <div className="main_container" ref={el => (this._container = el)}>
@@ -352,23 +380,9 @@ class Canvas extends Component {
               {JSON.parse(
                 JSON.stringify(this.state.voters[this.state.index].szNameFirst)
               )}{" "}
-              <br />
               {this.state.voters[this.state.index].szNameLast}
             </div>
-            <div className="item-b">
-              {JSON.parse(
-                JSON.stringify(this.state.voters[this.state.index].szPartyName)
-              ).substring(0, 1)}
-              <br />
-              {new Date().getFullYear() -
-                parseInt(
-                  JSON.parse(
-                    JSON.stringify(
-                      new Date(this.state.voters[this.state.index].dtBirthDate)
-                    )
-                  ).substring(0, 5)
-                )}
-            </div>
+
             <div className="item-d">
               <h3 className="content">
                 {JSON.parse(
@@ -377,7 +391,6 @@ class Canvas extends Component {
                   )
                 )}
               </h3>
-
               {(() => {
                 if (
                   JSON.parse(
@@ -387,7 +400,7 @@ class Canvas extends Component {
                     JSON.stringify(this.state.voters[this.state.index].szPhone)
                   ) === "none"
                 ) {
-                  return <h3 className="content">No Phone Provided</h3>;
+                  return <h3 className="content">No phone provided</h3>;
                 } else {
                   return (
                     <h3 className="content">
@@ -400,17 +413,37 @@ class Canvas extends Component {
                   );
                 }
               })()}
+
               <img alt="hse" className="info_logo" src={info} />
               {(() => {
-                if (parseInt(this.state.voterScore) < 3) {
-                  return <h3 className="red">{this.state.voterScore}</h3>;
-                } else if (
-                  parseInt(this.state.voterScore) <= 4 &&
-                  parseInt(this.state.voterScore) >= 3
+                if (
+                  parseInt(this.state.voters[this.state.index].historyScore) < 3
                 ) {
-                  return <h3 className="orange">{this.state.voterScore}</h3>;
-                } else if (parseInt(this.state.voterScore) >= 5) {
-                  return <h3 className="green">{this.state.voterScore}</h3>;
+                  return (
+                    <h3 className="red">
+                      {this.state.voters[this.state.index].historyScore}
+                    </h3>
+                  );
+                } else if (
+                  parseInt(this.state.voters[this.state.index].historyScore) <=
+                    6 &&
+                  parseInt(this.state.voters[this.state.index].historyScore) >=
+                    3
+                ) {
+                  return (
+                    <h3 className="orange">
+                      {this.state.voters[this.state.index].historyScore}
+                    </h3>
+                  );
+                } else if (
+                  parseInt(this.state.voters[this.state.index].historyScore) >=
+                  7
+                ) {
+                  return (
+                    <h3 className="green">
+                      {this.state.voters[this.state.index].historyScore}
+                    </h3>
+                  );
                 }
               })()}
 
@@ -427,7 +460,7 @@ class Canvas extends Component {
                     )
                   ) === "none"
                 ) {
-                  return <h3 className="content">No Email Provided</h3>;
+                  return <h3 className="content">No email provided</h3>;
                 } else {
                   return (
                     <h3 className="content">
@@ -440,6 +473,19 @@ class Canvas extends Component {
                   );
                 }
               })()}
+              <h3 className="content">
+                {new Date().getFullYear() -
+                  parseInt(
+                    JSON.parse(
+                      JSON.stringify(
+                        new Date(
+                          this.state.voters[this.state.index].dtBirthDate
+                        )
+                      )
+                    ).substring(0, 5)
+                  )}{" "}
+                years old
+              </h3>
               <h3 className="content1">
                 <span
                   onClick={() => {
@@ -495,14 +541,10 @@ class Canvas extends Component {
                 type="button"
                 onClick={() => {
                   var theNote = this.state.voters[this.state.index].note;
-                  if(theNote===null){
-                    theNote="";
+                  if (theNote === null) {
+                    theNote = "";
                   }
-                  if (
-                    theNote.match(
-                      /[0-9a-zA-Z]/i
-                    )
-                  ) {
+                  if (theNote.match(/[0-9a-zA-Z]/i)) {
                     this.animateSuccess();
                     this.acceptVoter();
                     this.increaseScore();
@@ -529,14 +571,6 @@ class Canvas extends Component {
                   value={JSON.parse(JSON.stringify(this.state.manager_notes))}
                 />
                 <h3 className="notes_heading">Voter Notes:</h3>
-                <div
-                  className="close"
-                  onClick={() => {
-                    this.closeNote();
-                  }}
-                >
-                  +
-                </div>
 
                 <div>
                   <textarea
@@ -553,7 +587,25 @@ class Canvas extends Component {
                   />
                   <button
                     onClick={() => {
-                      this.updateNote();
+                      this.closeNote();
+                    }}
+                    className="button-modal2"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      var theNote = this.state.voters[this.state.index].note;
+                      if (theNote === null) {
+                        theNote = "";
+                      }
+                      if (theNote.match(/[0-9a-zA-Z]/i)) {
+                        this.updateNote();
+                      } else {
+                        alert(
+                          "You cannot submit an empty note please add some."
+                        );
+                      }
                     }}
                     className="button-modal"
                   >
