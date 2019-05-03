@@ -45,7 +45,7 @@ class Canvas extends Component {
           dtBirthDate: "1/1/2019",
           szPartyName: "Loading...",
           note: "",
-          historyScore: 0
+          historyScore: "0"
         }
       ],
       index: 0,
@@ -150,7 +150,7 @@ class Canvas extends Component {
             dtBirthDate: "1/1/2019",
             szPartyName: "Loading...",
             note: "Loading...",
-            historyScore: 0
+            historyScore: "0"
           }
         ],
         index: 0,
@@ -223,7 +223,7 @@ class Canvas extends Component {
             dtBirthDate: "1/1/2019",
             szPartyName: "Loading...",
             note: "Loading...",
-            historyScore: 0
+            historyScore: "0"
           }
         ],
         index: 0,
