@@ -122,7 +122,9 @@
   font-weight: bold;
   border-bottom: 4px solid black;
   line-height: 1.15em;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 .item-b {
   grid-area: info;
@@ -153,7 +155,9 @@
   grid-area: main;
   background-color: #ffffff;
   text-align: left;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 .item-e {
   grid-area: footer;
@@ -161,7 +165,7 @@
 }
 .content {
   color: #000;
-  margin: 15px 0 0 70px;
+  margin: 11px 0 0 70px;
   font-family: EB Garamond, serif;
   line-height: 1em;
   font-size: 24px;
@@ -179,7 +183,7 @@
   width: 45px;
   float: left;
   margin-left: 10px;
-  margin-top: -41px;
+  margin-top: -25px;
 }
 .notes {
   height: 45px;
@@ -224,7 +228,7 @@
 }
 .content1 {
   color: #0000ee;
-  margin: -12px 0 0 70px;
+  margin: -18px 0 0 70px;
   padding-top: 55px;
   font-family: EB Garamond, serif;
   line-height: 1.2em;
@@ -253,7 +257,7 @@
   display: inline-block;
   height: 70px;
   width: 70px;
-  margin: -2px auto 37px 13px;
+  margin: 4px auto 37px 13px;
   border-radius: 50%;
   background-color: #ffffff;
   border-color: red;
@@ -275,7 +279,7 @@
   display: inline-block;
   height: 70px;
   width: 70px;
-  margin: -2px 12px 37px auto;
+  margin: 4px 12px 37px auto;
   border-radius: 50%;
   background-color: #ffffff;
   border-color: green;
@@ -313,7 +317,6 @@
   font-weight: bold;
   font-family: EB Garamond, serif;
   margin-left: 12px;
-
 }
 .button-modal2 {
   background-color: rgb(180, 0, 0);
@@ -487,7 +490,7 @@
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
   margin-right: 6px;
-  margin-top: -75px;
+  margin-top: -67px;
   float: right;
 }
 .orange {
@@ -503,7 +506,7 @@
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
   margin-right: 6px;
-  margin-top: -75px;
+  margin-top: -67px;
   float: right;
 }
 
@@ -520,7 +523,7 @@
   color: black;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
   margin-right: 6px;
-  margin-top: -75px;
+  margin-top: -67px;
   float: right;
 }
 
@@ -538,7 +541,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .orange {
@@ -554,7 +557,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
 
@@ -571,7 +574,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .notes_button {
@@ -596,6 +599,7 @@
     margin-left: 45px;
     margin-right: 45px;
     margin-bottom: 37px;
+    margin-top:6px;
   }
   .logout {
     -webkit-appearance: none;
@@ -627,7 +631,7 @@
     font-family: "Titillium Web", sans-serif;
     font-weight: bold;
   }
-  
+
   .logout_logo {
     height: 12px;
     width: 12px;
@@ -658,7 +662,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .orange {
@@ -674,7 +678,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
 
@@ -691,7 +695,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .logout {
@@ -724,7 +728,7 @@
     font-family: "Titillium Web", sans-serif;
     font-weight: bold;
   }
-  
+
   .logout_logo {
     height: 14px;
     width: 14px;
@@ -755,7 +759,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .orange {
@@ -771,7 +775,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
 
@@ -788,7 +792,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .logout {
@@ -821,7 +825,7 @@
     font-family: "Titillium Web", sans-serif;
     font-weight: bold;
   }
-  
+
   .logout_logo {
     height: 14px;
     width: 14px;
@@ -918,7 +922,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .orange {
@@ -934,7 +938,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
 
@@ -951,7 +955,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .logout {
@@ -984,7 +988,7 @@
     font-family: "Titillium Web", sans-serif;
     font-weight: bold;
   }
-  
+
   .logout_logo {
     height: 14px;
     width: 14px;
@@ -1081,7 +1085,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .orange {
@@ -1097,7 +1101,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
 
@@ -1114,7 +1118,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .logout {
@@ -1147,7 +1151,7 @@
     font-family: "Titillium Web", sans-serif;
     font-weight: bold;
   }
-  
+
   .logout_logo {
     height: 14px;
     width: 14px;
@@ -1244,7 +1248,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .orange {
@@ -1260,7 +1264,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
 
@@ -1277,7 +1281,7 @@
     color: black;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
     margin-right: 6px;
-    margin-top: -75px;
+    margin-top: -67px;
     float: right;
   }
   .logout {
@@ -1310,7 +1314,7 @@
     font-family: "Titillium Web", sans-serif;
     font-weight: bold;
   }
-  
+
   .logout_logo {
     height: 14px;
     width: 14px;
