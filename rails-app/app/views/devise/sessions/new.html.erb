@@ -1,12 +1,6 @@
 <div class="container-contact100">
 
   <div class="wrap-contact100">
-    <div class="container-contact100-form-btn">
-      <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "contact100-form-btn" %>
-    </div>
-    <br>
-    <hr>
-    <br>
     <div class="contact100-form-title"> Log in </div>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -29,6 +23,10 @@
         <button class="contact100-form-btn">
           <%= f.submit "Log in", class: "contact100-form-btn" %>
         </button>
+      </div>
+
+      <div class="container-contact100-form-btn">
+        <%= link_to "Google Login", user_google_oauth2_omniauth_authorize_path, class: "contact100-form-btn" %>
       </div>
 
     <% end %>
