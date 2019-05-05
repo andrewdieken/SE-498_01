@@ -32,11 +32,15 @@ Rails.application.routes.draw do
     end
 
   end
+  # settings/stats
   get '/settings/stats' => 'settings#stats'
+  post '/settings/update_houses' => 'settings#update_houses'
+  post 'settings/update_volunteers' => 'settings#update_volunteers'
+
+  # settings
   get '/settings' => 'settings#index'
   post '/settings' => 'settings#update'
   get '/settings_update' => 'settings#update'
   get '/delete_visits' => 'settings#delete_visits'
-
   get '/settings/export_csv' => 'settings#export_csv'
 end
