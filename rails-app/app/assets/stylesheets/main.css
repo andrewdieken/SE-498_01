@@ -12,60 +12,60 @@
 [ RESTYLE TAG ]*/
 
 * {
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 body, html {
-	height: 100%;
-	font-family: Ubuntu-Bold, sans-serif;
+  height: 100%;
+  font-family: Ubuntu-Bold, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Ubuntu-Bold;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
+  font-family: Ubuntu-Bold;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
 }
 
 a:focus {
-	outline: none !important;
+  outline: none !important;
 }
 
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+  margin: 0px;
 }
 
 p {
-	font-family: Ubuntu-Bold;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
+  font-family: Ubuntu-Bold;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
 }
 
 ul, li {
-	margin: 0px;
-	list-style-type: none;
+  margin: 0px;
+  list-style-type: none;
 }
 
 
 /*---------------------------------------------*/
 input {
-	outline: none;
-	border: none;
+  outline: none;
+  border: none;
 }
 
 input[type="number"] {
@@ -100,29 +100,33 @@ textarea:-ms-input-placeholder { color: #bdbdd3;}
 
 /*---------------------------------------------*/
 button {
-	outline: none !important;
-	border: none;
-	background: transparent;
-	-webkit-appearance: none;
+  outline: none !important;
+  border: none;
+  background: transparent;
+  -webkit-appearance: none;
 }
 
 button:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 iframe {
-	border: none !important;
+  border: none !important;
 }
 
 
 /*---------------------------------------------*/
 .container {
-	max-width: 1200px;
+  max-width: 1200px;
 }
 
 .container-stats {
   max-height: 50%;
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
+  text-transform: uppercase;
+  color: Black;
+  font-family: Ubuntu-Bold;
+  font-size: 20px;
   display: grid;
   grid-template-columns: 300px 300px;
   grid-template-rows: 100px;
@@ -188,11 +192,11 @@ iframe {
   align-items: center;
   padding: 15px;
   position: relative;
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
 }
 
 html {
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
 }
 
 .container-buttons100 {
@@ -206,7 +210,7 @@ html {
   justify-content: center;
   align-items: center;
   position: relative;
-  background-color: #f2f2f2;
+  background-color: #dfdfdf;
 }
 
 .wrap-contact100 {
@@ -223,11 +227,12 @@ html {
   width: 100%;
 }
 
+/* FORM TITLE */
 .contact100-form-title {
   display: block;
   font-family: Ubuntu-Bold;
   font-size: 30px;
-  color: #403866;
+  color: Black;
   line-height: 1.2;
   text-transform: uppercase;
   text-align: center;
@@ -239,7 +244,7 @@ html {
 
 .wrap-input100 {
   width: 100%;
-  background-color: #fff;
+  background-color: #13232f;
   border-radius: 31px;
   margin-bottom: 16px;
   position: relative;
@@ -260,11 +265,11 @@ html {
   position: relative;
   display: block;
   width: 100%;
-  background: #fff;
+  background: #13232f;
   border-radius: 31px;
   font-family: Ubuntu-Bold;
   font-size: 18px;
-  color: #8f8fa1;
+  color: #fff;
   line-height: 1.2;
 }
 
@@ -299,7 +304,7 @@ textarea.input100 {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   border-radius: 31px;
-  background-color: #fff;
+  background-color: #13232f;
   pointer-events: none;
 
   -webkit-transition: all 0.4s;
@@ -345,6 +350,7 @@ textarea.input100 {
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
+  text-align: center;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -369,7 +375,7 @@ textarea.input100 {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   border-radius: 31px;
-  background-color: #827ffe;
+  background-color: #1ab188;
   pointer-events: none;
 
   -webkit-transition: all 0.4s;
@@ -379,7 +385,7 @@ textarea.input100 {
 }
 
 .contact100-form-btn:hover:before {
-  background-color: #403866;
+  background-color: #0b4f3d;
   width: calc(100% + 20px);
 }
 

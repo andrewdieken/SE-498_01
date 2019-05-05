@@ -14,6 +14,11 @@ module Types
       Voter.all
     end
 
+    field :all_voters_connection, [VoterType.connection_type], null: false
+    def all_voters_connection(**_args)
+      Voter.all
+    end
+
     #=============================
     # Returns a voter by id with specified fields
     # Ex) query { voteById(id: <ID>) { field1, field2,..., fieldn } }
