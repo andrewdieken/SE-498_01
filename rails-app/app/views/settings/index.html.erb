@@ -1,77 +1,79 @@
 <div class="container-contact100">
 
-	<div class="wrap-contact100">
-		<form class="contact100-form validate-form" action="/settings_update" method="get">
-			<span class="contact100-form-title">
-				Admin Dashboard
-			</span>
+  <div class="wrap-contact100">
+    <form class="contact100-form validate-form" action="/settings_update" method="get">
+      <span class="contact100-form-title">
+        Admin Dashboard
+      </span>
 
-			<!-- Update Prcinct ID -->
-			<div class="input-title">
-				Precinct ID
-			</div>
-			<div class="wrap-input100 validate-input" data-validate="Please enter a Precinct ID">
-				<textarea name="precinct_id" class="input100" rows="1" cols="1"><%= @precinct_string %></textarea>
-				<span class="focus-input100"></span>
-			</div>
+      <!-- Update Prcinct ID -->
+      <div class="input-title">
+        Precinct ID
+      </div>
+      <div class="wrap-input100 validate-input" data-validate="Please enter a Precinct ID">
+        <textarea name="precinct_id" class="input100" rows="1" cols="1"><%= @precinct_string %></textarea>
+        <span class="focus-input100"></span>
+      </div>
 
-			<!-- Update Password -->
-			<div class="input-title">
-				Canvasser Password
-			</div>
-			<div class="wrap-input100 validate-input" data-validate="Please enter a password">
-				<input class="input100" type="text" name="canvasser_password" value=<%= @canvasser_password %> >
-				<span class="focus-input100"></span>
-			</div>
+      <!-- Update Password -->
+      <div class="input-title">
+        Canvasser Password
+      </div>
+      <div class="wrap-input100 validate-input" data-validate="Please enter a password">
+        <input class="input100" type="text" name="canvasser_password" value=<%= @canvasser_password %>
+        <span class="focus-input100"></span>
+      </div>
 
-			<div class="input-title">
-				Default Voter Note
-			</div>
-			<div class="wrap-input100 validate-input" data-validate="Please enter a voter note">
-				<textarea class="input100" type="text" name="note"><%= @note %></textarea>
-				<span class="focus-input100"></span>
-			</div>
+      <div class="input-title">
+        Default Voter Note
+      </div>
+      <div class="wrap-input100 validate-input" data-validate="Please enter a voter note">
+        <textarea class="input100" type="text" name="note"><%= @note %></textarea>
+        <span class="focus-input100"></span>
+      </div>
 
-			<br>
-			<br>
+      <br>
+      <br>
 
-			<div class="container-contact100-form-btn">
-				<button class="contact100-form-btn" type="submit">
-						update
-				</button>
-			</div>
-		</form>
-	</div>
+      <div class="container-contact100-form-btn">
+        <button class="contact100-form-btn" type="submit">
+          <span>
+            update
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
 
 </div>
 
 <div class="container-buttons100">
-	<section class="container-functions">
-		<div class="item-export">
-			<div class="container-contact1001-form-btn">
-						<%=link_to 'Export to CSV', settings_export_csv_path(:format => "csv"),:class => "contact100-form-btn"%>
-			</div>
-		</div>
-		<div class="item-reset">
-			<form class="contact100-form validate-form" action="/delete_visits" method="get">
-				<div class="container-contact1001-form-btn">
-					<button class="contact100-form-btn" type="submit">
-						<span>
-							Reset Visited Records
-						</span>
-					</button>
-				</div>
-			</form>
-		</div>
-		<div class="item-logout">
-			<div class="container-contact1001-form-btn">
-				<%= link_to('Logout', destroy_user_session_path, method: :delete, class: "contact100-form-btn") %>
-			</div>
-		</div>
-		<div class="item-stats">
-			<div class="container-contact1001-form-btn">
-				<%= link_to('Stats', settings_stats_path, class: "contact100-form-btn") %>
-			</div>
-		</div>
-	</section>
+  <section class="container-functions">
+    <div class="item-export">
+      <div class="container-contact100-form-btn">
+            <%=link_to 'Export to CSV', settings_export_csv_path(:format => "csv"),:class => "contact100-form-btn"%>
+      </div>
+    </div>
+    <div class="item-reset">
+      <form class="contact100-form validate-form" action="/delete_visits" method="get">
+        <div class="container-contact100-form-btn">
+          <button class="contact100-form-btn" type="submit">
+            <span>
+              Reset Visited Records
+            </span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="item-logout">
+      <div class="container-contact100-form-btn">
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "contact100-form-btn") %>
+      </div>
+    </div>
+    <div class="item-stats">
+      <div class="container-contact100-form-btn">
+        <%= link_to('Stats', settings_stats_path, class: "contact100-form-btn") %>
+      </div>
+    </div>
+  </section>
 </div>

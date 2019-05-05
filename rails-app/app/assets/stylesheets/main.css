@@ -12,60 +12,60 @@
 [ RESTYLE TAG ]*/
 
 * {
-	margin: 0px;
-	padding: 0px;
-	box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
 body, html {
-	height: 100%;
-	font-family: Ubuntu-Bold, sans-serif;
+  height: 100%;
+  font-family: Ubuntu-Bold, sans-serif;
 }
 
 /*---------------------------------------------*/
 a {
-	font-family: Ubuntu-Bold;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
+  font-family: Ubuntu-Bold;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
+  transition: all 0.4s;
+  -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
 }
 
 a:focus {
-	outline: none !important;
+  outline: none !important;
 }
 
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
-	margin: 0px;
+  margin: 0px;
 }
 
 p {
-	font-family: Ubuntu-Bold;
-	font-size: 14px;
-	line-height: 1.7;
-	color: #666666;
-	margin: 0px;
+  font-family: Ubuntu-Bold;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0px;
 }
 
 ul, li {
-	margin: 0px;
-	list-style-type: none;
+  margin: 0px;
+  list-style-type: none;
 }
 
 
 /*---------------------------------------------*/
 input {
-	outline: none;
-	border: none;
+  outline: none;
+  border: none;
 }
 
 input[type="number"] {
@@ -100,24 +100,24 @@ textarea:-ms-input-placeholder { color: #bdbdd3;}
 
 /*---------------------------------------------*/
 button {
-	outline: none !important;
-	border: none;
-	background: transparent;
-	-webkit-appearance: none;
+  outline: none !important;
+  border: none;
+  background: transparent;
+  -webkit-appearance: none;
 }
 
 button:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 iframe {
-	border: none !important;
+  border: none !important;
 }
 
 
 /*---------------------------------------------*/
 .container {
-	max-width: 1200px;
+  max-width: 1200px;
 }
 
 .container-stats {
@@ -157,8 +157,6 @@ iframe {
   grid-auto-rows: auto;
   grid-template-areas:
     "stats export reset logout";
-
- margin-top:-110px;
 }
 
 .item-stats {
@@ -195,24 +193,6 @@ iframe {
   padding: 15px;
   position: relative;
   background-color: #dfdfdf;
-
-}
-
-@media only screen and (orientation : landscape) {
-
-.container-functions {
-  max-height: 50%;
-  display: grid;
-  grid-template-columns: 250px 250px 250px 250px;
-  grid-auto-rows: auto;
-  grid-template-areas:
-    "stats export reset logout";
-
- margin-top:20px;
- padding-bottom: 42px;
-}
-
-
 }
 
 html {
@@ -231,7 +211,6 @@ html {
   align-items: center;
   position: relative;
   background-color: #dfdfdf;
-  margin-top:50px;
 }
 
 .wrap-contact100 {
@@ -252,7 +231,7 @@ html {
 .contact100-form-title {
   display: block;
   font-family: Ubuntu-Bold;
-  font-size: 75px;
+  font-size: 30px;
   color: Black;
   line-height: 1.2;
   text-transform: uppercase;
@@ -264,15 +243,12 @@ html {
 [ Input ]*/
 
 .wrap-input100 {
-height: 92px;
-  width:900px;
-    background-color: #fff;
+  width: 100%;
+  background-color: #13232f;
   border-radius: 31px;
   margin-bottom: 16px;
   position: relative;
   z-index: 1;
-  margin-left: -160px;
-  font-size: 28px;
 }
 
 .input-title {
@@ -281,19 +257,18 @@ height: 92px;
   height: 30px;
   text-align: center;
   font-family: Ubuntu-Bold;
-  font-size: 40px;
+  font-size: 18px;
   color: #8f8fa1;
-  margin-bottom:32px;
 }
 
 .input100 {
   position: relative;
   display: block;
-height: 92px;
-  width:900px;  background: #13232f;
+  width: 100%;
+  background: #13232f;
   border-radius: 31px;
   font-family: Ubuntu-Bold;
-  font-size: 28px;
+  font-size: 18px;
   color: #fff;
   line-height: 1.2;
 }
@@ -302,18 +277,14 @@ height: 92px;
 /*---------------------------------------------*/
 input.input100 {
   height: 62px;
-  padding: 19px 35px 0 35px;
-    font-size: 28px;
-
+  padding: 0 35px 0 35px;
 }
 
 
 textarea.input100 {
-  height: 92px;
-  width:900px;
+  min-height: 62px;
   padding: 19px 35px 0 35px;
   resize: vertical;
-  min-height: 92px;
 }
 
 /*------------------------------------------------------------------
@@ -359,21 +330,6 @@ textarea.input100 {
   padding-top: 10px;
 }
 
-.container-contact1001-form-btn {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 10px;
-  margin-left: 30px;
-  width:200px;
-  height: 82px;
-  font-size: 16px;
-}
-
 .contact100-form-btn {
   display: -webkit-box;
   display: -webkit-flex;
@@ -383,36 +339,8 @@ textarea.input100 {
   justify-content: center;
   align-items: center;
   padding: 0 20px;
-  width: 400px;
-  height: 82px;
-  background-color: transparent;
-  border-radius: 31px;
-  text-decoration: none;
-
-  font-family: Ubuntu-Bold;
-  font-size: 16px;
-  color: #fff;
-  line-height: 1.2;
-  text-transform: uppercase;
-
-  -webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
-  position: relative;
-  z-index: 1;
-}
-.contact1001-form-btn {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 30px;
   width: 200px;
-  height: 82px;
+  height: 62px;
   background-color: transparent;
   border-radius: 31px;
   text-decoration: none;
@@ -422,6 +350,7 @@ textarea.input100 {
   color: #fff;
   line-height: 1.2;
   text-transform: uppercase;
+  text-align: center;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -429,7 +358,6 @@ textarea.input100 {
   transition: all 0.4s;
   position: relative;
   z-index: 1;
-  margin-left: 100px;
 }
 
 .contact100-form-btn::before {
@@ -531,8 +459,4 @@ textarea.input100 {
     visibility: visible;
     opacity: 1;
   }
-}
-
-span{
-	font-size: 16px;
 }
