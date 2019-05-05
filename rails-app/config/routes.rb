@@ -19,6 +19,8 @@ Rails.application.routes.draw do
       # To view all routes: `rails routes`
       resources :voters
       resources :visits
+      post 'update_houses' => 'stats#update_houses'
+      post 'update_volunteers' => 'stats#update_volunteers'
 
     end
   end
@@ -34,8 +36,6 @@ Rails.application.routes.draw do
   end
   # settings/stats
   get '/settings/stats' => 'settings#stats'
-  post '/settings/update_houses' => 'settings#update_houses'
-  post 'settings/update_volunteers' => 'settings#update_volunteers'
 
   # settings
   get '/settings' => 'settings#index'
