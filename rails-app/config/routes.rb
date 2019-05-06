@@ -19,9 +19,8 @@ Rails.application.routes.draw do
       # To view all routes: `rails routes`
       resources :voters
       resources :visits
-      post 'update_houses' => 'stats#update_houses'
-      post 'update_volunteers' => 'stats#update_volunteers'
-
+      post 'stats/update_houses' => 'stats#update_houses'
+      post 'stats/update_volunteers' => 'stats#update_volunteers'
     end
   end
 
