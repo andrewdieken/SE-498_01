@@ -343,7 +343,23 @@ class Canvas extends Component {
                     this.props.history.push("/login");
                   },
                   () => {
-                    console.log("Post request here to increment visited houses");
+                    if (process.env.NODE_ENV == "production") {
+                      this.postLink2 = `https://api.quartiledocs.com/api/v1/stats/update_houses?houses=${
+                        this.counter
+                      }`;
+                    } else {
+                      this.postLink2 = `http://192.168.99.100:3000/api/v1/stats/update_houses?houses=${
+                        this.counter
+                      }`;
+                    }
+                    axios
+                      .post(this.postLink2)
+                      .then(function(response) {
+                        console.log(response);
+                      })
+                      .catch(function(error) {
+                        console.log(error);
+                      });
                   }
                 );
               } else {
