@@ -157,6 +157,7 @@ iframe {
   grid-auto-rows: auto;
   grid-template-areas:
     "stats export reset logout";
+  margin-bottom: 80px;
 }
 
 .item-stats {
