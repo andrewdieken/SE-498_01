@@ -155,13 +155,14 @@
   grid-area: main;
   background-color: #ffffff;
   text-align: left;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
+  overflow-x: hidden;
+  overflow-y: auto;
+  word-break: break-all;
 }
 .item-e {
   grid-area: footer;
   background-color: #ffffff;
+  border-top: 3px dashed black;
 }
 .content {
   color: #000;
@@ -176,7 +177,8 @@
   width: 45px;
   float: left;
   margin-left: 10px;
-  margin-top: -70px;
+  top: 265px;
+  position: absolute;
 }
 .info_logo {
   height: 45px;
@@ -324,7 +326,7 @@
   border-radius: 30px;
   text-decoration: none;
   padding: 8px 30px;
-  color: black;
+  color: white;
   margin-top: -81px;
   display: inline-block;
   font-size: 18px;

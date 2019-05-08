@@ -5,6 +5,8 @@ import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
 import NoCampaign from "../Components/NoCampaign";
 import NoInternet from "./NoInternet";
+import axios from "axios";
+
 
 class Login extends Component {
   constructor(props) {
@@ -84,8 +86,19 @@ class Login extends Component {
                       this.props.history.push("/");
                     },
                     () => {
-                      console.log("Post request here to increment participants");
-
+                      if (process.env.NODE_ENV == "production") {
+                        this.postLink2 = `https://api.quartiledocs.com/api/v1/stats/update_volunteers?volunteers=${1}`;
+                      } else {
+                        this.postLink2 = `http://192.168.99.100:3000/api/v1/stats/update_volunteers?volunteers=${1}`;
+                      }
+                      axios
+                        .post(this.postLink2)
+                        .then(function(response) {
+                          console.log(response);
+                        })
+                        .catch(function(error) {
+                          console.log(error);
+                        });
                     }
                   );
                 }}
