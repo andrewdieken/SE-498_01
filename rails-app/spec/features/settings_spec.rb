@@ -27,8 +27,10 @@ RSpec.feature "user logs in" do
     click_on "Log in"
 
     visit settings_path
-    click_on "Reset Visited Records"
-    expect(page).to have_content("All visit records deleted")
+    click_on "Reset Campaign"
+    expect(page).to have_content("Campaign Reset")
     expect(Visit.count).to eq 0
+    expect(Setting.volunteers).to eq 0
+    expect(Setting.houses_canvassed).to eq 0
   end
 end

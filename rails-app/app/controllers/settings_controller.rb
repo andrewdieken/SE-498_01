@@ -23,7 +23,9 @@ class SettingsController < ApplicationController
 
   def delete_visits
     Visit.delete_all
-    flash[:notice] = "All visit records deleted"
+    Setting.houses_canvassed = 0
+    Setting.volunteers = 0
+    flash[:notice] = "Campaign Reset"
     redirect_to settings_path
   end
 
