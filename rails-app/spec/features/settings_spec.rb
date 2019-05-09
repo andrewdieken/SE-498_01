@@ -27,7 +27,7 @@ RSpec.feature "user logs in" do
     click_on "Log in"
 
     visit settings_path
-    click_on "Reset Campagin"
+    click_on "Reset Campaign"
     expect(page).to have_content("Campaign Reset")
     expect(Visit.count).to eq 0
     expect(Setting.volunteers).to eq 0
