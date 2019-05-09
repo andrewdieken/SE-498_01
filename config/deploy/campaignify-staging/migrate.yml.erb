@@ -1,0 +1,34 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: web-migrate-<%= deployment_id %>
+  namespace: campaignify-staging
+spec:
+  # Max of 10 minute migrations; can adjust if we have longer ones
+  # activeDeadlineSeconds: 600
+  completions: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: web-migrate
+          image: lancefluger/se-498_01-rails:<%= current_sha %>
+          command: ["bundle", "exec", "rails", "db:migrate"]
+          env: <%= partial "env" %>
+        - name: cloudsql-proxy
+          image: gcr.io/cloudsql-docker/gce-proxy:1.12
+          command: ["/cloud_sql_proxy",
+          "-instances=campaignify-staging:us-central1:staging-dbx=tcp:5432",
+          "-credential_file=/secrets/cloudsql/credentials.json"]
+          securityContext:
+            runAsUser: 2
+            allowPrivilegeEscalation: false
+          volumeMounts:
+            - name: cloudsql-instance-credentials
+              mountPath: /secrets/cloudsql
+              readOnly: true
+      volumes:
+      - name: cloudsql-instance-credentials
+        secret:
+          secretName: cloudsql-instance-credentials
