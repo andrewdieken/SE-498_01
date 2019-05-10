@@ -51,7 +51,8 @@ class Canvas extends Component {
       index: 0,
       notes: "testing",
       isLoaded: "1",
-      manager_notes: "-Loading..."
+      manager_notes: "-Loading...",
+      voterScore: Math.floor(Math.random() * 11)
     };
   }
 
@@ -132,7 +133,10 @@ class Canvas extends Component {
     this._myPG.style.visibility = "hidden";
 
     setTimeout(() => {
-      this.setState({ index: this.index });
+      this.setState({
+        index: this.index,
+        voterScore: Math.floor(Math.random() * 11)
+      });
       this._tarea.value = this.state.voters[this.index].note;
     }, 400);
     if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
@@ -205,7 +209,10 @@ class Canvas extends Component {
         );
       }
 
-      this.setState({ index: this.index });
+      this.setState({
+        index: this.index,
+        voterScore: Math.floor(Math.random() * 11)
+      });
       this._tarea.value = this.state.voters[this.index].note;
     }, 400);
     if (!Array.isArray(this.state.voters) || !this.state.voters.length) {
@@ -250,6 +257,7 @@ class Canvas extends Component {
   };
 
   openNote = () => {
+    console.log(this.state.voterScore);
     this._bgmodal.style.display = "flex";
     this._myBar.style.visibility = "hidden";
     this._myPG.style.visibility = "hidden";
@@ -415,34 +423,15 @@ class Canvas extends Component {
 
               <img alt="hse" className="info_logo" src={info} />
               {(() => {
-                if (
-                  parseInt(this.state.voters[this.state.index].historyScore) < 3
-                ) {
-                  return (
-                    <h3 className="red">
-                      {this.state.voters[this.state.index].historyScore}
-                    </h3>
-                  );
+                if (parseInt(this.state.voterScore) < 3) {
+                  return <h3 className="red">{this.state.voterScore}</h3>;
                 } else if (
-                  parseInt(this.state.voters[this.state.index].historyScore) <=
-                    6 &&
-                  parseInt(this.state.voters[this.state.index].historyScore) >=
-                    3
+                  parseInt(this.state.voterScore) <= 6 &&
+                  parseInt(this.state.voterScore) >= 3
                 ) {
-                  return (
-                    <h3 className="orange">
-                      {this.state.voters[this.state.index].historyScore}
-                    </h3>
-                  );
-                } else if (
-                  parseInt(this.state.voters[this.state.index].historyScore) >=
-                  7
-                ) {
-                  return (
-                    <h3 className="green">
-                      {this.state.voters[this.state.index].historyScore}
-                    </h3>
-                  );
+                  return <h3 className="orange">{this.state.voterScore}</h3>;
+                } else if (parseInt(this.state.voterScore) >= 7) {
+                  return <h3 className="green">{this.state.voterScore}</h3>;
                 }
               })()}
 
