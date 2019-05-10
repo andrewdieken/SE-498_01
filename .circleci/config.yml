@@ -143,11 +143,11 @@ jobs:
       - deploy:
           name: Push application Docker image to Dockerhub
           command: |
-            docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
-            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:$CIRCLE_SHA1
-            docker tag react-app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:latest
-            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:$CIRCLE_SHA1
-            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:latest
+            docker login -u $LANCE_DOCKER_HUB_USER_ID -p $LANCE_DOCKER_HUB_PWD
+            docker tag react-app $LANCE_DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:$CIRCLE_SHA1
+            docker tag react-app $LANCE_DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:latest
+            docker push $LANCE_DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:$CIRCLE_SHA1
+            docker push $LANCE_DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-react:latest
 
 
   rails_push_to_docker_hub:
@@ -221,11 +221,11 @@ jobs:
       - deploy:
           name: Push application Docker image to Dockerhub
           command: |
-            docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
-            docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:$CIRCLE_SHA1
-            docker tag app $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:latest
-            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:$CIRCLE_SHA1
-            docker push $DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:latest
+            docker login -u $LANCE_DOCKER_HUB_USER_ID -p $LANCE_DOCKER_HUB_PWD
+            docker tag app $LANCE_DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:$CIRCLE_SHA1
+            docker tag app $LANCE_DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:latest
+            docker push $LANCE_DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:$CIRCLE_SHA1
+            docker push $LANCE_DOCKER_HUB_USER_ID/$DOCKER_HUB_REPO-rails:latest
 
   gcp_deploy:
     docker:
@@ -233,7 +233,7 @@ jobs:
     environment:
       - REACT_PROJECT_NAME: "react-deployment"
       - RAILS_PROJECT_NAME: "rails-deployment"
-      - GOOGLE_PROJECT_ID: "se498-01"
+      - GOOGLE_PROJECT_ID: "campaignify-staging"
       - GOOGLE_COMPUTE_ZONE: "us-central1-a"
       - GOOGLE_CLUSTER_NAME: "staging"
     working_directory: ~/repo
@@ -244,7 +244,7 @@ jobs:
           name: Setup Google Cloud SDK
           command: |
             apt-get install -qq -y gettext
-            echo $GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
+            echo $LANCE_GCLOUD_SERVICE_KEY > ${HOME}/gcloud-service-key.json
             gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
@@ -261,7 +261,7 @@ jobs:
       - run:
           name: Deploy to Kubernetes
           command: |
-            KUBECONFIG=~/.kube/config ENVIRONMENT=staging REVISION=$CIRCLE_SHA1 GOOGLE_APPLICATION_CREDENTIALS=$GCLOUD_SERVICE_KEY kubernetes-deploy se498-staging gke_se498-01_us-central1-a_staging
+            KUBECONFIG=~/.kube/config ENVIRONMENT=campaignify-staging REVISION=$CIRCLE_SHA1 GOOGLE_APPLICATION_CREDENTIALS=$LANCE_GCLOUD_SERVICE_KEY kubernetes-deploy campaignify-staging gke_campaignify-staging_us-central1-a_staging
 
 workflows:
   version: 2
