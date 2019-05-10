@@ -13,7 +13,7 @@ class Login extends Component {
     super(props);
     if (process.env.NODE_ENV == "production") {
       this.client = new ApolloClient({
-        uri: "https://api.quartiledocs.com/graphql"
+        uri: "https://api.campaignify.net/graphql"
       });
     } else {
       this.client = new ApolloClient({
@@ -87,7 +87,7 @@ class Login extends Component {
                     },
                     () => {
                       if (process.env.NODE_ENV == "production") {
-                        this.postLink2 = `https://api.quartiledocs.com/api/v1/stats/update_volunteers?volunteers=${1}`;
+                        this.postLink2 = `https://api.campaignify.net/api/v1/stats/update_volunteers?volunteers=${1}`;
                       } else {
                         this.postLink2 = `http://192.168.99.100:3000/api/v1/stats/update_volunteers?volunteers=${1}`;
                       }
