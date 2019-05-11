@@ -3,6 +3,7 @@ module Types
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
     description "The query root of this schema"
+    test_voters_ids = [3370614,4064837,548298,2871267,3349267,911010,548263,3951326,548459,3528198,392424,22235,22236,3669968,4213403,1510485,4222779,4177394,4194222]
 
     #=============================
     # Returns all voters with specified fields
@@ -42,6 +43,13 @@ module Types
     end
     def voter_by_precinct()
       Voter.left_outer_joins(:visits).where( visits:{ voter_id:nil }).where(sPrecinctID: Setting.precinct_id)
+    end
+
+    field :voter_by_precinct_demo, [VoterType], null: true do
+      description "Find ten closest voters to Costa Mesa City Hall"
+    end
+    def voter_by_precinct_demo()
+      Voter.left_outer_joins(:visits).where( visits:{ voter_id:nil }).where(sPrecinctID: test_voters_ids)
     end
 
     field :get_canvasser_password, String, null: false do
