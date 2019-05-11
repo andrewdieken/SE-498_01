@@ -49,7 +49,7 @@ module Types
       description "Find ten closest voters to Costa Mesa City Hall"
     end
     def voter_by_precinct_demo()
-      Voter.left_outer_joins(:visits).where( visits:{ voter_id:nil }).where(sPrecinctID: test_voters_ids)
+      Voter.left_outer_joins(:visits).where( visits:{ voter_id:nil }).where(lVoterUniqueID: test_voters_ids)
     end
 
     field :get_canvasser_password, String, null: false do
