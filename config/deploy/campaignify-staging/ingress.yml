@@ -5,7 +5,6 @@ metadata:
   name: ingress-service
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.frontend.rule.type: PathPrefixStrip
 spec:
   rules:
     - host: staging.campaignify.net
@@ -21,13 +20,6 @@ spec:
           - path: /
             backend:
               serviceName: react-cluster-ip-service
-              servicePort: 80
-    - host: campaignify.net
-      http:
-        paths:
-          - path: /manager
-            backend:
-              serviceName: rails-cluster-ip-service
               servicePort: 80
     - host: api.campaignify.net
       http:
