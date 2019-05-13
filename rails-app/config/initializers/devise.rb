@@ -259,7 +259,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], skip_jwt: true
+  config.omniauth :google_oauth2,'384753414617-3igrgck0d2h3tdrr3d5o3mstn5m0cvf2.apps.googleusercontent.com','D6ZzzKH_7sfGAR4BO9WusJb_', skip_jwt: true
   OmniAuth.config.full_host = Rails.env.production? ? 'https://api.campaignify.net' : 'http://localhost:3000'
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
