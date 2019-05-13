@@ -82,7 +82,7 @@ class Canvas extends Component {
       })
       .then(result =>
         this.setState({
-          voters: result.data.voterByPrecinct,
+          voters: result.data.voterByPrecinctDemo,
           isLoaded: "2",
           manager_notes: result.data.getDefaultNote
         })
