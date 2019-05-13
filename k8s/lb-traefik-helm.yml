@@ -9,7 +9,7 @@ ssl:
 acme:
   enabled: true
   challengeType: http-01
-  email: ablaz101@mail.chapman.edu
+  email: admin@campaignify.net
   staging: false
   logging: true
   persistence:
@@ -22,7 +22,7 @@ accessLogs:
   enabled: true
 dashboard:
   enabled: false
-  domain: traefik.quartiledocs.com
+  domain: traefik.campaignify.net
 sendAnonymousUsage: true
 rbac:
   enabled: true
@@ -30,5 +30,5 @@ kubernetes:
   namespaces:
     - default
     - kube-system
-    - se498-staging
-    - se498-prod
+    - campaignify-staging
+    - campaignify-prod

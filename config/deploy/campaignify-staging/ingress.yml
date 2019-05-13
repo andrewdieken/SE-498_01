@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: campaignify-staging
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.rule.type: PathPrefixStrip
+spec:
+  rules:
+    - host: staging.campaignify.net
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: react-cluster-ip-service
+              servicePort: 80
+    - host: campaignify.net
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: react-cluster-ip-service
+              servicePort: 80
+    - host: campaignify.net
+      http:
+        paths:
+          - path: /manager
+            backend:
+              serviceName: rails-cluster-ip-service
+              servicePort: 80
+    - host: api.campaignify.net
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: rails-cluster-ip-service
+              servicePort: 80
