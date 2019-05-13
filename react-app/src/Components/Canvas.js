@@ -61,7 +61,7 @@ class Canvas extends Component {
       .query({
         query: gql`
           {
-            voterByPrecinct {
+            voterByPrecinctDemo {
               id
               szNameFirst
               szNameLast
